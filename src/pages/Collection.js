@@ -14,17 +14,17 @@ function Collection() {
     const [thisItems, setThisItems] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/collections/byIdNoAuth/${id}`).then((response) => {
+        axios.get(`https://itransition-project-genis.herokuapp.com/collections/byIdNoAuth/${id}`).then((response) => {
             setCollectionObj(response.data);
         });
 
-        axios.get(`http://localhost:3001/items/${id}`).then((response) => {
+        axios.get(`https://itransition-project-genis.herokuapp.com/items/${id}`).then((response) => {
             setThisItems(response.data);
         });
     }, [id]);
 
     const deleteItem = (id) => {
-        axios.delete(`http://localhost:3001/items/${id}`, 
+        axios.delete(`https://itransition-project-genis.herokuapp.com/items/${id}`, 
         { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(() => {
               setThisItems(
@@ -36,7 +36,7 @@ function Collection() {
     };
 
     const likeItem = (itemId) => {
-        axios.post("http://localhost:3001/likes", 
+        axios.post("https://itransition-project-genis.herokuapp.com/likes", 
         { ItemId: itemId }, 
         { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then((response) => {

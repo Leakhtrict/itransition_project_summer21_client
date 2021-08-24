@@ -25,7 +25,7 @@ function CreateCollection() {
     let history = useHistory();
 
     useLayoutEffect(() => {
-        axios.get("http://localhost:3001/users/auth",
+        axios.get("https://itransition-project-genis.herokuapp.com/users/auth",
         { headers: { accessToken: localStorage.getItem("accessToken") } })
         .then((response) => {
             if (response.data.error) {
@@ -35,7 +35,7 @@ function CreateCollection() {
             }
         });
 
-        axios.get(`http://localhost:3001/users/byId/${id}`)
+        axios.get(`https://itransition-project-genis.herokuapp.com/users/byId/${id}`)
         .then((response) => {
             setCurrentUser(response.data);
         });
@@ -64,7 +64,7 @@ function CreateCollection() {
     const onSubmit = (data) => {
         data.ownerUser = currentUser.username;
         data.description = freeText;
-        axios.post("http://localhost:3001/collections/createCollection", data).then(() => {
+        axios.post("https://itransition-project-genis.herokuapp.com/collections/createCollection", data).then(() => {
             history.push(`/user/${id}`);
         });
     };

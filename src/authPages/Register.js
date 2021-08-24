@@ -21,7 +21,7 @@ function Register() {
     });
 
     const onSubmit = (data) => {
-        axios.post("http://localhost:3001/users/register", data).then(() => {
+        axios.post("https://itransition-project-genis.herokuapp.com/users/register", data).then(() => {
             history.push("/login");
         });
     };

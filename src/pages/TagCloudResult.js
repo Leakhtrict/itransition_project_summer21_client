@@ -8,7 +8,7 @@ function TagCloudResult() {
     const [listOfItems, setListOfItems] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3001/items").then((response) => {
+        axios.get("https://itransition-project-genis.herokuapp.com/items").then((response) => {
             setListOfItems(response.data.filter((value) => {
                 return value.tags.includes(tag + " ");
             }));

@@ -17,24 +17,24 @@ function Item() {
     const [thisComments, setThisComments] = useState([]);
 
     useEffect(() => {
-        socket = io("http://localhost:3001");
+        socket = io("https://itransition-project-genis.herokuapp.com");
 
         socket.on("emitSendComment", (data) => {
             setThisComments(prevState => [...prevState, data]);
         });
 
-        axios.get(`http://localhost:3001/items/byId/${itemId}`).then((response) => {
+        axios.get(`https://itransition-project-genis.herokuapp.com/items/byId/${itemId}`).then((response) => {
             setItemBody(response.data);
         });
 
-        axios.get(`http://localhost:3001/comments/${itemId}`).then((response) => {
+        axios.get(`https://itransition-project-genis.herokuapp.com/comments/${itemId}`).then((response) => {
             setThisComments(response.data);
         });
     }, [itemId]);
 
     const addComment = () => {
         if (newComment){
-            axios.post("http://localhost:3001/comments", {
+            axios.post("https://itransition-project-genis.herokuapp.com/comments", {
                 username: authState.username,
                 commentBody: newComment,
                 ItemId: itemId,
@@ -56,7 +56,7 @@ function Item() {
 
     const deleteComment = (id) => {
         console.log(id);
-        axios.delete(`http://localhost:3001/comments/${id}`,
+        axios.delete(`https://itransition-project-genis.herokuapp.com/comments/${id}`,
         { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then(() => {
             setThisComments(
@@ -68,7 +68,7 @@ function Item() {
     };
 
     const likeItem = (itemId) => {
-        axios.post("http://localhost:3001/likes", 
+        axios.post("https://itransition-project-genis.herokuapp.com/likes", 
         { ItemId: itemId }, 
         { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then((response) => {

@@ -35,7 +35,7 @@ function EditItem() {
     let alreadySelectedTags = [];
 
     useLayoutEffect(() => {
-        axios.get(`http://localhost:3001/collections/byId/${collectionId}`,
+        axios.get(`https://itransition-project-genis.herokuapp.com/collections/byId/${collectionId}`,
         { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then((response) => {
             if (response.data.error) {
@@ -46,7 +46,7 @@ function EditItem() {
             setCurrentCollection(response.data.collection);
         });
 
-        axios.get(`http://localhost:3001/items/byId/${itemId}`).then((response) => {
+        axios.get(`https://itransition-project-genis.herokuapp.com/items/byId/${itemId}`).then((response) => {
             console.log(response.data);
             setCurrentItem(response.data);
             setFreeText1(response.data.textField1);
@@ -63,7 +63,7 @@ function EditItem() {
             });
         });
 
-        axios.get("http://localhost:3001/tags").then((response) => {
+        axios.get("https://itransition-project-genis.herokuapp.com/tags").then((response) => {
             const getTags = response.data;
             getTags.map((value, key) => {
                 setListOfTags(prevState => [...prevState, { value: value.tagName, label: value.tagName }]);
@@ -91,7 +91,7 @@ function EditItem() {
 
     const onSubmit = (data) => {
         console.log(data);
-        axios.post("http://localhost:3001/tags/addTags", selectedTags).then((response) => {
+        axios.post("https://itransition-project-genis.herokuapp.com/tags/addTags", selectedTags).then((response) => {
             if (response.data.error){
                 alert(response.data.error);
             }
@@ -107,7 +107,7 @@ function EditItem() {
         data.dateField1 = date1;
         data.dateField2 = date2;
         data.dateField3 = date3;
-        axios.post(`http://localhost:3001/items/editItem/${itemId}`, data).then(() => {
+        axios.post(`https://itransition-project-genis.herokuapp.com/items/editItem/${itemId}`, data).then(() => {
             history.push(`/collection/${collectionId}`);
         });
     };

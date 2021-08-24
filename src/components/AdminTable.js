@@ -26,7 +26,7 @@ function AdminTable() {
     const [listOfUsers, setListOfUsers] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:3001/users").then((response) => {
+        axios.get("https://itransition-project-genis.herokuapp.com/users").then((response) => {
             setListOfUsers(response.data);
         });
     }, []);
@@ -64,14 +64,14 @@ function AdminTable() {
       } = tableInstance;
 
       const deleteData = () => {
-        axios.get("http://localhost:3001/users/auth", {
+        axios.get("https://itransition-project-genis.herokuapp.com/users/auth", {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           },
         }).then((response) => {
           if (!response.data.error) {
             const deleteIds = selectedFlatRows.map(row => row.original.id);
-            axios.put("http://localhost:3001/users/deleteUsers", deleteIds)
+            axios.put("https://itransition-project-genis.herokuapp.com/users/deleteUsers", deleteIds)
             .then(() => {
               history.go(0);
             });
@@ -83,14 +83,14 @@ function AdminTable() {
       };
   
       const blockUser = () => {
-        axios.get("http://localhost:3001/users/auth", {
+        axios.get("https://itransition-project-genis.herokuapp.com/users/auth", {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           },
         }).then((response) => {
           if (!response.data.error) {
             const blockIds = selectedFlatRows.map(row => row.original.id);
-            axios.put("http://localhost:3001/users/blockUsers", blockIds)
+            axios.put("https://itransition-project-genis.herokuapp.com/users/blockUsers", blockIds)
             .then(() => {
               history.go(0);
             });
@@ -102,14 +102,14 @@ function AdminTable() {
       };
   
       const unblockUser = () => {
-        axios.get("http://localhost:3001/users/auth", {
+        axios.get("https://itransition-project-genis.herokuapp.com/users/auth", {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           },
         }).then((response) => {
           if (!response.data.error) {
             const unblockIds = selectedFlatRows.map(row => row.original.id);
-            axios.put("http://localhost:3001/users/unblockUsers", unblockIds)
+            axios.put("https://itransition-project-genis.herokuapp.com/users/unblockUsers", unblockIds)
             .then(() => {
               history.go(0);
             });
@@ -121,14 +121,14 @@ function AdminTable() {
       };
 
       const adminUser = () => {
-        axios.get("http://localhost:3001/users/auth", {
+        axios.get("https://itransition-project-genis.herokuapp.com/users/auth", {
           headers: {
             accessToken: localStorage.getItem("accessToken"),
           },
         }).then((response) => {
           if (!response.data.error) {
             const adminIds = selectedFlatRows.map(row => row.original.id);
-            axios.put("http://localhost:3001/users/adminUsers", adminIds)
+            axios.put("https://itransition-project-genis.herokuapp.com/users/adminUsers", adminIds)
             .then(() => {
               history.go(0);
             });

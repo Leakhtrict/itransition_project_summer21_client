@@ -13,17 +13,17 @@ function Home() {
     let history = useHistory();
 
     useEffect(() => {
-        axios.get("http://localhost:3001/collections").then((response) => {
+        axios.get("https://itransition-project-genis.herokuapp.com/collections").then((response) => {
             setListOfCollections(response.data.sort((a, b) => {
                 return (b.numberOfItems - a.numberOfItems);
             }).slice(0, 6));
         });
 
-        axios.get("http://localhost:3001/items").then((response) => {
+        axios.get("https://itransition-project-genis.herokuapp.com/items").then((response) => {
             setListOfItems(response.data.reverse().slice(0, 10));
         });
 
-        axios.get("http://localhost:3001/tags").then((response) => {
+        axios.get("https://itransition-project-genis.herokuapp.com/tags").then((response) => {
             response.data.map((value, key) => {
                 setListOfTags(prevState => [...prevState, { value: value.tagName, count: 0 }]);
             });

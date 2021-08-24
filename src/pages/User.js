@@ -14,14 +14,14 @@ function User() {
     let history = useHistory();
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/collections/${userId}`).then((response) => {
+        axios.get(`https://itransition-project-genis.herokuapp.com/collections/${userId}`).then((response) => {
             console.log(userId, response.data, authState);
             setThisCollections(response.data);
         });
     }, [authState, userId]);
 
     const deleteCollection = (id) => {
-        axios.delete(`http://localhost:3001/collections/${id}`, {
+        axios.delete(`https://itransition-project-genis.herokuapp.com/collections/${id}`, {
             headers: {
               accessToken: localStorage.getItem("accessToken"),
             },

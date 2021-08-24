@@ -25,7 +25,7 @@ function EditCollection() {
     let history = useHistory();
 
     useLayoutEffect(() => {
-        axios.get(`http://localhost:3001/collections/byId/${id}`, 
+        axios.get(`https://itransition-project-genis.herokuapp.com/collections/byId/${id}`, 
         { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then((response) => {
             console.log(response.data);
@@ -61,7 +61,7 @@ function EditCollection() {
 
     const onSubmit = (data) => {
         data.description = freeText;
-        axios.post(`http://localhost:3001/collections/${id}/editCollection`, data).then(() => {
+        axios.post(`https://itransition-project-genis.herokuapp.com/collections/${id}/editCollection`, data).then(() => {
             history.push(`/user/${authState.id}`);
         });
     };

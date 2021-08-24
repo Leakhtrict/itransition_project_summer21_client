@@ -39,7 +39,7 @@ function App() {
   const [listOfItems, setListOfItems] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/users/auth", {
+    axios.get("https://itransition-project-genis.herokuapp.com/users/auth", {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
         },
@@ -56,7 +56,7 @@ function App() {
         }
     });
 
-    axios.get("http://localhost:3001/items").then((response) => {
+    axios.get("https://itransition-project-genis.herokuapp.com/items").then((response) => {
       setListOfItems(response.data);
     });
   }, []);
