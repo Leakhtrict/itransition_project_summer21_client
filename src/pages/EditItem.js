@@ -233,7 +233,7 @@ function EditItem() {
                                         type="date"
                                         id="inputCreateItem"
                                         name="dateField1"
-                                        value={date1.toISOString().split("T")[0]}
+                                        value={date1.split("T")[0]}
                                         onChange={(event) => {setDate1(event.target.value)}}
                                     />
                                 </>
@@ -245,7 +245,7 @@ function EditItem() {
                                         type="date"
                                         id="inputCreateItem"
                                         name="dateField2"
-                                        value={date2.toISOString().split("T")[0]}
+                                        value={date2.split("T")[0]}
                                         onChange={(event) => {setDate2(event.target.value)}}
                                     />
                                 </>
@@ -257,7 +257,7 @@ function EditItem() {
                                         type="date"
                                         id="inputCreateItem"
                                         name="dateField3"
-                                        value={date3.toISOString().split("T")[0]}
+                                        value={date3.split("T")[0]}
                                         onChange={(event) => {setDate3(event.target.value)}}
                                     />
                                 </>
