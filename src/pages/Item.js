@@ -100,7 +100,7 @@ function Item() {
                 {thisComments.map((value, key) => {
                     return(
                         <div key={key}>
-                            {authState.username === value.username && <button onClick={() => deleteComment(value.id)}> X</button>}
+                            {(authState.username === value.username || authState.isAdmin) && <button onClick={() => deleteComment(value.id)}> X</button>}
                             <div className="comment">
                                 <div>{value.username}</div>
                                 <div>{value.commentBody}</div>
