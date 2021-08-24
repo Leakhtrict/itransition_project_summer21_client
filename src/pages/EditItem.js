@@ -105,9 +105,9 @@ function EditItem() {
         data.textField1 = freeText1;
         data.textField2 = freeText2;
         data.textField3 = freeText3;
-        data.dateField1 = date1.toISOString().split("T")[0];
-        data.dateField2 = date2.toISOString().split("T")[0];
-        data.dateField3 = date3.toISOString().split("T")[0];
+        data.dateField1 = date1;
+        data.dateField2 = date2;
+        data.dateField3 = date3;
         axios.post(`https://itransition-project-genis.herokuapp.com/items/editItem/${itemId}`, data).then(() => {
             history.push(`/collection/${collectionId}`);
         });
@@ -233,7 +233,7 @@ function EditItem() {
                                         type="date"
                                         id="inputCreateItem"
                                         name="dateField1"
-                                        value={date1}
+                                        value={date1.toISOString().split("T")[0]}
                                         onChange={(event) => {setDate1(event.target.value)}}
                                     />
                                 </>
@@ -245,7 +245,7 @@ function EditItem() {
                                         type="date"
                                         id="inputCreateItem"
                                         name="dateField2"
-                                        value={date2}
+                                        value={date2.toISOString().split("T")[0]}
                                         onChange={(event) => {setDate2(event.target.value)}}
                                     />
                                 </>
@@ -257,7 +257,7 @@ function EditItem() {
                                         type="date"
                                         id="inputCreateItem"
                                         name="dateField3"
-                                        value={date3}
+                                        value={date3.toISOString().split("T")[0]}
                                         onChange={(event) => {setDate3(event.target.value)}}
                                     />
                                 </>

@@ -84,9 +84,9 @@ function CreateItem() {
         data.textField1 = freeText1;
         data.textField2 = freeText2;
         data.textField3 = freeText3;
-        data.dateField1 = date1.toISOString().split("T")[0];
-        data.dateField2 = date2.toISOString().split("T")[0];
-        data.dateField3 = date3.toISOString().split("T")[0];
+        data.dateField1 = date1;
+        data.dateField2 = date2;
+        data.dateField3 = date3;
         axios.post(`https://itransition-project-genis.herokuapp.com/items/createItem/${id}`, data).then(() => {
             history.push(`/collection/${id}`);
         });
