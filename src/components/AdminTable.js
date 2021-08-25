@@ -92,9 +92,15 @@ function AdminTable() {
           if (!response.data.error) {
             const blockIds = listOfIds;
             axios.put("https://itransition-project-genis.herokuapp.com/users/blockUsers", blockIds)
-            /*.then(() => {
-              history.go(0);
-            });*/
+            blockIds.map((value) => {
+              setListOfUsers(listOfUsers.map((user) => {
+                if(value == user.id){
+                  return [...user, { isBlocked: true }]
+                } else {
+                  return user;
+                }
+              }))
+            });
           }
           else{
             history.push("/");
@@ -144,7 +150,7 @@ function AdminTable() {
             <SecurityIcon className="buttons" onClick={adminUser} title="Set admin" />
             <DeleteForeverIcon className="buttons" onClick={deleteData} title="Delete" />
           </div>
-          <div style={{ height: 500, width: 870 }} >
+          <div style={{ height: 500, width: 872 }} >
             <DataGrid
               rows={listOfUsers}
               columns={COLUMNS}
