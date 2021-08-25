@@ -24,7 +24,7 @@
     "profile-page.createcollection": "Создать коллекцию",
     "profile-page.adminpanel": "Админ. панель",
     "profile-page.updatedAt": "Обновлено",
-    "collection-page.createitem": "Добавить",
+    "collection-page.createitem": "Добавить элемент",
     "createcollection-page.submit": "Создать коллекцию",
     "createcollection-page.title": "Название",
     "createcollection-page.description": "Описание(макс. 240 символов)",

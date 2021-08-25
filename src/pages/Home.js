@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import MainTagCloud from "../components/MainTagCloud";
 import { FormattedMessage } from "react-intl";
 import { Grid, Box, Container } from "@material-ui/core";
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 function Home() {
     const [listOfCollections, setListOfCollections] = useState([]);
@@ -34,13 +35,13 @@ function Home() {
     }, []);
   
     return (
-        <Grid container direction="row" justifyContent="center" spacing={1}>
+        <Grid container direction="row" justifyContent="center">
             <div className="homePage">
                 <Container maxWidth="xs">
                     <Grid item container direction="column" justifyContent="center" spacing={1}>
                         {listOfCollections.map((value, key) => {
                             return (
-                                <Grid item>
+                                <Grid item key={key}>
                                     <Box className="collection" >
                                         <header onClick={() => {history.push(`/collection/${value.id}`)}}>
                                             <div className="collTitle">
@@ -51,11 +52,9 @@ function Home() {
                                                 {value.theme}
                                             </div>
                                         </header>
-                                        <body>
-                                            <Container>
-                                                <ReactMarkdown>{value.description}</ReactMarkdown>
-                                            </Container>
-                                        </body>
+                                        <Container>
+                                            <ReactMarkdown>{value.description}</ReactMarkdown>
+                                        </Container>
                                         <footer>
                                             <div className="collDate">
                                                 <FormattedMessage id="profile-page.updatedAt" />
@@ -73,25 +72,39 @@ function Home() {
                     </Grid>
                 </Container>
                 <Container maxWidth="xs">
-                    <Grid item>
-                        <div className="itemsRightSide">
+                    <Grid item container direction="column" justifyContent="center" spacing={1}>
+                        <Grid item container>
                             {listOfTags && 
                                 <MainTagCloud data={listOfTags} />
                             }
-                            {listOfItems.map((value, key) => {
-                                return (
-                                    <div key={key} className="item" onClick={() => {history.push(`/item/${value.id}`)}}>
-                                        <div className="title"> {value.name} </div>
-                                        <div className="theme"> {value.tags} </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
+                        </Grid>
+                        {listOfItems.map((value, key) => {
+                            const thisTags = value.tags.split(" ").slice(0, -1);
+                            return (
+                                <Grid item container>
+                                    <Box className="item">
+                                        <header onClick={() => {history.push(`/item/${value.id}`)}}>{value.name}</header>
+                                        <Grid item container style={{ margin: "10px" }} justifyContent="flex-start" alignItems="flex-start">
+                                            {thisTags.map((value, key) => {
+                                                return(
+                                                    <Grid item key={key} onClick={() => {history.push(`/byTag/${value}`)}} className="itemTag" style={{ margin: "6px" }}>
+                                                        {"#" + value}
+                                                    </Grid>
+                                                )
+                                            })}
+                                        </Grid>
+                                        <footer>
+                                            <FavoriteBorderIcon style={{ color: "red" }} />
+                                            {value.Likes.length}
+                                        </footer>
+                                    </Box>
+                                </Grid>
+                            );
+                        })}
                     </Grid>
                 </Container> 
             </div>
         </Grid>
-        
     );
 }
 

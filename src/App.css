@@ -17,7 +17,7 @@ hr{
 .homePage{
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
 }
 
@@ -251,7 +251,7 @@ hr{
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.collection header, .collection footer{
+.collection header, .collection footer, .item header{
   display: flex;
   border-radius: 10px 10px 0px 0px;
   flex-direction: column;
@@ -261,7 +261,7 @@ hr{
   padding: 5px 0px;
 }
 
-.collection header:hover{
+.collection header:hover, .item header:hover, .itemTag:hover{
   cursor: pointer;
 }
 
@@ -279,7 +279,7 @@ hr{
   margin-top: 0px;
 }
 
-.collTitle{
+.collTitle, .item header{
   padding: 5px 0px;
   font-weight: bold;
 }
@@ -289,15 +289,28 @@ hr{
 }
 
 .item{
-  width: 500px;
+  width: 100%;
   height: auto;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   border: 1px solid lightgray;
   font-family: Arial, Helvetica, sans-serif;
-
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.itemTag{
+  padding: 5px;
+  border-radius: 10px;
+  background-color: red;
+  color: white;
+}
+
+.item footer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 20px;
 }
 
 .likeButton{
@@ -322,10 +335,5 @@ hr{
 }
 
 .sortSelect{
-  display: flex;
-  flex-direction: row;
-}
-
-.FavoriteBorderIcon{
-  background-color: red;
+  width: 150px;
 }

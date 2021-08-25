@@ -24,7 +24,7 @@
     "profile-page.createcollection": "Create collection",
     "profile-page.adminpanel": "Administer panel",
     "profile-page.updatedAt": "Last update",
-    "collection-page.createitem": "Add",
+    "collection-page.createitem": "Add element",
     "createcollection-page.submit": "Create collection",
     "createcollection-page.title": "Title",
     "createcollection-page.description": "Description(max. 240 characters)",

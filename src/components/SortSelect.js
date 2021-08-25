@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { FormattedMessage } from "react-intl";
 import ImportExportIcon from '@material-ui/icons/ImportExport';
+import { Select, MenuItem, InputLabel, FormControl, IconButton } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    buttons: {
+        margin: "5px",
+        padding: "6px",
+        color: "black",
+    },
+}));
 
 export default function SortSelect({
     thisItems,
     setThisItems
 }){
+    const classes = useStyles();
+    const [sortFilter, setSortFilter] = useState("id");
     const sortByValue = (value) => {
         switch(value){
             case "id":
@@ -24,31 +36,42 @@ export default function SortSelect({
         }
     };
 
+    const handleChange = (event) => {
+        setSortFilter(event.target.value);
+        sortByValue(event.target.value);
+    }
+
     const reverseItems = () => {
         setThisItems(prevState => [...prevState].reverse());
     };
 
     return(
-        <div className="sortSelect">
-            <FormattedMessage id="sortselect.sortBy"/>
-            <select onChange={(e) => sortByValue(e.target.value)}>
-                <FormattedMessage id="sortselect.createdAt">
+        <>
+            <FormControl className="sortSelect">
+                <FormattedMessage id="sortselect.sortBy">
                     {(id) => 
-                        <option value="id" selected="selected">{id}</option>
+                        <InputLabel id="sort-select-label">{id}</InputLabel>
                     }
                 </FormattedMessage>
-                <FormattedMessage id="sortselect.name">
-                    {(id) => 
-                        <option value="name">{id}</option>
-                    }
-                </FormattedMessage>
-                <FormattedMessage id="sortselect.likes">
-                    {(id) => 
-                        <option value="likes">{id}</option>
-                    }
-                </FormattedMessage>
-            </select>
-            <ImportExportIcon onClick={() => reverseItems()} />
-        </div>
+                <Select
+                    labelId="sort-select-label"
+                    value={sortFilter}
+                    onChange={handleChange}
+                >
+                    <MenuItem value="id">
+                        <FormattedMessage id="sortselect.createdAt" />
+                    </MenuItem>
+                    <MenuItem value="name">
+                        <FormattedMessage id="sortselect.name" />
+                    </MenuItem>
+                    <MenuItem value="likes">
+                        <FormattedMessage id="sortselect.likes" />
+                    </MenuItem>
+                </Select>
+            </FormControl>
+            <IconButton onClick={() => reverseItems()} className={classes.buttons}>
+                <ImportExportIcon />
+            </IconButton>
+        </>
     );
 }

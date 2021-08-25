@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
         padding: "6px",
         color: "black",
     },
-  }));
+}));
 
 function User() {
     const classes = useStyles();
@@ -89,11 +89,9 @@ function User() {
                                             {value.theme}
                                         </div>
                                     </header>
-                                    <body>
-                                        <Container>
-                                            <ReactMarkdown>{value.description}</ReactMarkdown>
-                                        </Container>
-                                    </body>
+                                    <Container>
+                                        <ReactMarkdown>{value.description}</ReactMarkdown>
+                                    </Container>
                                     <footer>
                                         <div className="collDate">
                                             <FormattedMessage id="profile-page.updatedAt" />
