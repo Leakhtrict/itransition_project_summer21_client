@@ -144,7 +144,7 @@ function AdminTable() {
             <SecurityIcon onClick={adminUser} title="Set admin" />
             <DeleteForeverIcon onClick={deleteData} title="Delete" />
           </div>
-          <div style={{ height: 800, width: '100%' }}>
+          <div style={{ height: 'auto', width: '100%' }}>
             <DataGrid
               rows={listOfUsers}
               columns={COLUMNS}

@@ -2,22 +2,26 @@ export const COLUMNS = [
     {
         field: 'id',
         headerName: 'ID',
-        width: 40
+        sortable: false,
+        width: 60
     },
     {
         field: 'username',
         headerName: 'Username',
+        sortable: false,
         width: 140
     },
     {
         field: 'email',
         headerName: 'E-Mail',
+        sortable: false,
         width: 220
     },
     {
         field: 'isBlocked',
         headerName: 'Blocked',
-        width: 50,
+        sortable: false,
+        width: 80,
         valueFormatter: (props) => {
             return `${props.value.toString()}`
         }
@@ -25,7 +29,8 @@ export const COLUMNS = [
     {
         field: 'isAdmin',
         headerName: 'Admin',
-        width: 50,
+        sortable: false,
+        width: 80,
         valueFormatter: (props) => {
             return `${props.value.toString()}`
         }
@@ -33,6 +38,7 @@ export const COLUMNS = [
     {
         field: 'createdAt',
         headerName: 'Reg. date',
+        sortable: false,
         width: 220,
         valueFormatter: (props) => {
             return `${new Date(props.value).toLocaleString()}`
