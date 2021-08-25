@@ -39,11 +39,9 @@ function App() {
   const [listOfItems, setListOfItems] = useState([]);
 
   useEffect(() => {
-    axios.get("https://itransition-project-genis.herokuapp.com/users/auth", {
-        headers: {
-          accessToken: localStorage.getItem("accessToken"),
-        },
-      }).then((response) => {
+    axios.get("https://itransition-project-genis.herokuapp.com/users/auth",
+    { headers: { accessToken: localStorage.getItem("accessToken") } })
+    .then((response) => {
         if (response.data.error) {
           setAuthState({...authState, status: false});
         } else {
