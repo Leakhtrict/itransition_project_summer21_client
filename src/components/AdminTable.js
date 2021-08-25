@@ -139,12 +139,12 @@ function AdminTable() {
       return(
         <>
           <div className="buttonBar">
-            <LockIcon onClick={blockUser} title="Block" />
-            <LockOpenIcon onClick={unblockUser} title="Unblock" />
-            <SecurityIcon onClick={adminUser} title="Set admin" />
-            <DeleteForeverIcon onClick={deleteData} title="Delete" />
+            <LockIcon className="buttons" onClick={blockUser} title="Block" />
+            <LockOpenIcon className="buttons" onClick={unblockUser} title="Unblock" />
+            <SecurityIcon className="buttons" onClick={adminUser} title="Set admin" />
+            <DeleteForeverIcon className="buttons" onClick={deleteData} title="Delete" />
           </div>
-          <div style={{ height: 500, width: 900 }} >
+          <div style={{ height: 500, width: 870 }} >
             <DataGrid
               rows={listOfUsers}
               columns={COLUMNS}

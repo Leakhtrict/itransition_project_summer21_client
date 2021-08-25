@@ -21,7 +21,7 @@ export const COLUMNS = [
         field: 'isBlocked',
         headerName: 'Blocked',
         sortable: false,
-        width: 80,
+        width: 100,
         valueFormatter: (props) => {
             return `${props.value.toString()}`
         }
