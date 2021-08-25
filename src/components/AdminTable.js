@@ -144,13 +144,15 @@ function AdminTable() {
             <SecurityIcon onClick={adminUser} title="Set admin" />
             <DeleteForeverIcon onClick={deleteData} title="Delete" />
           </div>
-          <DataGrid
-            rows={listOfUsers}
-            columns={COLUMNS}
-            checkboxSelection
-            disableSelectionOnClick
-            onSelectionModelChange={itm => setListOfIds(itm)}
-          />
+          <div style={{ height: 800, width: '100%' }}>
+            <DataGrid
+              rows={listOfUsers}
+              columns={COLUMNS}
+              checkboxSelection
+              disableSelectionOnClick
+              onSelectionModelChange={itm => setListOfIds(itm)}
+            />
+          </div>
         </>
     );
 };
