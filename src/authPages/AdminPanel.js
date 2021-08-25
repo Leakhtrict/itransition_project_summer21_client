@@ -13,9 +13,7 @@ function AdminPanel() {
             </h1>
         ) || 
         (authState.isAdmin &&
-            <div>
-                <AdminTable />
-            </div>
+            <AdminTable />
         )
     )
 }
