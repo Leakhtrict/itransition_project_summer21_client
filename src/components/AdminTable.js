@@ -28,6 +28,7 @@ import { DataGrid } from "@material-ui/data-grid";
 function AdminTable() {
     let history = useHistory();
     const [listOfUsers, setListOfUsers] = useState([]);
+    const [listOfIds, setListOfIds] = useState([]);
 
     useEffect(() => {
         axios.get("https://itransition-project-genis.herokuapp.com/users").then((response) => {
@@ -72,7 +73,7 @@ function AdminTable() {
         { headers: { accessToken: localStorage.getItem("accessToken") } })
         .then((response) => {
           if (!response.data.error) {
-            const deleteIds = getSelectedRows().map(row => row.id);
+            const deleteIds = listOfIds;
             axios.put("https://itransition-project-genis.herokuapp.com/users/deleteUsers", deleteIds)
             /*.then(() => {
               history.go(0);
@@ -89,7 +90,7 @@ function AdminTable() {
         { headers: { accessToken: localStorage.getItem("accessToken") } })
         .then((response) => {
           if (!response.data.error) {
-            const blockIds = getSelectedRows().map(row => row.id);
+            const blockIds = listOfIds;
             axios.put("https://itransition-project-genis.herokuapp.com/users/blockUsers", blockIds)
             /*.then(() => {
               history.go(0);
@@ -106,7 +107,7 @@ function AdminTable() {
         { headers: { accessToken: localStorage.getItem("accessToken") } })
         .then((response) => {
           if (!response.data.error) {
-            const unblockIds = getSelectedRows().map(row => row.id);
+            const unblockIds = listOfIds;
             axios.put("https://itransition-project-genis.herokuapp.com/users/unblockUsers", unblockIds)
             /*.then(() => {
               history.go(0);
@@ -123,7 +124,7 @@ function AdminTable() {
         { headers: { accessToken: localStorage.getItem("accessToken") } })
         .then((response) => {
           if (!response.data.error) {
-            const adminIds = getSelectedRows().map(row => row.id);
+            const adminIds = listOfIds;
             axios.put("https://itransition-project-genis.herokuapp.com/users/adminUsers", adminIds)
             /*.then(() => {
               history.go(0);
@@ -148,10 +149,10 @@ function AdminTable() {
             columns={COLUMNS}
             checkboxSelection
             disableSelectionOnClick
+            onSelectionModelChange={itm => setListOfIds(itm)}
           />
         </>
     );
 };
-
 
 export default AdminTable;
