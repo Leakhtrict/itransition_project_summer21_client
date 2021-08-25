@@ -23,6 +23,7 @@
     "register-page.password": "Password",
     "profile-page.createcollection": "Create collection",
     "profile-page.adminpanel": "Administer panel",
+    "profile-page.updatedAt": "Last update",
     "collection-page.createitem": "Add",
     "createcollection-page.submit": "Create collection",
     "createcollection-page.title": "Title",

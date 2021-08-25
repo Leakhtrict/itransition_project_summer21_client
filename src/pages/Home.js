@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import MainTagCloud from "../components/MainTagCloud";
+import { FormattedMessage } from "react-intl";
+import { Grid, Box, Container } from "@material-ui/core";
 
 function Home() {
     const [listOfCollections, setListOfCollections] = useState([]);
@@ -32,33 +34,63 @@ function Home() {
     }, []);
   
     return (
-        <div className="homePage">
-            <div className="collectionsLeftSide">
-                {listOfCollections.map((value, key) => {
-                    return (
-                        <div key={key} className="collection" onClick={() => {history.push(`/collection/${value.id}`)}}>
-                            <div className="title"> {value.title} </div>
-                            <div className="theme"> {value.theme} </div>
-                            <div className="desc"> <ReactMarkdown>{value.description}</ReactMarkdown> </div>
-                            <div className="username"> {value.ownerUser} </div>
+        <Grid container direction="row" justifyContent="center" spacing={1}>
+            <div className="homePage">
+                <Container maxWidth="xs">
+                    <Grid item container direction="column" justifyContent="center" spacing={1}>
+                        {listOfCollections.map((value, key) => {
+                            return (
+                                <Grid item>
+                                    <Box className="collection" >
+                                        <header onClick={() => {history.push(`/collection/${value.id}`)}}>
+                                            <div className="collTitle">
+                                                {value.title}
+                                            </div>
+                                            <hr />
+                                            <div>
+                                                {value.theme}
+                                            </div>
+                                        </header>
+                                        <body>
+                                            <Container>
+                                                <ReactMarkdown>{value.description}</ReactMarkdown>
+                                            </Container>
+                                        </body>
+                                        <footer>
+                                            <div className="collDate">
+                                                <FormattedMessage id="profile-page.updatedAt" />
+                                                {" " + new Date(value.updatedAt).toLocaleString()}
+                                            </div>
+                                            <hr />
+                                            <div>
+                                                {value.ownerUser}
+                                            </div>
+                                        </footer>
+                                    </Box>
+                                </Grid>
+                            );
+                        })}
+                    </Grid>
+                </Container>
+                <Container maxWidth="xs">
+                    <Grid item>
+                        <div className="itemsRightSide">
+                            {listOfTags && 
+                                <MainTagCloud data={listOfTags} />
+                            }
+                            {listOfItems.map((value, key) => {
+                                return (
+                                    <div key={key} className="item" onClick={() => {history.push(`/item/${value.id}`)}}>
+                                        <div className="title"> {value.name} </div>
+                                        <div className="theme"> {value.tags} </div>
+                                    </div>
+                                );
+                            })}
                         </div>
-                    );
-                })}
+                    </Grid>
+                </Container> 
             </div>
-            <div className="itemsRightSide">
-                {listOfTags && 
-                    <MainTagCloud data={listOfTags} />
-                }
-                {listOfItems.map((value, key) => {
-                    return (
-                        <div key={key} className="item" onClick={() => {history.push(`/item/${value.id}`)}}>
-                            <div className="title"> {value.name} </div>
-                            <div className="theme"> {value.tags} </div>
-                        </div>
-                    );
-                })}
-            </div>
-        </div>
+        </Grid>
         
     );
 }

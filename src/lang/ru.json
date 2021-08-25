@@ -23,6 +23,7 @@
     "register-page.password": "Пароль",
     "profile-page.createcollection": "Создать коллекцию",
     "profile-page.adminpanel": "Админ. панель",
+    "profile-page.updatedAt": "Обновлено",
     "collection-page.createitem": "Добавить",
     "createcollection-page.submit": "Создать коллекцию",
     "createcollection-page.title": "Название",

@@ -4,10 +4,30 @@ import { AuthContext } from "../helpers/AuthContext";
 import axios from "axios";
 import { FormattedMessage } from "react-intl";
 import ReactMarkdown from "react-markdown";
+import { makeStyles } from '@material-ui/core/styles';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { IconButton, Button, Grid, Box, Container } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+    buttonBar: {
+        color: "white",
+        backgroundColor: "red",
+        margin: "5px",
+        padding: "6px 9px",
+        '&:hover': {
+            backgroundColor: "rgb(233, 102, 102)",
+        },
+    },
+    collectionButtons: {
+        margin: "5px",
+        padding: "6px",
+        color: "black",
+    },
+  }));
 
 function User() {
+    const classes = useStyles();
     const { authState } = useContext(AuthContext);
     let { userId } = useParams();
     const [thisCollections, setThisCollections] = useState([]);
@@ -21,52 +41,76 @@ function User() {
     }, [authState, userId]);
 
     const deleteCollection = (id) => {
-        axios.delete(`https://itransition-project-genis.herokuapp.com/collections/${id}`, {
-            headers: {
-              accessToken: localStorage.getItem("accessToken"),
-            },
-          })
-          .then(() => {
-              setThisCollections(
-                  thisCollections.filter((val) => {
-                      return val.id !== id;
-                  })
-              );
+        axios.delete(`https://itransition-project-genis.herokuapp.com/collections/${id}`,
+        { headers: { accessToken: localStorage.getItem("accessToken") } })
+        .then(() => {
+            setThisCollections(
+                thisCollections.filter((val) => {
+                    return val.id !== id;
+                })
+            );
         });
     };
 
     return(
-        <div>
+        <Container maxWidth="xs">
             {authState.isAdmin && 
-                <button onClick={() => {history.push("/adminpanel")}}>
+                <Button onClick={() => {history.push("/adminpanel")}} className={classes.buttonBar}>
                     <FormattedMessage id="profile-page.adminpanel" />
-                </button>
+                </Button>
             }
             {((authState.id.toString() === userId) || authState.isAdmin) && 
-                <button onClick={() => {history.push(`/user/${userId}/createcollection`)}}>
+                <Button onClick={() => {history.push(`/user/${userId}/createcollection`)}} className={classes.buttonBar}>
                     <FormattedMessage id="profile-page.createcollection" />
-                </button>
+                </Button>
             }
-            {thisCollections.map((value, key) => {
-                return (
-                    <div key={key}>
-                        {((authState.id.toString() === userId) || authState.isAdmin) && 
-                            <>
-                                <EditIcon onClick={() => {history.push(`/collection/${value.id}/edit`)}} />
-                                <DeleteIcon onClick={() => deleteCollection(value.id)} />
-                            </>
-                        }
-                        <div className="collection" onClick={() => {history.push(`/collection/${value.id}`)}}>
-                            <div className="title"> {value.title} </div>
-                            <div className="theme"> {value.theme} </div>
-                            <div className="desc"> <ReactMarkdown>{value.description}</ReactMarkdown> </div>
-                            <div className="username"> {value.ownerUser} </div>
+            <Grid container direction="column" justifyContent="center" spacing={1}>
+                {thisCollections.map((value, key) => {
+                    return (
+                        <div key={key}>
+                            {((authState.id.toString() === userId) || authState.isAdmin) && 
+                                <>
+                                    <IconButton onClick={() => {history.push(`/collection/${value.id}/edit`)}} className={classes.collectionButtons}>
+                                        <EditIcon />
+                                    </IconButton>
+                                    <IconButton onClick={() => deleteCollection(value.id)} className={classes.collectionButtons}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </>
+                            }
+                            <Grid item>
+                                <Box className="collection" >
+                                    <header onClick={() => {history.push(`/collection/${value.id}`)}}>
+                                        <div className="collTitle">
+                                            {value.title}
+                                        </div>
+                                        <hr />
+                                        <div>
+                                            {value.theme}
+                                        </div>
+                                    </header>
+                                    <body>
+                                        <Container>
+                                            <ReactMarkdown>{value.description}</ReactMarkdown>
+                                        </Container>
+                                    </body>
+                                    <footer>
+                                        <div className="collDate">
+                                            <FormattedMessage id="profile-page.updatedAt" />
+                                            {" " + new Date(value.updatedAt).toLocaleString()}
+                                        </div>
+                                        <hr />
+                                        <div>
+                                            {value.ownerUser}
+                                        </div>
+                                    </footer>
+                                </Box>
+                            </Grid>
                         </div>
-                    </div>
-                    
-                );
-            })}
-        </div>
+                    );
+                })}
+            </Grid> 
+        </Container>
     )
 }
 
