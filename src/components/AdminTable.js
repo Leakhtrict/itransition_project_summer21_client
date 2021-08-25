@@ -1,13 +1,12 @@
-import React, { useState, useEffect, forwardRef, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { useTable, useRowSelect } from "react-table";
 import { useHistory } from "react-router-dom";
 import { COLUMNS } from "../helpers/columns";
 import LockIcon from '@material-ui/icons/Lock';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import SecurityIcon from '@material-ui/icons/Security';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import DataGrid from "@material-ui/data-grid";
+import { DataGrid } from "@material-ui/data-grid";
 
 /*const SelectCheckbox = forwardRef(
     ({ indeterminate, ...rest }, ref) => {
