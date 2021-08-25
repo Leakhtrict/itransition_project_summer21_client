@@ -5,8 +5,30 @@ import { AuthContext } from "../helpers/AuthContext";
 import { FormattedMessage } from "react-intl";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import SortSelect from "../components/SortSelect";
+import { makeStyles } from '@material-ui/core/styles';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { IconButton, Button, Grid, Box, Container } from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+    buttonBar: {
+        color: "white",
+        backgroundColor: "red",
+        margin: "5px 5px 10px 5px",
+        padding: "6px 9px",
+        '&:hover': {
+            backgroundColor: "rgb(233, 102, 102)",
+        },
+    },
+    itemButtons: {
+        margin: "5px",
+        padding: "6px",
+        color: "black",
+    },
+}));
 
 function Collection() {
+    const classes = useStyles();
     const { authState } = useContext(AuthContext);
     let { id } = useParams();
     let history = useHistory();
@@ -59,37 +81,57 @@ function Collection() {
     };
 
     return (
-        <div>
-            <SortSelect thisItems={thisItems} setThisItems={setThisItems} />
-            {(authState.id === collectionObj.UserId || authState.isAdmin) && 
-            <button onClick={() => {history.push(`/collection/${id}/createitem`)}}>
-                <FormattedMessage id="collection-page.createitem" />
-            </button>}
-            {thisItems.map((value, key) => {
-                return (
-                    <div key={key}>
-                        {(authState.id === collectionObj.UserId || authState.isAdmin) && 
-                            <>
-                                <button onClick={() => {history.push(`/collection/${id}/item/${value.id}/edit`)}}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                                    </svg>
-                                </button>
-                                <button onClick={() => deleteItem(value.id)}> X</button>
-                            </>
-                        }
-                        <div className="item" onClick={() => {history.push(`/item/${value.id}`)}}>
-                            <div className="name"> {value.name} </div>
-                            <div className="tags"> {value.tags} </div>
+        <Container maxWidth="xs">
+            <Grid container direction="column" justifyContent="center" spacing={1}>
+                <Grid item>
+                    {(authState.id === collectionObj.UserId || authState.isAdmin) && 
+                        <Button onClick={() => {history.push(`/collection/${id}/createitem`)}} className={classes.buttonBar}>
+                            <FormattedMessage id="collection-page.createitem" />
+                        </Button>
+                    }
+                </Grid>
+                <Grid item>
+                    <SortSelect thisItems={thisItems} setThisItems={setThisItems} />
+                </Grid>
+            </Grid>
+            <Grid container direction="column" justifyContent="center" spacing={1}>
+                {thisItems.map((value, key) => {
+                    const thisTags = value.tags.split(" ").slice(0, -1);
+                    return (
+                        <div key={key}>
+                            {(authState.id === collectionObj.UserId || authState.isAdmin) && 
+                                <>
+                                    <IconButton onClick={() => {history.push(`/collection/${id}/item/${value.id}/edit`)}} className={classes.itemButtons}>
+                                        <EditIcon />
+                                    </IconButton>
+                                    <IconButton onClick={() => deleteItem(value.id)} className={classes.itemButtons}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                </>
+                            }
+                            <Grid item container>
+                                <Box className="item">
+                                    <header onClick={() => {history.push(`/item/${value.id}`)}}>{value.name}</header>
+                                    <Grid item container style={{ margin: "10px" }} justifyContent="flex-start" alignItems="flex-start">
+                                        {thisTags.map((value, key) => {
+                                            return(
+                                                <Grid item key={key} onClick={() => {history.push(`/byTag/${value}`)}} className="itemTag" style={{ margin: "6px" }}>
+                                                    {"#" + value}
+                                                </Grid>
+                                            )
+                                        })}
+                                    </Grid>
+                                    <footer>
+                                        <FavoriteBorderIcon style={{ color: "red" }} />
+                                        {value.Likes.length}
+                                    </footer>
+                                </Box>
+                            </Grid>
                         </div>
-                        <button className="likeButton" onClick={() => {likeItem(value.id)}}>
-                            <FavoriteBorderIcon />
-                            {value.Likes.length}
-                        </button>
-                    </div>
-                );
-            })}
-        </div>
+                    );
+                })}
+            </Grid>
+        </Container>
     );
 }
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
+import { Grid, Box, Container } from "@material-ui/core";
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 function TagCloudResult() {
     let { tag } = useParams();
@@ -17,14 +19,33 @@ function TagCloudResult() {
 
     return (
         <div className="tagCloudResult">
-            {listOfItems.map((value, key) => {
-                return (
-                    <div key={key} className="item" onClick={() => {history.push(`/item/${value.id}`)}}>
-                        <div className="title"> {value.name} </div>
-                        <div className="theme"> {value.tags} </div>
-                    </div>
-                );
-            })}
+            <Container maxWidth="xs">
+                <Grid item container direction="column" justifyContent="center" spacing={1}>
+                    {listOfItems.map((value, key) => {
+                        const thisTags = value.tags.split(" ").slice(0, -1);
+                        return (
+                            <Grid item container>
+                                <Box className="item">
+                                    <header onClick={() => {history.push(`/item/${value.id}`)}}>{value.name}</header>
+                                    <Grid item container style={{ margin: "10px" }} justifyContent="flex-start" alignItems="flex-start">
+                                        {thisTags.map((value, key) => {
+                                            return(
+                                                <Grid item key={key} onClick={() => {history.push(`/byTag/${value}`)}} className="itemTag" style={{ margin: "6px" }}>
+                                                    {"#" + value}
+                                                </Grid>
+                                            )
+                                        })}
+                                    </Grid>
+                                    <footer>
+                                        <FavoriteBorderIcon style={{ color: "red" }} />
+                                        {value.Likes.length}
+                                    </footer>
+                                </Box>
+                            </Grid>
+                        );
+                    })}
+                </Grid>
+            </Container> 
         </div>
         
     )

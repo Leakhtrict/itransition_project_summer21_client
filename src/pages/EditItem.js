@@ -47,7 +47,6 @@ function EditItem() {
         });
 
         axios.get(`https://itransition-project-genis.herokuapp.com/items/byId/${itemId}`).then((response) => {
-            console.log(response.data);
             setCurrentItem(response.data);
             setFreeText1(response.data.textField1);
             setFreeText2(response.data.textField2);
@@ -91,7 +90,6 @@ function EditItem() {
     };
 
     const onSubmit = (data) => {
-        console.log(data);
         axios.post("https://itransition-project-genis.herokuapp.com/tags/addTags", selectedTags).then((response) => {
             if (response.data.error){
                 alert(response.data.error);
@@ -127,7 +125,6 @@ function EditItem() {
     });
 
     const onTagsChange = (newValue) => {
-        console.log(selectedTags);
         setSelectedTags(newValue);
     };
 
