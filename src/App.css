@@ -11,7 +11,7 @@ body{
 }
 
 hr{
-  width: 100%;
+  width: 99%;
 }
 
 .homePage{
@@ -240,16 +240,50 @@ hr{
 }
 
 .collection{
-  width: 400px;
+  width: 100%;
   height: auto;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
   border: 1px solid lightgray;
   font-family: Arial, Helvetica, sans-serif;
-
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.collection header, .collection footer{
+  display: flex;
+  border-radius: 10px 10px 0px 0px;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  background-color: red;
+  padding: 5px 0px;
+}
+
+.collection header:hover{
+  cursor: pointer;
+}
+
+.collection body{
+  max-width: 100%;
+}
+
+.collection footer{
+  border-radius: 0px 0px 10px 10px;
+}
+
+.collection hr{
+  width: 90%;
+  margin-top: 0px;
+}
+
+.collTitle{
+  padding: 5px 0px;
+  font-weight: bold;
+}
+
+.collDate{
+  padding: 5px 0px;
 }
 
 .item{

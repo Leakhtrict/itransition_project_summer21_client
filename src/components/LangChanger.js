@@ -7,20 +7,24 @@ export default function LangChanger ({
 }) {
 
     return (
-        <Select
-            value={currentLang}
-            onChange={(e) => {
-                localStorage.setItem("app.lang", e.target.value);
-                setCurrentLang(e.target.value);
-            }}
-        >
-            <MenuItem value="en">
-                <FormattedMessage id="lang-changer.english" />
-            </MenuItem>
-            <MenuItem value="ru">
-                <FormattedMessage id="lang-changer.russian" />
-            </MenuItem>
+        <>
+            <hr />
+            <Select
+                value={currentLang}
+                onChange={(e) => {
+                    localStorage.setItem("app.lang", e.target.value);
+                    setCurrentLang(e.target.value);
+                }}
+            >
+                <MenuItem value="en">
+                    <FormattedMessage id="lang-changer.english" />
+                </MenuItem>
+                <MenuItem value="ru">
+                    <FormattedMessage id="lang-changer.russian" />
+                </MenuItem>
 
-        </Select>
+            </Select>
+        </>
+        
     )
 }
