@@ -9,7 +9,7 @@ export const COLUMNS = [
         field: 'username',
         headerName: 'Username',
         sortable: false,
-        width: 140
+        width: 140,
     },
     {
         field: 'email',
