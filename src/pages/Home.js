@@ -34,57 +34,64 @@ function Home() {
     }, []);
   
     return (
-        <div className="homePage">
-            <Container maxWidth="xs">
-                <Grid container direction="column" justifyContent="center" spacing={1}>
-                    {listOfCollections.map((value, key) => {
-                        return (
-                            <Grid item>
-                                <Box className="collection" >
-                                    <header onClick={() => {history.push(`/collection/${value.id}`)}}>
-                                        <div className="collTitle">
-                                            {value.title}
-                                        </div>
-                                        <hr />
-                                        <div>
-                                            {value.theme}
-                                        </div>
-                                    </header>
-                                    <body>
-                                        <Container>
-                                            <ReactMarkdown>{value.description}</ReactMarkdown>
-                                        </Container>
-                                    </body>
-                                    <footer>
-                                        <div className="collDate">
-                                            <FormattedMessage id="profile-page.updatedAt" />
-                                            {" " + new Date(value.updatedAt).toLocaleString()}
-                                        </div>
-                                        <hr />
-                                        <div>
-                                            {value.ownerUser}
-                                        </div>
-                                    </footer>
-                                </Box>
-                            </Grid>
-                        );
-                    })}
-                </Grid>
-            </Container>
-            <div className="itemsRightSide">
-                {listOfTags && 
-                    <MainTagCloud data={listOfTags} />
-                }
-                {listOfItems.map((value, key) => {
-                    return (
-                        <div key={key} className="item" onClick={() => {history.push(`/item/${value.id}`)}}>
-                            <div className="title"> {value.name} </div>
-                            <div className="theme"> {value.tags} </div>
+        <Grid container direction="row" justifyContent="center" spacing={1}>
+            <div className="homePage">
+                <Container maxWidth="xs">
+                    <Grid item container direction="column" justifyContent="center" spacing={1}>
+                        {listOfCollections.map((value, key) => {
+                            return (
+                                <Grid item>
+                                    <Box className="collection" >
+                                        <header onClick={() => {history.push(`/collection/${value.id}`)}}>
+                                            <div className="collTitle">
+                                                {value.title}
+                                            </div>
+                                            <hr />
+                                            <div>
+                                                {value.theme}
+                                            </div>
+                                        </header>
+                                        <body>
+                                            <Container>
+                                                <ReactMarkdown>{value.description}</ReactMarkdown>
+                                            </Container>
+                                        </body>
+                                        <footer>
+                                            <div className="collDate">
+                                                <FormattedMessage id="profile-page.updatedAt" />
+                                                {" " + new Date(value.updatedAt).toLocaleString()}
+                                            </div>
+                                            <hr />
+                                            <div>
+                                                {value.ownerUser}
+                                            </div>
+                                        </footer>
+                                    </Box>
+                                </Grid>
+                            );
+                        })}
+                    </Grid>
+                </Container>
+                <Container maxWidth="xs">
+                    <Grid item>
+                        <div className="itemsRightSide">
+                            {listOfTags && 
+                                <MainTagCloud data={listOfTags} />
+                            }
+                            {listOfItems.map((value, key) => {
+                                return (
+                                    <div key={key} className="item" onClick={() => {history.push(`/item/${value.id}`)}}>
+                                        <div className="title"> {value.name} </div>
+                                        <div className="theme"> {value.tags} </div>
+                                    </div>
+                                );
+                            })}
                         </div>
-                    );
-                })}
+                    </Grid>
+                </Container> 
             </div>
-        </div>
+        </Grid>
+        
     );
 }
 
