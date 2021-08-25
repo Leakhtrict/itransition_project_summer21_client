@@ -72,11 +72,11 @@ function AdminTable() {
         { headers: { accessToken: localStorage.getItem("accessToken") } })
         .then((response) => {
           if (!response.data.error) {
-            const deleteIds = selectedFlatRows.map(row => row.original.id);
+            const deleteIds = getSelectedRows().map(row => row.id);
             axios.put("https://itransition-project-genis.herokuapp.com/users/deleteUsers", deleteIds)
-            .then(() => {
+            /*.then(() => {
               history.go(0);
-            });
+            });*/
           }
           else{
             history.push("/");
@@ -89,11 +89,11 @@ function AdminTable() {
         { headers: { accessToken: localStorage.getItem("accessToken") } })
         .then((response) => {
           if (!response.data.error) {
-            const blockIds = selectedFlatRows.map(row => row.original.id);
+            const blockIds = getSelectedRows().map(row => row.id);
             axios.put("https://itransition-project-genis.herokuapp.com/users/blockUsers", blockIds)
-            .then(() => {
+            /*.then(() => {
               history.go(0);
-            });
+            });*/
           }
           else{
             history.push("/");
@@ -106,11 +106,11 @@ function AdminTable() {
         { headers: { accessToken: localStorage.getItem("accessToken") } })
         .then((response) => {
           if (!response.data.error) {
-            const unblockIds = selectedFlatRows.map(row => row.original.id);
+            const unblockIds = getSelectedRows().map(row => row.id);
             axios.put("https://itransition-project-genis.herokuapp.com/users/unblockUsers", unblockIds)
-            .then(() => {
+            /*.then(() => {
               history.go(0);
-            });
+            });*/
           }
           else{
             history.push("/");
@@ -123,11 +123,11 @@ function AdminTable() {
         { headers: { accessToken: localStorage.getItem("accessToken") } })
         .then((response) => {
           if (!response.data.error) {
-            const adminIds = selectedFlatRows.map(row => row.original.id);
+            const adminIds = getSelectedRows().map(row => row.id);
             axios.put("https://itransition-project-genis.herokuapp.com/users/adminUsers", adminIds)
-            .then(() => {
+            /*.then(() => {
               history.go(0);
-            });
+            });*/
           }
           else{
             history.push("/");
