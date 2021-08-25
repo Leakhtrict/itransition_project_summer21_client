@@ -1,35 +1,47 @@
 export const COLUMNS = [
     {
-        Header: "Id",
-        accessor: "id"
+        field: 'id',
+        headerName: 'ID',
+        sortable: false,
+        width: 60
     },
     {
-        Header: "Username",
-        accessor: "username"
+        field: 'username',
+        headerName: 'Username',
+        sortable: false,
+        width: 140,
     },
     {
-        Header: "E-mail",
-        accessor: "email"
+        field: 'email',
+        headerName: 'E-Mail',
+        sortable: false,
+        width: 220
     },
     {
-        Header: "Blocked",
-        accessor: "isBlocked",
-        Cell: (props) => {
-            return <div>{props.value.toString()}</div>
+        field: 'isBlocked',
+        headerName: 'Blocked',
+        sortable: false,
+        width: 100,
+        valueFormatter: (props) => {
+            return `${props.value.toString()}`
         }
     },
     {
-        Header: "Admin",
-        accessor: "isAdmin",
-        Cell: (props) => {
-            return <div>{props.value.toString()}</div>
+        field: 'isAdmin',
+        headerName: 'Admin',
+        sortable: false,
+        width: 80,
+        valueFormatter: (props) => {
+            return `${props.value.toString()}`
         }
     },
     {
-        Header: "Reg. date",
-        accessor: "createdAt",
-        Cell: (props) => {
-            return <div>{new Date(props.value).toLocaleString()}</div>
+        field: 'createdAt',
+        headerName: 'Reg. date',
+        sortable: false,
+        width: 220,
+        valueFormatter: (props) => {
+            return `${new Date(props.value).toLocaleString()}`
         }
     }
 ]

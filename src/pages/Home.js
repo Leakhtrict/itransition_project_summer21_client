@@ -16,11 +16,11 @@ function Home() {
         axios.get("https://itransition-project-genis.herokuapp.com/collections").then((response) => {
             setListOfCollections(response.data.sort((a, b) => {
                 return (b.numberOfItems - a.numberOfItems);
-            }).slice(0, 6));
+            }).slice(0, 10));
         });
 
         axios.get("https://itransition-project-genis.herokuapp.com/items").then((response) => {
-            setListOfItems(response.data.reverse().slice(0, 10));
+            setListOfItems(response.data.reverse().slice(0, 15));
         });
 
         axios.get("https://itransition-project-genis.herokuapp.com/tags").then((response) => {

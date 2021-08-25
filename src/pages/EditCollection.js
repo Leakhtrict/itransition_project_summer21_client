@@ -62,7 +62,7 @@ function EditCollection() {
     const onSubmit = (data) => {
         data.description = freeText;
         axios.post(`https://itransition-project-genis.herokuapp.com/collections/${id}/editCollection`, data).then(() => {
-            history.push(`/user/${id}`);
+            history.push(`/user/${currCollection.UserId}`);
         });
     };
 
