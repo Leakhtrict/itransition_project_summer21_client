@@ -40,6 +40,7 @@
     "createitem-page.submit": "Добавить",
     "edititem-page.submit": "Подтвердить",
     "item-page.add-comment": "Комментировать",
+    "item-page.updatedAt": "Обновлено",
     "searchbar.placeholder": "Поиск",
     "sortselect.sortBy": "Сортировать по ",
     "sortselect.name": "Имени",
