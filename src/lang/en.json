@@ -1,10 +1,10 @@
 {
-    "home-page.main": "Home Page",
+    "home-page.main": "MAIN PAGE",
     "lang-changer.english": "English",
     "lang-changer.russian": "Russian",
     "profilelink.title": "Your profile",
-    "user.login": "Log In",
-    "user.register": "Sign Up",
+    "user.login": "LOG IN",
+    "user.register": "SIGN UP",
     "user.logout": "Log Out",
     "user.create-collection": "Create collection",
     "adminpanel.error": "You don't have permission to be here!",

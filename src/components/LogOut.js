@@ -1,5 +1,6 @@
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 export default function LogOut({
     setAuthState
@@ -18,8 +19,8 @@ export default function LogOut({
       };
 
     return(
-        <button onClick={logOut}>
+        <Button onClick={logOut} style={{ color: "white" }}>
             <FormattedMessage id="user.logout" />
-        </button>
+        </Button>
     )
 }

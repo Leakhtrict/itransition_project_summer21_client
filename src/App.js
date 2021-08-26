@@ -23,6 +23,7 @@ import { AuthContext } from "./helpers/AuthContext";
 import SearchBar from './components/SearchBar';
 import TagCloudResult from "./pages/TagCloudResult";
 import SearchResult from './pages/SearchResult';
+import { Toolbar, AppBar, Button } from '@material-ui/core';
 
 const langSet = {
   "en": enMessages,
@@ -65,7 +66,8 @@ function App() {
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <IntlProvider locale={currentLang} messages={langSet[currentLang]}>
           <Router>
-            <div className="navBar">
+          <AppBar position="static" style={{ backgroundColor: "red", height: "50px", justifyContent: "center", marginBottom: "8px" }}>
+            <Toolbar className="navBar" style={{ marginLeft: "-10px" }}>
               <Link to="/">
                 <FormattedMessage id="home-page.main" />
               </Link>
@@ -77,16 +79,22 @@ function App() {
                   <Link to="/register">
                     <FormattedMessage id="user.register" />
                   </Link>
-                  <SearchBar data={listOfItems} />
+                  <div style={{ margin: "0px auto 0px 0px" }}>
+                      <SearchBar data={listOfItems}/>
+                  </div>
                 </>
               ) : (
                 <>
-                  <SearchBar data={listOfItems} />
+                  <div style={{ margin: "0px auto 0px auto" }}>
+                    <SearchBar data={listOfItems} />
+                  </div>
                   <ProfileLink authState={authState} />
                   <LogOut setAuthState={setAuthState} />
                 </>
               )}
-            </div>
+              </Toolbar>
+          </AppBar>
+            
             
             <Switch>
               <Route path="/" exact component={Home} />

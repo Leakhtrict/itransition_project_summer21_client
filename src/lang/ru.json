@@ -1,10 +1,10 @@
 {
-    "home-page.main": "На главную",
+    "home-page.main": "ГЛАВНАЯ",
     "lang-changer.english": "Английский",
     "lang-changer.russian": "Русский",
     "profilelink.title": "Ваш профиль",
-    "user.login": "Войти",
-    "user.register": "Регистрация",
+    "user.login": "ВХОД",
+    "user.register": "РЕГИСТРАЦИЯ",
     "user.logout": "Выход",
     "user.create-collection" : "Создать коллекцию",
     "adminpanel.error": "У вас недостаточно прав, чтобы здесь находиться!",

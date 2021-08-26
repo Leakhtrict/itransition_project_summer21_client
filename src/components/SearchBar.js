@@ -4,6 +4,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 import OutsideClickHandler from 'react-outside-click-handler';
+import { Container } from "@material-ui/core";
 import "./SearchBar.css";
 
 function SearchBar({ data }) {
@@ -39,7 +40,7 @@ function SearchBar({ data }) {
     };
   
     return (
-      <div className="search">
+      <Container maxWidth="xs" className="search">
         <div className="searchInputs">
           <FormattedMessage id="searchbar.placeholder">
             {(id) => 
@@ -77,7 +78,7 @@ function SearchBar({ data }) {
           </div>
           </OutsideClickHandler>
         )}
-      </div>
+      </Container>
     );
   }
   

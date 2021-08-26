@@ -15,6 +15,7 @@ export default function LangChanger ({
                     localStorage.setItem("app.lang", e.target.value);
                     setCurrentLang(e.target.value);
                 }}
+                style={{ marginBottom: "8px" }}
             >
                 <MenuItem value="en">
                     <FormattedMessage id="lang-changer.english" />
