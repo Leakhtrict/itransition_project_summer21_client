@@ -5,24 +5,25 @@ import { Grid, Box, Container } from "@material-ui/core";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { FormattedMessage } from "react-intl";
 
-function TagCloudResult() {
-    let { tag } = useParams();
+function SearchResult() {
+    let { word } = useParams();
     let history = useHistory();
     const [listOfItems, setListOfItems] = useState([]);
 
     useEffect(() => {
         axios.get("https://itransition-project-genis.herokuapp.com/items").then((response) => {
             setListOfItems(response.data.filter((value) => {
-                return value.tags.includes(tag + " ");
+                return value.name.toLowerCase().includes(word.toLowerCase())
+                || value.tags.toLowerCase().includes(word.toLowerCase());
             }));
         });
-    }, [tag]);
+    }, [word]);
 
     return (
         <div className="tagCloudResult">
-            <FormattedMessage id="tagresult-page.result">
+            <FormattedMessage id="searchresult-page.result">
                 {(id) =>
-                    <div style={{ fontSize: 18 }}>{id + " \"#" + tag + "\""}</div>
+                    <div style={{ fontSize: 18 }}>{id + " \"" + word + "\""}</div>
                 }
             </FormattedMessage>
             <Container maxWidth="xs" style={{ marginTop: "8px" }}>
@@ -56,4 +57,4 @@ function TagCloudResult() {
     )
 }
 
-export default TagCloudResult;
+export default SearchResult;

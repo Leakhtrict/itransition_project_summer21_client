@@ -22,6 +22,7 @@ import AdminPanel from './authPages/AdminPanel';
 import { AuthContext } from "./helpers/AuthContext";
 import SearchBar from './components/SearchBar';
 import TagCloudResult from "./pages/TagCloudResult";
+import SearchResult from './pages/SearchResult';
 
 const langSet = {
   "en": enMessages,
@@ -100,6 +101,7 @@ function App() {
               <Route path="/item/:itemId" exact component={Item} />
               <Route path="/collection/:collectionId/item/:itemId/edit" exact component={EditItem} />
               <Route path="/byTag/:tag" exact component={TagCloudResult} />
+              <Route path="/searchResult/:word" exact component={SearchResult} />
             </Switch>
           </Router>
           <LangChanger currentLang={currentLang} setCurrentLang={setCurrentLang} />

@@ -26,6 +26,13 @@ function SearchBar({ data }) {
       }
     };
   
+    const handleKeyDown = (e) => {
+      if(e.key === "Enter"){
+        clearInput();
+        history.push(`/searchResult/${wordEntered}`);
+      }
+    };
+
     const clearInput = () => {
       setFilteredData([]);
       setWordEntered("");
@@ -41,6 +48,7 @@ function SearchBar({ data }) {
                 placeholder={id}
                 value={wordEntered}
                 onChange={handleFilter}
+                onKeyDown={handleKeyDown}
               />
             }
           </FormattedMessage>

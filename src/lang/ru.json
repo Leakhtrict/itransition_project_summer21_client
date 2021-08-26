@@ -45,5 +45,7 @@
     "sortselect.sortBy": "Сортировать по ",
     "sortselect.name": "Имени",
     "sortselect.createdAt": "Дате создания",
-    "sortselect.likes": "Кол-ву лайков"
+    "sortselect.likes": "Кол-ву лайков",
+    "searchresult-page.result": "Результат поиска",
+    "tagresult-page.result": "Результат поиска по тегу"
 }

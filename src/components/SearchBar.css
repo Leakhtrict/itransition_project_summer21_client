@@ -68,6 +68,11 @@ input:focus {
     color: black;
 }
 
+.dataItem:hover{
+    cursor: pointer;
+    background-color: rgb(252, 250, 241);
+}
+
 .dataItem p {
     margin-left: 10px;
 }
