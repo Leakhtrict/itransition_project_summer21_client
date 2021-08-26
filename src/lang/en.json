@@ -40,6 +40,7 @@
     "createitem-page.submit": "Add",
     "edititem-page.submit": "Submit",
     "item-page.add-comment": "Add comment",
+    "item-page.updatedAt": "Last update",
     "searchbar.placeholder": "Search...",
     "sortselect.sortBy": "Sort by ",
     "sortselect.name": "Name",
