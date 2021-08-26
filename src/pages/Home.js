@@ -35,10 +35,10 @@ function Home() {
     }, []);
   
     return (
-        <Grid container direction="row" justifyContent="center">
-            <div className="homePage">
+        <div className="homePage">
+            <Grid container direction="row" justifyContent="center">
                 <Container maxWidth="xs">
-                    <Grid item container direction="column" justifyContent="center" spacing={1}>
+                    <Grid item xs={12} sm={12} container direction="column" justifyContent="center" spacing={1}>
                         {listOfCollections.map((value, key) => {
                             return (
                                 <Grid item key={key}>
@@ -72,7 +72,7 @@ function Home() {
                     </Grid>
                 </Container>
                 <Container maxWidth="xs">
-                    <Grid item container direction="column" justifyContent="center" spacing={1}>
+                    <Grid item xs={12} sm={12} container direction="column" justifyContent="center" spacing={1}>
                         <Grid item container>
                             {listOfTags && 
                                 <MainTagCloud data={listOfTags} />
@@ -102,9 +102,9 @@ function Home() {
                             );
                         })}
                     </Grid>
-                </Container> 
-            </div>
-        </Grid>
+                </Container>
+            </Grid>
+        </div>
     );
 }
 
