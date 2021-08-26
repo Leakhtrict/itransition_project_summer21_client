@@ -58,6 +58,14 @@ hr{
   left: 10px;
 }
 
+@media screen and (max-width: 600px) {
+  .navMenuList{
+    position: absolute;
+    top: 52px;
+    left: 10px;
+  }
+}
+
 .profileLink{
   display: flex;
   align-items: center;
