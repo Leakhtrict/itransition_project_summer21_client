@@ -77,7 +77,6 @@ function Item() {
     }, [authState, itemId]);
 
     const addComment = () => {
-        console.log("hello");
         if (newComment){
             axios.post("https://itransition-project-genis.herokuapp.com/comments", {
                 username: authState.username,
@@ -131,6 +130,12 @@ function Item() {
                 setIsliked(!isLiked);
             }
         });
+    };
+
+    const handleKeyDown = (e) => {
+        if(e.key === "Enter"){
+            addComment();
+        }
     };
 
     return (
@@ -187,6 +192,7 @@ function Item() {
                                 type="text"
                                 value={newComment}
                                 onChange={(event) => {setNewComment(event.target.value)}}
+                                onKeyDown={handleKeyDown}
                                 endAdornment={
                                     <InputAdornment position="end">
                                         <IconButton onClick={addComment} style={{ color: "red" }}>
