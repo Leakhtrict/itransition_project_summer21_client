@@ -48,6 +48,16 @@ hr{
   color: white;
 }
 
+.navMenuList{
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+  z-index: 1;
+  position: absolute;
+  top: 57px;
+  left: 10px;
+}
+
 .profileLink{
   display: flex;
   align-items: center;

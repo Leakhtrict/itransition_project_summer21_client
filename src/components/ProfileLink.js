@@ -3,9 +3,7 @@ import { FormattedMessage } from "react-intl";
 import { IconButton } from "@material-ui/core";
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 
-export default function ProfileLink({
-    authState
-}) {
+export default function ProfileLink({ authState }) {
     let history = useHistory();
 
     return (

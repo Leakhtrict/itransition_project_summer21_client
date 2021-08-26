@@ -23,7 +23,8 @@ import { AuthContext } from "./helpers/AuthContext";
 import SearchBar from './components/SearchBar';
 import TagCloudResult from "./pages/TagCloudResult";
 import SearchResult from './pages/SearchResult';
-import { Toolbar, AppBar, Button } from '@material-ui/core';
+import NavigationMenu from './components/NavigationMenu';
+import { Toolbar, AppBar, Button, IconButton } from '@material-ui/core';
 
 const langSet = {
   "en": enMessages,
@@ -66,34 +67,24 @@ function App() {
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <IntlProvider locale={currentLang} messages={langSet[currentLang]}>
           <Router>
-          <AppBar position="static" style={{ backgroundColor: "red", height: "50px", justifyContent: "center", marginBottom: "8px" }}>
-            <Toolbar className="navBar" style={{ marginLeft: "-10px" }}>
-              <Link to="/">
-                <FormattedMessage id="home-page.main" />
-              </Link>
-              {!authState.status ? (
-                <>
-                  <Link to="/login">
-                    <FormattedMessage id="user.login" />
-                  </Link>
-                  <Link to="/register">
-                    <FormattedMessage id="user.register" />
-                  </Link>
+            <AppBar position="static" style={{ backgroundColor: "red", height: "50px", justifyContent: "center", marginBottom: "8px" }}>
+              <Toolbar className="navBar" style={{ marginLeft: "-10px" }}>
+                <NavigationMenu authState={authState} />
+                {!authState.status ? (
                   <div style={{ margin: "0px auto 0px 0px" }}>
                       <SearchBar data={listOfItems}/>
                   </div>
-                </>
-              ) : (
-                <>
-                  <div style={{ margin: "0px auto 0px auto" }}>
-                    <SearchBar data={listOfItems} />
-                  </div>
-                  <ProfileLink authState={authState} />
-                  <LogOut setAuthState={setAuthState} />
-                </>
-              )}
-              </Toolbar>
-          </AppBar>
+                ) : (
+                  <>
+                    <div style={{ margin: "0px auto 0px 0px" }}>
+                      <SearchBar data={listOfItems} />
+                    </div>
+                    <ProfileLink authState={authState} />
+                    <LogOut setAuthState={setAuthState} />
+                  </>
+                )}
+                </Toolbar>
+            </AppBar>
             
             
             <Switch>
