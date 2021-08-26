@@ -8,8 +8,17 @@ import SecurityIcon from '@material-ui/icons/Security';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import PersonIcon from '@material-ui/icons/Person';
 import { DataGrid } from "@material-ui/data-grid";
+import { IconButton } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  buttonBar: {
+    color: "black",
+  }
+}));
 
 function AdminTable() {
+  const classes = useStyles();
   let history = useHistory();
   const [listOfUsers, setListOfUsers] = useState([]);
   const [listOfIds, setListOfIds] = useState([]);
@@ -118,13 +127,21 @@ function AdminTable() {
 
   return(
     <>
-      <div className="buttonBar">
-        <LockIcon className="buttons" onClick={blockUser} title="Block" />
-        <LockOpenIcon className="buttons" onClick={unblockUser} title="Unblock" />
-        <SecurityIcon className="buttons" onClick={adminUser} title="Set admin" />
-        <DeleteForeverIcon className="buttons" onClick={deleteData} title="Delete" />
+      <div>
+        <IconButton onClick={blockUser} title="Block" className={classes.buttonBar}>
+          <LockIcon />
+        </IconButton>
+        <IconButton onClick={unblockUser} title="Unblock" className={classes.buttonBar}>
+          <LockOpenIcon />
+        </IconButton>
+        <IconButton onClick={adminUser} title="Set admin" className={classes.buttonBar}>
+          <SecurityIcon />
+        </IconButton>
+        <IconButton onClick={deleteData} title="Delete" className={classes.buttonBar}>
+          <DeleteForeverIcon />
+        </IconButton>
       </div>
-      <div style={{ height: 630, width: 972 }} >
+      <div style={{ height: 630, width: "100vw", maxWidth: 972 }} >
         <DataGrid
           rows={listOfUsers}
           columns={[...COLUMNS,
