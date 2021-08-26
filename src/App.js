@@ -82,7 +82,7 @@ function App() {
                 <>
                   <SearchBar data={listOfItems} />
                   <ProfileLink authState={authState} />
-                  <LogOut authState={authState} setAuthState={setAuthState} />
+                  <LogOut setAuthState={setAuthState} />
                 </>
               )}
             </div>

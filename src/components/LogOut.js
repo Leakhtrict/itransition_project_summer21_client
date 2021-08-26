@@ -2,7 +2,6 @@ import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
 
 export default function LogOut({
-    authState,
     setAuthState
 }) {
     let history = useHistory();
