@@ -38,7 +38,7 @@ function Home() {
         <div className="homePage">
             <Grid container direction="row" justifyContent="center">
                 <Container maxWidth="xs">
-                    <Grid item xs={12} sm={12} container direction="column" justifyContent="center" spacing={1}>
+                    <Grid item xs={12} container direction="column" justifyContent="center" spacing={1}>
                         {listOfCollections.map((value, key) => {
                             return (
                                 <Grid item key={key}>
@@ -72,12 +72,11 @@ function Home() {
                     </Grid>
                 </Container>
                 <Container maxWidth="xs">
-                    <Grid item xs={12} sm={12} container direction="column" justifyContent="center" spacing={1}>
-                        <Grid item container>
-                            {listOfTags && 
-                                <MainTagCloud data={listOfTags} />
-                            }
-                        </Grid>
+                    {listOfTags && 
+                        <MainTagCloud data={listOfTags} />
+                    }
+                    <hr />
+                    <Grid item xs={12} container direction="column" justifyContent="center" spacing={1}>
                         {listOfItems.map((value, key) => {
                             const thisTags = value.tags.split(" ").slice(0, -1);
                             return (
