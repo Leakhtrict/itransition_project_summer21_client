@@ -3,6 +3,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 import { FormattedMessage } from "react-intl";
 import { useHistory } from "react-router-dom";
+import OutsideClickHandler from 'react-outside-click-handler';
 import "./SearchBar.css";
 
 function SearchBar({ data }) {
@@ -53,7 +54,8 @@ function SearchBar({ data }) {
           </div>
         </div>
         {filteredData.length !== 0 && (
-          <div className="dataResult">
+          <OutsideClickHandler onOutsideClick={() => setFilteredData([])}>
+            <div className="dataResult">
             {filteredData.slice(0, 10).map((value, key) => {
               return (
                 <div className="dataItem" onClick={() => {
@@ -65,6 +67,7 @@ function SearchBar({ data }) {
               );
             })}
           </div>
+          </OutsideClickHandler>
         )}
       </div>
     );
