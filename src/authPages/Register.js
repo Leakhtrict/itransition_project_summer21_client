@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import { Button } from "@material-ui/core";
 
 function Register() {
     let history = useHistory();
@@ -65,9 +66,9 @@ function Register() {
                         }
                     </FormattedMessage>
 
-                    <button type="submit">
+                    <Button type="submit" style={{ width: "auto" }}>
                         <FormattedMessage id="register-page.register" />
-                    </button>
+                    </Button>
                 </Form>
             </Formik>
         </div>

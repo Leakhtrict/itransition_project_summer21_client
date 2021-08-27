@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
 import { FormattedMessage } from "react-intl";
+import { Button } from "@material-ui/core";
 
 function Login() {
     let history = useHistory();
@@ -33,7 +34,6 @@ function Login() {
                     isAdmin: response.data.isAdmin,
                     status: true,
                 });
-                console.log(response.data);
                 history.push("/");
             }
         });
@@ -46,31 +46,30 @@ function Login() {
             onSubmit = {onSubmit}
             validationSchema={validationSchema}>
                 <Form className="loginForm">
-                    <ErrorMessage name="nameOrEmail" component="span"/>
-                    <FormattedMessage id="login-page.nameOrEmail">
-                        {(id) => 
-                            <Field 
-                            autocomplete="off" 
-                            id="loginFormField" 
-                            name="nameOrEmail" 
-                            placeholder={id} />
-                        }
-                    </FormattedMessage>
-                    <ErrorMessage name="password" component="span"/>
-                    <FormattedMessage id="login-page.password">
-                        {(id) => 
-                            <Field 
-                            autocomplete="off" 
-                            type="password"
-                            id="loginFormField" 
-                            name="password" 
-                            placeholder={id} />
-                        }
-                    </FormattedMessage>
-                    
-                    <button type="submit">
-                        <FormattedMessage id="login-page.login" />
-                    </button>
+                        <ErrorMessage name="nameOrEmail" component="span"/>
+                        <FormattedMessage id="login-page.nameOrEmail">
+                            {(id) => 
+                                <Field 
+                                autocomplete="off" 
+                                id="loginFormField" 
+                                name="nameOrEmail" 
+                                placeholder={id} />
+                            }
+                        </FormattedMessage>
+                        <ErrorMessage name="password" component="span"/>
+                        <FormattedMessage id="login-page.password">
+                            {(id) => 
+                                <Field 
+                                autocomplete="off" 
+                                type="password"
+                                id="loginFormField" 
+                                name="password" 
+                                placeholder={id} />
+                            }
+                        </FormattedMessage>
+                        <Button type="submit" style={{ width: "auto" }}>
+                            <FormattedMessage id="login-page.login" />
+                        </Button>
                 </Form>
             </Formik>
         </div>

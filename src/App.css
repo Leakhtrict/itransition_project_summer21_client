@@ -91,13 +91,15 @@ hr{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 400px;
+  align-items: center;
   height: auto;
   padding: 20px;
 }
 
 .registerForm #registerFormField, .loginForm #loginFormField{
   height: 40px;
+  width: 90vw;
+  max-width: 400px;
   margin-top: 10px;
   margin-bottom: 10px;
   border: 2px solid grey;
@@ -105,28 +107,12 @@ hr{
   padding-left: 10px;
 }
 
-.registerForm button, .loginForm button{
-  border: none;
-  background-color: red;
-  color: white;
-  border-radius: 5px;
-  margin-top: 10px;
-  width: 25%;
-  margin-left: 75%;
-  height: 30px;
-}
-
-.registerForm button:hover, .loginForm button:hover{
-  cursor: pointer;
-  background-color: rgb(233, 102, 102);
-}
-
 .registerForm span, .loginForm span{
   color: red;
   font-size: 14px;
 }
 
-.createCollection, .createItem{
+.createCollection, .createItem, .loginPage, .registerPage{
   display: flex;
   flex-direction: column;
   justify-content: center;
