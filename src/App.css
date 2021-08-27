@@ -135,23 +135,12 @@ hr{
   height: auto;
 }
 
-.createCollectionMain{
+.createCollectionMain, .createItemMain{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: auto;
-  height: auto;
-  padding: 20px;
-  text-align: center;
-}
-
-.createItemMain{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 400px;
   height: auto;
   padding: 20px;
   text-align: center;
@@ -172,6 +161,21 @@ hr{
   margin: 0px 10px;
 }
 
+.additItemFields{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.additItemFields #inputCreateItem{
+  width: 100%;
+  max-width: 200px;
+  height: 25px;
+  margin: 8px;
+}
+
 #inputAdditionalField{
   margin: 4px;
   width: 180px;
@@ -190,18 +194,8 @@ hr{
 
 .createItemMain #inputCreateItemTags{
   width: 100%;
+  max-width: 400px;
   height: auto;
-}
-
-.createCollection #createCollectionSubmit, .createItem #createItemSubmit{
-  border: none;
-  background-color: red;
-  color: white;
-  border-radius: 5px;
-  margin-top: 10px;
-  width: 25%;
-  margin-left: 75%;
-  height: 30px;
 }
 
 .createCollection span, .createItemMain span{
@@ -209,8 +203,14 @@ hr{
   font-size: 14px;
 }
 
-.createCollection button:hover, .createItem button:hover{
+.createItem #createItemSubmit{
+  background-color: white;
+  color: red;
+}
+
+.createCollection button:hover, .createItem #createItemSubmit:hover{
   cursor: pointer;
+  color: white;
   background-color: rgb(233, 102, 102);
 }
 
