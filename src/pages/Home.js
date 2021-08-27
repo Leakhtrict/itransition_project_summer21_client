@@ -81,7 +81,7 @@ function Home() {
                         {listOfItems.map((value, key) => {
                             const thisTags = value.tags.split(" ").slice(0, -1);
                             return (
-                                <Grid item key={key} container style={{ marginBottom: 8 }}>
+                                <Grid item key={key} container>
                                     <Box className="item">
                                         <header onClick={() => {history.push(`/item/${value.id}`)}}>{value.name}</header>
                                         <Grid item container style={{ margin: "10px" }} justifyContent="flex-start" alignItems="flex-start">
