@@ -32,6 +32,7 @@ function CreateItem() {
     const [date1, setDate1] = useState();
     const [date2, setDate2] = useState();
     const [date3, setDate3] = useState();
+    let numCheck, stringCheck, dateCheck, totalCheck = 0;
 
     useEffect(() => {
         axios.get(`https://itransition-project-genis.herokuapp.com/collections/byId/${id}`,
@@ -42,7 +43,13 @@ function CreateItem() {
             } else if (response.data.collection.UserId !== response.data.userInfo.id && !response.data.userInfo.isAdmin) {
                 history.push("/");
             }
-            setCurrentCollection(response.data.collection);
+            const collect = response.data.collection;
+            numCheck = collect.numField1_isVisible + collect.numField2_isVisible + collect.numField3_isVisible;
+            stringCheck = collect.stringField1_isVisible + collect.stringField2_isVisible + collect.stringField3_isVisible;
+            dateCheck = collect.dateField1_isVisible + collect.dateField2_isVisible + collect.dateField3_isVisible;
+            totalCheck = numCheck + stringCheck + dateCheck;
+            console.log(numCheck, stringCheck, dateCheck, totalCheck);
+            setCurrentCollection(collect);
         });
 
         axios.get("https://itransition-project-genis.herokuapp.com/tags").then((response) => {
@@ -143,34 +150,37 @@ function CreateItem() {
                                 <div className="additItemFields">
                                     {currentCollection.numField1_isVisible &&
                                         <>
+                                            <label>{currentCollection.numField1_Name}</label>
                                             <ErrorMessage name="numField1" component="span" />
                                             <Field
                                                 autocomplete="off"
                                                 id="inputCreateItem"
                                                 name="numField1"
-                                                placeholder={currentCollection.numField1_Name}
+                                                placeholder="..."
                                             />
                                         </>
                                     }
                                     {currentCollection.numField2_isVisible &&
                                         <>
+                                            <label>{currentCollection.numField2_Name}</label>
                                             <ErrorMessage name="numField2" component="span" />
                                             <Field
                                                 autocomplete="off"
                                                 id="inputCreateItem"
                                                 name="numField2"
-                                                placeholder={currentCollection.numField2_Name}
+                                                placeholder="..."
                                             />
                                         </>
                                     }
                                     {currentCollection.numField3_isVisible &&
                                         <>
+                                            <label>{currentCollection.numField3_Name}</label>
                                             <ErrorMessage name="numField3" component="span" />
                                             <Field
                                                 autocomplete="off"
                                                 id="inputCreateItem"
                                                 name="numField3"
-                                                placeholder={currentCollection.numField3_Name}
+                                                placeholder="..."
                                             />
                                         </>
                                     }
@@ -179,28 +189,37 @@ function CreateItem() {
                             <Grid item xs={12} sm={6} md={4} container justifyContent="center" alignItems="center">
                                 <div className="additItemFields">
                                     {currentCollection.stringField1_isVisible &&
-                                        <Field
-                                            autocomplete="off"
-                                            id="inputCreateItem"
-                                            name="stringField1"
-                                            placeholder={currentCollection.stringField1_Name}
-                                        />
+                                        <> 
+                                            <label>{currentCollection.stringField1_Name}</label>
+                                            <Field
+                                                autocomplete="off"
+                                                id="inputCreateItem"
+                                                name="stringField1"
+                                                placeholder="..."
+                                            />
+                                        </>
                                     }
                                     {currentCollection.stringField2_isVisible &&
-                                        <Field
-                                            autocomplete="off"
-                                            id="inputCreateItem"
-                                            name="stringField2"
-                                            placeholder={currentCollection.stringField2_Name}
-                                        />
+                                        <> 
+                                            <label>{currentCollection.stringField2_Name}</label>
+                                            <Field
+                                                autocomplete="off"
+                                                id="inputCreateItem"
+                                                name="stringField2"
+                                                placeholder="..."
+                                            />
+                                        </>
                                     }
                                     {currentCollection.stringField3_isVisible &&
-                                        <Field
-                                            autocomplete="off"
-                                            id="inputCreateItem"
-                                            name="stringField3"
-                                            placeholder={currentCollection.stringField3_Name}
-                                        />
+                                        <> 
+                                            <label>{currentCollection.stringField3_Name}</label>
+                                            <Field
+                                                autocomplete="off"
+                                                id="inputCreateItem"
+                                                name="stringField3"
+                                                placeholder="..."
+                                            />
+                                        </>
                                     }
                                 </div>
                             </Grid>
@@ -245,66 +264,66 @@ function CreateItem() {
                                 </div>
                             </Grid>
                         </Grid>
-                        
-                        {currentCollection.textField1_isVisible &&
-                            <div style={{ width: "90vw", maxWidth: 800, marginBottom: 8 }}>
-                                <label>{currentCollection.textField1_Name}</label>
-                                <ReactMde
-                                    value={freeText1}
-                                    onChange={setFreeText1}
-                                    selectedTab={selectedTab1}
-                                    onTabChange={setSelectedTab1}
-                                    generateMarkdownPreview={(markdown) =>
-                                        Promise.resolve(converter.makeHtml(markdown))
-                                    }
-                                    childProps={{
-                                        writeButton: {
-                                            tabIndex: -1
+                        <Grid item>
+                            {currentCollection.textField1_isVisible &&
+                                <div style={{ width: "90vw", maxWidth: 800, marginBottom: 8 }}>
+                                    <label>{currentCollection.textField1_Name}</label>
+                                    <ReactMde
+                                        value={freeText1}
+                                        onChange={setFreeText1}
+                                        selectedTab={selectedTab1}
+                                        onTabChange={setSelectedTab1}
+                                        generateMarkdownPreview={(markdown) =>
+                                            Promise.resolve(converter.makeHtml(markdown))
                                         }
-                                    }}
-                                />
-                            </div>
-                        }
-                        {currentCollection.textField2_isVisible && 
-                            <div style={{ width: "90vw", maxWidth: 800, marginBottom: 8 }}>
-                                <label>{currentCollection.textField2_Name}</label>
-                                <ReactMde
-                                    value={freeText2}
-                                    onChange={setFreeText2}
-                                    selectedTab={selectedTab2}
-                                    onTabChange={setSelectedTab2}
-                                    generateMarkdownPreview={(markdown) =>
-                                        Promise.resolve(converter.makeHtml(markdown))
-                                    }
-                                    childProps={{
-                                        writeButton: {
-                                            tabIndex: -1
+                                        childProps={{
+                                            writeButton: {
+                                                tabIndex: -1
+                                            }
+                                        }}
+                                    />
+                                </div>
+                            }
+                            {currentCollection.textField2_isVisible && 
+                                <div style={{ width: "90vw", maxWidth: 800, marginBottom: 8 }}>
+                                    <label>{currentCollection.textField2_Name}</label>
+                                    <ReactMde
+                                        value={freeText2}
+                                        onChange={setFreeText2}
+                                        selectedTab={selectedTab2}
+                                        onTabChange={setSelectedTab2}
+                                        generateMarkdownPreview={(markdown) =>
+                                            Promise.resolve(converter.makeHtml(markdown))
                                         }
-                                    }}
-                                />
-                            </div>
-                        }
-                        {currentCollection.textField2_isVisible && 
-                            <div style={{ width: "90vw", maxWidth: 800, marginBottom: 8 }}>
-                                <label>{currentCollection.textField3_Name}</label>
-                                <ReactMde
-                                    value={freeText3}
-                                    onChange={setFreeText3}
-                                    selectedTab={selectedTab3}
-                                    onTabChange={setSelectedTab3}
-                                    generateMarkdownPreview={(markdown) =>
-                                        Promise.resolve(converter.makeHtml(markdown))
-                                    }
-                                    childProps={{
-                                        writeButton: {
-                                            tabIndex: -1
+                                        childProps={{
+                                            writeButton: {
+                                                tabIndex: -1
+                                            }
+                                        }}
+                                    />
+                                </div>
+                            }
+                            {currentCollection.textField3_isVisible && 
+                                <div style={{ width: "90vw", maxWidth: 800, marginBottom: 8 }}>
+                                    <label>{currentCollection.textField3_Name}</label>
+                                    <ReactMde
+                                        value={freeText3}
+                                        onChange={setFreeText3}
+                                        selectedTab={selectedTab3}
+                                        onTabChange={setSelectedTab3}
+                                        generateMarkdownPreview={(markdown) =>
+                                            Promise.resolve(converter.makeHtml(markdown))
                                         }
-                                    }}
-                                />
-                            </div>
-                        }
-
-                        <Button type="submit" style={{ color: "red" }}>
+                                        childProps={{
+                                            writeButton: {
+                                                tabIndex: -1
+                                            }
+                                        }}
+                                    />
+                                </div>
+                            }
+                        </Grid>
+                        <Button type="submit">
                             <FormattedMessage id="createitem-page.submit" />
                         </Button>
                     </Grid>

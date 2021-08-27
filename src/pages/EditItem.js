@@ -168,34 +168,37 @@ function EditItem() {
                                 <div className="additItemFields">
                                     {currentCollection.numField1_isVisible &&
                                         <>
+                                            <label>{currentCollection.numField1_Name}</label>
                                             <ErrorMessage name="numField1" component="span" />
                                             <Field
                                                 autocomplete="off"
                                                 id="inputCreateItem"
                                                 name="numField1"
-                                                placeholder={currentCollection.numField1_Name}
+                                                placeholder="..."
                                             />
                                         </>
                                     }
                                     {currentCollection.numField2_isVisible &&
                                         <>
+                                            <label>{currentCollection.numField2_Name}</label>
                                             <ErrorMessage name="numField2" component="span" />
                                             <Field
                                                 autocomplete="off"
                                                 id="inputCreateItem"
                                                 name="numField2"
-                                                placeholder={currentCollection.numField2_Name}
+                                                placeholder="..."
                                             />
                                         </>
                                     }
                                     {currentCollection.numField3_isVisible &&
                                         <>
+                                            <label>{currentCollection.numField3_Name}</label>
                                             <ErrorMessage name="numField3" component="span" />
                                             <Field
                                                 autocomplete="off"
                                                 id="inputCreateItem"
                                                 name="numField3"
-                                                placeholder={currentCollection.numField3_Name}
+                                                placeholder="..."
                                             />
                                         </>
                                     }
@@ -204,28 +207,37 @@ function EditItem() {
                             <Grid item xs={12} sm={6} md={4} container justifyContent="center" alignItems="center">
                                 <div className="additItemFields">
                                     {currentCollection.stringField1_isVisible &&
-                                        <Field
-                                            autocomplete="off"
-                                            id="inputCreateItem"
-                                            name="stringField1"
-                                            placeholder={currentCollection.stringField1_Name}
-                                        />
+                                        <>
+                                            <label>{currentCollection.stringField3_Name}</label>
+                                            <Field
+                                                autocomplete="off"
+                                                id="inputCreateItem"
+                                                name="stringField1"
+                                                placeholder="..."
+                                            />
+                                        </>
                                     }
                                     {currentCollection.stringField2_isVisible &&
-                                        <Field
-                                            autocomplete="off"
-                                            id="inputCreateItem"
-                                            name="stringField2"
-                                            placeholder={currentCollection.stringField2_Name}
-                                        />
+                                        <>
+                                            <label>{currentCollection.stringField2_Name}</label>
+                                            <Field
+                                                autocomplete="off"
+                                                id="inputCreateItem"
+                                                name="stringField2"
+                                                placeholder="..."
+                                            />
+                                        </>
                                     }
                                     {currentCollection.stringField3_isVisible &&
-                                        <Field
-                                            autocomplete="off"
-                                            id="inputCreateItem"
-                                            name="stringField3"
-                                            placeholder={currentCollection.stringField3_Name}
-                                        />
+                                        <>
+                                            <label>{currentCollection.stringField3_Name}</label>
+                                            <Field
+                                                autocomplete="off"
+                                                id="inputCreateItem"
+                                                name="stringField3"
+                                                placeholder="..."
+                                            />
+                                        </>
                                     }
                                 </div>
                             </Grid>
@@ -328,7 +340,7 @@ function EditItem() {
                             </div>
                         }
 
-                        <Button id="createItemSubmit" type="submit">
+                        <Button type="submit">
                             <FormattedMessage id="edititem-page.submit" />
                         </Button>
                     </Grid>
