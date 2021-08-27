@@ -42,7 +42,7 @@ function Home() {
                     <Grid item xs={12} container direction="column" justifyContent="center">
                         {listOfCollections.map((value, key) => {
                             return (
-                                <Grid item key={key} style={{ marginBottom: 8 }}>
+                                <Grid item key={key}>
                                     <Box className="collection" >
                                         <header onClick={() => {history.push(`/collection/${value.id}`)}}>
                                             <div className="collTitle">
