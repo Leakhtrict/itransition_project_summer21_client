@@ -7,8 +7,7 @@ export default function LangChanger ({
 }) {
 
     return (
-        <>
-            <hr />
+        <div className="langChanger">
             <Select
                 value={currentLang}
                 onChange={(e) => {
@@ -23,9 +22,8 @@ export default function LangChanger ({
                 <MenuItem value="ru">
                     <FormattedMessage id="lang-changer.russian" />
                 </MenuItem>
-
             </Select>
-        </>
+        </div>
         
     )
 }

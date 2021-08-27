@@ -4,7 +4,7 @@
 
 .App {
   width: 100vw;
-  height: auto;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -16,6 +16,15 @@ body{
 
 hr{
   width: 100%;
+}
+
+.langChanger{
+  width: 100%;
+  border-top: solid 1px black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: auto;
 }
 
 .homePage{

@@ -39,10 +39,10 @@ function Home() {
         <div className="homePage">
             <Grid container direction="row" justifyContent="center">
                 <Container maxWidth="xs">
-                    <Grid item xs={12} container direction="column" justifyContent="center" spacing={1}>
+                    <Grid item xs={12} container direction="column" justifyContent="center">
                         {listOfCollections.map((value, key) => {
                             return (
-                                <Grid item key={key}>
+                                <Grid item key={key} style={{ marginBottom: 8 }}>
                                     <Box className="collection" >
                                         <header onClick={() => {history.push(`/collection/${value.id}`)}}>
                                             <div className="collTitle">
