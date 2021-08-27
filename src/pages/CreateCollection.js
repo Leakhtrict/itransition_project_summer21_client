@@ -73,9 +73,9 @@ function CreateCollection() {
     };
 
     const validationSchema = Yup.object().shape({
-        title: Yup.string().required("Title is required."),
-        description: Yup.string().max(240, "Limit is reached! (max. 240 chars)"),
-        theme: Yup.string().required("Theme is required."),
+        title: Yup.string().required(),
+        description: Yup.string().max(240),
+        theme: Yup.string().required(),
     });
 
     return (
@@ -85,7 +85,11 @@ function CreateCollection() {
                     <Grid container direction="column" alignItems="center" spacing={1}>
                         <Grid item>
                             <div className="createCollectionMain">
-                                <ErrorMessage name="title" component="span" />
+                                <FormattedMessage id="createcollection-page.title.error">
+                                    {(id) =>
+                                        <ErrorMessage name="title" render={msg => <span>{id}</span>} />
+                                    }
+                                </FormattedMessage>
                                 <FormattedMessage id="createcollection-page.title">
                                     {(id) => 
                                         <Field
@@ -95,7 +99,11 @@ function CreateCollection() {
                                         placeholder={id} />
                                     }
                                 </FormattedMessage>
-                                <ErrorMessage name="theme" component="span" />
+                                <FormattedMessage id="createcollection-page.theme.error">
+                                    {(id) =>
+                                        <ErrorMessage name="theme" render={msg => <span>{id}</span>} />
+                                    }
+                                </FormattedMessage>
                                 <Field as="select" id="inputCreateCollection" name="theme">
                                     <FormattedMessage id="collection-theme.default">
                                         {(id) => <option value="" selected="selected" hidden >{id}</option>}
@@ -116,6 +124,9 @@ function CreateCollection() {
                                         {(id) => <option value={id}>{id}</option>}
                                     </FormattedMessage>
                                 </Field>
+                                {(freeText.length > 240) &&
+                                    <span><FormattedMessage id="createcollection-page.description.error"/></span>
+                                }
                                 <div style={{ width: "90vw", maxWidth: 800 }}>
                                     <ReactMde
                                         value={freeText}
