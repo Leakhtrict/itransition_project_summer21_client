@@ -85,11 +85,11 @@ function CreateCollection() {
                     <Grid container direction="column" alignItems="center" spacing={1}>
                         <Grid item>
                             <div className="createCollectionMain">
-                                <FormattedMessage id="createcollection-page.title.error">
-                                    {(id) =>
-                                        <ErrorMessage name="title" render={msg => <span>{id}</span>} />
-                                    }
-                                </FormattedMessage>
+                                <ErrorMessage name="title" render={msg => 
+                                    <span id="formError">
+                                        <FormattedMessage id="createcollection-page.title.error"/>
+                                    </span>
+                                }/>
                                 <FormattedMessage id="createcollection-page.title">
                                     {(id) => 
                                         <Field
@@ -99,11 +99,11 @@ function CreateCollection() {
                                         placeholder={id} />
                                     }
                                 </FormattedMessage>
-                                <FormattedMessage id="createcollection-page.theme.error">
-                                    {(id) =>
-                                        <ErrorMessage name="theme" render={msg => <span>{id}</span>} />
-                                    }
-                                </FormattedMessage>
+                                <ErrorMessage name="theme" render={msg => 
+                                    <span id="formError">
+                                        <FormattedMessage id="createcollection-page.theme.error"/>
+                                    </span>
+                                }/>
                                 <Field as="select" id="inputCreateCollection" name="theme">
                                     <FormattedMessage id="collection-theme.default">
                                         {(id) => <option value="" selected="selected" hidden >{id}</option>}
@@ -125,7 +125,9 @@ function CreateCollection() {
                                     </FormattedMessage>
                                 </Field>
                                 {(freeText.length > 240) &&
-                                    <span><FormattedMessage id="createcollection-page.description.error"/></span>
+                                    <span id="formError" style={{ marginBottom: 10 }}>
+                                        <FormattedMessage id="createcollection-page.description.error"/>
+                                    </span>
                                 }
                                 <div style={{ width: "90vw", maxWidth: 800 }}>
                                     <ReactMde
@@ -146,12 +148,12 @@ function CreateCollection() {
                             </div>
                         </Grid>
                         {!showAdditFields &&
-                            <Button type="submit">
+                            <Button id="submitButton" type="submit">
                                 <FormattedMessage id="createcollection-page.submit" />
                             </Button>
                         }
                         <Grid item>
-                            <Button onClick={() => setShowAdditFields(!showAdditFields)}>
+                            <Button id="submitButton" onClick={() => setShowAdditFields(!showAdditFields)}>
                                 {showAdditFields ?
                                     <FormattedMessage id="createcollection-page.hide-additional-fields" /> :
                                     <FormattedMessage id="createcollection-page.show-additional-fields" />
@@ -160,7 +162,7 @@ function CreateCollection() {
                             <FormattedMessage id="createcollection-page.additional-fields-tooltip">
                                 {(id) =>
                                     <Tooltip title={id} interactive>
-                                        <IconButton style={{ width: 8, height: 8 }}>
+                                        <IconButton style={{ width: 8, height: 8, color: "red" }}>
                                             <HelpIcon fontSize="small"/>
                                         </IconButton>
                                     </Tooltip>
@@ -196,7 +198,7 @@ function CreateCollection() {
                                         <Field autoComplete="off" id="inputAdditionalField" name="dateField3_Name" />
                                     </Grid>
                                 </Grid>
-                                <Button type="submit">
+                                <Button id="submitButton" type="submit">
                                     <FormattedMessage id="createcollection-page.submit" />
                                 </Button>
                             </> 

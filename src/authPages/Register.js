@@ -16,9 +16,9 @@ function Register() {
     };
 
     const validationSchema = Yup.object().shape({
-        username: Yup.string().required("Username is required."),
-        email: Yup.string().email("Wrong input").required("E-Mail is required."),
-        password: Yup.string().required("Password is required.")
+        username: Yup.string().max(18, "maxlimit").required(),
+        email: Yup.string().email("notEmail").required(),
+        password: Yup.string().required()
     });
 
     const onSubmit = (data) => {
@@ -30,11 +30,19 @@ function Register() {
     return (
         <div className="registerPage">
             <Formik 
-            initialValues={initialValues} 
-            onSubmit = {onSubmit}
-            validationSchema={validationSchema}>
+                initialValues={initialValues} 
+                onSubmit = {onSubmit}
+                validationSchema={validationSchema}
+            >
                 <Form className="registerForm">
-                    <ErrorMessage name="username" component="span"/>
+                    <ErrorMessage name="username" render={msg => {
+                            if(msg === "maxlimit"){
+                                return <span id="formError"><FormattedMessage id="register-page.username.error.maxlimit"/></span>
+                            } else{
+                                return <span id="formError"><FormattedMessage id="register-page.username.error.required"/></span>
+                            }
+                        }
+                    }/>
                     <FormattedMessage id="register-page.username">
                         {(id) => 
                             <Field 
@@ -44,7 +52,13 @@ function Register() {
                             placeholder={id} />
                         }
                     </FormattedMessage>
-                    <ErrorMessage name="email" component="span"/>
+                    <ErrorMessage name="email" render={msg => {
+                        if(msg === "notEmail"){
+                            return <span id="formError"><FormattedMessage id="register-page.email.error.notEmail"/></span>
+                        } else{
+                            return <span id="formError"><FormattedMessage id="register-page.email.error.required"/></span>
+                        }
+                    }}/>
                     <FormattedMessage id="register-page.email">
                         {(id) => 
                             <Field 
@@ -54,7 +68,7 @@ function Register() {
                             placeholder={id} />
                         }
                     </FormattedMessage>
-                    <ErrorMessage name="password" component="span"/>
+                    <ErrorMessage name="password" render={msg => <span id="formError"><FormattedMessage id="register-page.password.error"/></span>} />
                     <FormattedMessage id="register-page.password">
                         {(id) => 
                             <Field 
@@ -66,7 +80,7 @@ function Register() {
                         }
                     </FormattedMessage>
 
-                    <Button type="submit" style={{ width: "auto" }}>
+                    <Button id="submitButton" type="submit" style={{ width: "auto" }}>
                         <FormattedMessage id="register-page.register" />
                     </Button>
                 </Form>

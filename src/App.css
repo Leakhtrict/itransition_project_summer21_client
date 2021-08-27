@@ -117,9 +117,28 @@ hr{
   padding-left: 10px;
 }
 
-.registerForm span, .loginForm span{
+.registerForm #formError,
+.loginForm #formError,
+.createCollection #formError,
+.createItem #formError{
   color: red;
   font-size: 14px;
+}
+
+.registerForm #submitButton,
+.loginForm #submitButton,
+.createCollection #submitButton,
+.createItem #submitButton{
+  color: white;
+  background-color: red;
+}
+
+.registerForm #submitButton:hover,
+.loginForm #submitButton:hover,
+.createCollection #submitButton:hover,
+.createItem #submitButton:hover{
+  color: red;
+  background-color: white;
 }
 
 .createCollection, .createItem, .loginPage, .registerPage{
@@ -194,11 +213,6 @@ hr{
   height: auto;
 }
 
-.createCollection span, .createItem span{
-  color: red;
-  font-size: 14px;
-}
-
 .collection{
   width: 100%;
   height: auto;
@@ -222,6 +236,7 @@ hr{
 
 .collection header:hover, .item header:hover{
   cursor: pointer;
+  background-color: rgb(233, 102, 102);
 }
 
 .collection p{
@@ -267,7 +282,8 @@ hr{
 
 .itemTag:hover{
   cursor: pointer;
-  background-color: rgb(233, 102, 102);
+  color: red;
+  background-color: white;
 }
 
 .item footer{

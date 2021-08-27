@@ -17,8 +17,8 @@ function Login() {
     };
 
     const validationSchema = Yup.object().shape({
-        nameOrEmail: Yup.string().required("Username or E-Mail are required."),
-        password: Yup.string().required("Password is required.")
+        nameOrEmail: Yup.string().required(),
+        password: Yup.string().required()
     });
 
     const onSubmit = (data) => {
@@ -42,34 +42,35 @@ function Login() {
     return (
         <div className="loginPage">
             <Formik 
-            initialValues={initialValues} 
-            onSubmit = {onSubmit}
-            validationSchema={validationSchema}>
+                initialValues={initialValues} 
+                onSubmit = {onSubmit}
+                validationSchema={validationSchema}
+            >
                 <Form className="loginForm">
-                        <ErrorMessage name="nameOrEmail" component="span"/>
-                        <FormattedMessage id="login-page.nameOrEmail">
-                            {(id) => 
-                                <Field 
-                                autocomplete="off" 
-                                id="loginFormField" 
-                                name="nameOrEmail" 
-                                placeholder={id} />
-                            }
-                        </FormattedMessage>
-                        <ErrorMessage name="password" component="span"/>
-                        <FormattedMessage id="login-page.password">
-                            {(id) => 
-                                <Field 
-                                autocomplete="off" 
-                                type="password"
-                                id="loginFormField" 
-                                name="password" 
-                                placeholder={id} />
-                            }
-                        </FormattedMessage>
-                        <Button type="submit" style={{ width: "auto" }}>
-                            <FormattedMessage id="login-page.login" />
-                        </Button>
+                    <ErrorMessage name="nameOrEmail" render={msg => <span id="formError"><FormattedMessage id="login-page.nameOrEmail.error"/></span>} />
+                    <FormattedMessage id="login-page.nameOrEmail">
+                        {(id) => 
+                            <Field 
+                            autocomplete="off" 
+                            id="loginFormField" 
+                            name="nameOrEmail" 
+                            placeholder={id} />
+                        }
+                    </FormattedMessage>
+                    <ErrorMessage name="password" render={msg => <span id="formError"><FormattedMessage id="login-page.password.error"/></span>} />
+                    <FormattedMessage id="login-page.password">
+                        {(id) => 
+                            <Field 
+                            autocomplete="off" 
+                            type="password"
+                            id="loginFormField" 
+                            name="password" 
+                            placeholder={id} />
+                        }
+                    </FormattedMessage>
+                    <Button id="submitButton" type="submit" style={{ width: "auto" }}>
+                        <FormattedMessage id="login-page.login" />
+                    </Button>
                 </Form>
             </Formik>
         </div>
