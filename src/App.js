@@ -1,8 +1,8 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { FormattedMessage, IntlProvider } from "react-intl";
+import { IntlProvider } from "react-intl";
 import enMessages from "./lang/en.json";
 import ruMessages from "./lang/ru.json";
 import Home from "./pages/Home";
@@ -23,8 +23,9 @@ import { AuthContext } from "./helpers/AuthContext";
 import SearchBar from './components/SearchBar';
 import TagCloudResult from "./pages/TagCloudResult";
 import SearchResult from './pages/SearchResult';
+import WrongPath from './pages/WrongPath';
 import NavigationMenu from './components/NavigationMenu';
-import { Toolbar, AppBar, Button, IconButton } from '@material-ui/core';
+import { Toolbar, AppBar } from '@material-ui/core';
 
 const langSet = {
   "en": enMessages,
@@ -101,6 +102,7 @@ function App() {
               <Route path="/collection/:collectionId/item/:itemId/edit" exact component={EditItem} />
               <Route path="/byTag/:tag" exact component={TagCloudResult} />
               <Route path="/searchResult/:word" exact component={SearchResult} />
+              <Route path="*" exact component={WrongPath} />
             </Switch>
           </Router>
           <LangChanger currentLang={currentLang} setCurrentLang={setCurrentLang} />

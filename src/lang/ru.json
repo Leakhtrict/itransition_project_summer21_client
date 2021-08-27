@@ -49,5 +49,7 @@
     "sortselect.createdAt": "Дате создания",
     "sortselect.likes": "Кол-ву лайков",
     "searchresult-page.result": "Результат поиска",
-    "tagresult-page.result": "Результат поиска по тегу"
+    "tagresult-page.result": "Результат поиска по тегу",
+    "error-page.error": "Неправильный адрес",
+    "error-page.redirect": "Попробуйте этот"
 }
