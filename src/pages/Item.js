@@ -54,7 +54,9 @@ function Item() {
         socket.on("emitSendComment", (data) => {
             setThisComments(prevState => [...prevState, data]);
         });
+    }, []);
 
+    useEffect(() => {
         axios.get(`https://itransition-project-genis.herokuapp.com/items/byId/${itemId}`)
         .then((response) => {
             setItemBody(response.data);
