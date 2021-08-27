@@ -8,6 +8,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  font-family: "Arial", "Helvetica", sans-serif;
 }
 
 body{
@@ -206,7 +207,6 @@ hr{
   display: flex;
   flex-direction: column;
   border: 1px solid lightgray;
-  font-family: Arial, Helvetica, sans-serif;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
@@ -255,7 +255,6 @@ hr{
   display: flex;
   flex-direction: column;
   border: 1px solid lightgray;
-  font-family: Arial, Helvetica, sans-serif;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 

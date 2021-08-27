@@ -31,6 +31,11 @@ const useStyles = makeStyles((theme) => ({
     otherFields: {
         marginLeft: "4px",
     },
+    commentSection: {
+        borderTop: "solid 1px",
+        paddingTop: 8,
+        marginBottom: 8,
+    },
     commentInput: {
         width: "100%",
     }
@@ -169,11 +174,19 @@ function Item() {
                 }
                 {itemBody.Likes.length}
             </IconButton>
-            <Grid container direction="column" justifyContent="flex-start" alignItems="flex-start" spacing={1}>
+            <Grid container direction="column" justifyContent="flex-start" alignItems="flex-start">
                 {thisComments.map((value, key) => {
                     return(
-                        <Grid item key={key} container direction="column" justifyContent="flex-start" alignItems="flex-start" spacing={1} >
-                            <hr />
+                        <Grid 
+                            item
+                            key={key}
+                            container
+                            direction="column"
+                            justifyContent="flex-start"
+                            alignItems="flex-start"
+                            spacing={1}
+                            className={classes.commentSection}
+                        >
                             {(authState.username === value.username || authState.isAdmin) && 
                                 <IconButton onClick={() => deleteComment(value.id)} style={{ color: "black", height: "10px", width: "10px" }}>
                                     <DeleteIcon />
@@ -181,7 +194,7 @@ function Item() {
                             }
                             <Grid item>
                                 <strong>{value.username}</strong>
-                                <div style={{ margin: "5px" }}>{value.commentBody}</div>
+                                <div style={{ margin: "6px" }}>{value.commentBody}</div>
                                 <div style={{ fontSize: 12 }}>{new Date(value.createdAt).toLocaleString()}</div>
                             </Grid>
                         </Grid>
@@ -189,8 +202,7 @@ function Item() {
                 })}
                 <Grid item className={classes.commentInput}>
                     {authState.status && 
-                        <>
-                            <hr />
+                        <div className={classes.commentSection}>
                             <Paper>
                                 <OutlinedInput
                                     type="text"
@@ -206,7 +218,7 @@ function Item() {
                                     }
                                     className={classes.commentInput}/>
                             </Paper>
-                        </>
+                        </div>
                     }
                 </Grid>
             </Grid>
