@@ -36,15 +36,15 @@ export default function NavigationMenu({ authState }) {
             {menuOpen &&
                 <OutsideClickHandler onOutsideClick={() => setMenuOpen(!menuOpen)}>
                     <div className="navMenuList">
-                        <Button onClick={homeClick} style={{ color: "white" }}>
+                        <Button onClick={homeClick} style={{ color: "white", borderRadius: 0 }}>
                             <FormattedMessage id="home-page.main" />
                         </Button>
                         {!authState.status &&
                             <>
-                                <Button onClick={loginClick} style={{ color: "white" }}>
+                                <Button onClick={loginClick} style={{ color: "white", borderRadius: 0 }}>
                                     <FormattedMessage id="user.login" />
                                 </Button>
-                                <Button onClick={registerClick} style={{ color: "white" }}>
+                                <Button onClick={registerClick} style={{ color: "white", borderRadius: 0 }}>
                                     <FormattedMessage id="user.register" />
                                 </Button>
                             </>
