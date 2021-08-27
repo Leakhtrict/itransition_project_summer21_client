@@ -201,6 +201,7 @@ hr{
 .collection{
   width: 100%;
   height: auto;
+  margin-bottom: 8px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -249,6 +250,7 @@ hr{
 .item{
   width: 100%;
   height: auto;
+  margin-bottom: 8px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -299,4 +301,11 @@ hr{
 
 .sortSelect{
   width: 150px;
+}
+
+.buttonBar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

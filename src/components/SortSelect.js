@@ -48,7 +48,7 @@ export default function SortSelect({
     };
 
     return(
-        <>
+        <div style={{ border: "solid 2px red", borderRadius: 8, padding: 8 }}>
             <FormControl className="sortSelect">
                 <FormattedMessage id="sortselect.sortBy">
                     {(id) => 
@@ -74,6 +74,6 @@ export default function SortSelect({
             <IconButton onClick={() => reverseItems()} className={classes.buttons}>
                 <ImportExportIcon />
             </IconButton>
-        </>
+        </div>
     );
 }

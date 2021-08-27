@@ -59,7 +59,7 @@ function Collection() {
 
     return (
         <Container maxWidth="xs">
-            <Grid container direction="column" justifyContent="center" spacing={1} style={{ marginLeft: "16px" }}>
+            <Grid container direction="column" justifyContent="center" alignItems="center" >
                 <Grid item>
                     {(authState.id === collectionObj.UserId || authState.isAdmin) && 
                         <Button onClick={() => {history.push(`/collection/${id}/createitem`)}} className={classes.buttonBar}>
@@ -87,7 +87,7 @@ function Collection() {
                                         </IconButton>
                                     </>
                                 }
-                                <Grid item container style={{ marginBottom: "8px" }}>
+                                <Grid item container >
                                     <Box className="item">
                                         <header onClick={() => {history.push(`/item/${value.id}`)}}>{value.name}</header>
                                         <Grid item container style={{ margin: "10px" }} justifyContent="flex-start" alignItems="flex-start">

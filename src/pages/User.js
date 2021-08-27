@@ -53,16 +53,18 @@ function User() {
 
     return(
         <Container maxWidth="xs">
-            {authState.isAdmin && 
-                <Button onClick={() => {history.push("/adminpanel")}} className={classes.buttonBar}>
-                    <FormattedMessage id="profile-page.adminpanel" />
-                </Button>
-            }
-            {((authState.id.toString() === userId) || authState.isAdmin) && 
-                <Button onClick={() => {history.push(`/user/${userId}/createcollection`)}} className={classes.buttonBar}>
-                    <FormattedMessage id="profile-page.createcollection" />
-                </Button>
-            }
+            <div className="buttonBar">
+                {authState.isAdmin && 
+                    <Button onClick={() => {history.push("/adminpanel")}} className={classes.buttonBar}>
+                        <FormattedMessage id="profile-page.adminpanel" />
+                    </Button>
+                }
+                {((authState.id.toString() === userId) || authState.isAdmin) && 
+                    <Button onClick={() => {history.push(`/user/${userId}/createcollection`)}} className={classes.buttonBar}>
+                        <FormattedMessage id="profile-page.createcollection" />
+                    </Button>
+                }
+            </div>
             <Grid container direction="column" justifyContent="center" spacing={1}>
                 {thisCollections.map((value, key) => {
                     return (
