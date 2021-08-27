@@ -169,11 +169,11 @@ function Item() {
                 }
                 {itemBody.Likes.length}
             </IconButton>
-            <hr />
             <Grid container direction="column" justifyContent="flex-start" alignItems="flex-start" spacing={1}>
                 {thisComments.map((value, key) => {
                     return(
                         <Grid item key={key} container direction="column" justifyContent="flex-start" alignItems="flex-start" spacing={1} >
+                            <hr />
                             {(authState.username === value.username || authState.isAdmin) && 
                                 <IconButton onClick={() => deleteComment(value.id)} style={{ color: "black", height: "10px", width: "10px" }}>
                                     <DeleteIcon />
@@ -184,27 +184,29 @@ function Item() {
                                 <div style={{ margin: "5px" }}>{value.commentBody}</div>
                                 <div style={{ fontSize: 12 }}>{new Date(value.createdAt).toLocaleString()}</div>
                             </Grid>
-                            <hr />
                         </Grid>
                     )
                 })}
                 <Grid item className={classes.commentInput}>
                     {authState.status && 
-                        <Paper>
-                            <OutlinedInput
-                                type="text"
-                                value={newComment}
-                                onChange={(event) => {setNewComment(event.target.value)}}
-                                onKeyDown={handleKeyDown}
-                                endAdornment={
-                                    <InputAdornment position="end">
-                                        <IconButton onClick={addComment} style={{ color: "red" }}>
-                                            <SendIcon />
-                                        </IconButton>
-                                    </InputAdornment>
-                                }
-                                className={classes.commentInput}/>
-                        </Paper>
+                        <>
+                            <hr />
+                            <Paper>
+                                <OutlinedInput
+                                    type="text"
+                                    value={newComment}
+                                    onChange={(event) => {setNewComment(event.target.value)}}
+                                    onKeyDown={handleKeyDown}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                            <IconButton onClick={addComment} style={{ color: "red" }}>
+                                                <SendIcon />
+                                            </IconButton>
+                                        </InputAdornment>
+                                    }
+                                    className={classes.commentInput}/>
+                            </Paper>
+                        </>
                     }
                 </Grid>
             </Grid>
