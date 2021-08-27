@@ -77,11 +77,11 @@ function Home() {
                         <MainTagCloud data={listOfTags} />
                     }
                     <hr />
-                    <Grid item xs={12} container direction="column" justifyContent="center" spacing={1}>
+                    <Grid item xs={12} container direction="column" justifyContent="center">
                         {listOfItems.map((value, key) => {
                             const thisTags = value.tags.split(" ").slice(0, -1);
                             return (
-                                <Grid item key={key} container>
+                                <Grid item key={key} container style={{ marginBottom: 8 }}>
                                     <Box className="item">
                                         <header onClick={() => {history.push(`/item/${value.id}`)}}>{value.name}</header>
                                         <Grid item container style={{ margin: "10px" }} justifyContent="flex-start" alignItems="flex-start">
