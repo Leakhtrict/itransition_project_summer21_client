@@ -140,11 +140,10 @@ hr{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 400px;
+  width: auto;
   height: auto;
   padding: 20px;
   text-align: center;
-  margin-left: 200px;
 }
 
 .createItemMain{
@@ -173,16 +172,14 @@ hr{
   margin: 0px 10px;
 }
 
-.additFields #inputAdditionalField{
-  margin: 5px;
-}
-
-.inputTextCreateCollection{
-  width: 800px;
+#inputAdditionalField{
+  margin: 4px;
+  width: 180px;
 }
 
 .createCollectionMain #inputCreateCollection, .createItemMain #inputCreateItem{
-  width: 100%;
+  width: 90vw;
+  max-width: 400px;
   height: 50px;
   margin-top: 10px;
   margin-bottom: 10px;
