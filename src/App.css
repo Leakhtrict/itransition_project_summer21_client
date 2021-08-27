@@ -184,20 +184,9 @@ hr{
   height: auto;
 }
 
-.createCollection span, .createItemMain span{
+.createCollection span, .createItem span{
   color: red;
   font-size: 14px;
-}
-
-.createItem #createItemSubmit{
-  background-color: white;
-  color: red;
-}
-
-.createCollection button:hover, .createItem #createItemSubmit:hover{
-  cursor: pointer;
-  color: white;
-  background-color: rgb(233, 102, 102);
 }
 
 .collection{

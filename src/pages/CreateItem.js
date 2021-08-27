@@ -304,7 +304,7 @@ function CreateItem() {
                             </div>
                         }
 
-                        <Button id="createItemSubmit" type="submit">
+                        <Button type="submit" style={{ color: "red" }}>
                             <FormattedMessage id="createitem-page.submit" />
                         </Button>
                     </Grid>
