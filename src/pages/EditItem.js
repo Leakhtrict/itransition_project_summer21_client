@@ -66,7 +66,7 @@ function EditItem() {
 
         axios.get("https://itransition-project-genis.herokuapp.com/tags").then((response) => {
             const getTags = response.data;
-            getTags.map((value, key) => {
+            getTags.map((value) => {
                 setListOfTags(prevState => [...prevState, { value: value.tagName, label: value.tagName }]);
             });
         });
@@ -97,7 +97,7 @@ function EditItem() {
             }
         });
         let tagsString = "";
-        selectedTags.map((value, key) => {
+        selectedTags.map((value) => {
             tagsString += value.label + " ";
         });
         data.tags = tagsString;

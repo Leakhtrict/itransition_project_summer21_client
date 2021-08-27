@@ -37,7 +37,6 @@ function CreateItem() {
         axios.get(`https://itransition-project-genis.herokuapp.com/collections/byId/${id}`,
         { headers: { accessToken: localStorage.getItem("accessToken") } }
         ).then((response) => {
-            console.log(response.data);
             if (response.data.error) {
                 history.push("/login");
             } else if (response.data.collection.UserId !== response.data.userInfo.id && !response.data.userInfo.isAdmin) {
@@ -48,7 +47,7 @@ function CreateItem() {
 
         axios.get("https://itransition-project-genis.herokuapp.com/tags").then((response) => {
             const getTags = response.data;
-            getTags.map((value, key) => {
+            getTags.map((value) => {
                 setListOfTags(prevState => [...prevState, { value: value.tagName, label: value.tagName }]);
             });
         });
@@ -78,7 +77,7 @@ function CreateItem() {
             }
         });
         let tagsString = "";
-        selectedTags.map((value, key) => {
+        selectedTags.map((value) => {
             tagsString += value.label + " ";
         });
         data.tags = tagsString;
