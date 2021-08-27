@@ -160,25 +160,25 @@ function CreateCollection() {
                         {showAdditFields &&
                             <>
                                 <Grid item container justifyContent="center" alignItems="center" spacing={1}>
-                                    <Grid item container direction="column" alignItems="center" xs={12} sm={6} md={3}>
+                                    <Grid item xs={12} sm={6} md={3} container direction="column" alignItems="center">
                                         <FormattedMessage id="createcollection-page.additional-number" />
                                         <Field autocomplete="off" id="inputAdditionalField" name="numField1_Name" />
                                         <Field autocomplete="off" id="inputAdditionalField" name="numField2_Name" />
                                         <Field autocomplete="off" id="inputAdditionalField" name="numField3_Name" />
                                     </Grid>
-                                    <Grid item container direction="column" alignItems="center" xs={12} sm={6} md={3}>
+                                    <Grid item xs={12} sm={6} md={3} container direction="column" alignItems="center">
                                         <FormattedMessage id="createcollection-page.additional-string" />
                                         <Field autocomplete="off" id="inputAdditionalField" name="stringField1_Name" />
                                         <Field autocomplete="off" id="inputAdditionalField" name="stringField2_Name" />
                                         <Field autocomplete="off" id="inputAdditionalField" name="stringField3_Name" />
                                     </Grid>
-                                    <Grid item container direction="column" alignItems="center" xs={12} sm={6} md={3}>
+                                    <Grid item xs={12} sm={6} md={3} container direction="column" alignItems="center">
                                         <FormattedMessage id="createcollection-page.additional-text" />
                                         <Field autocomplete="off" id="inputAdditionalField" name="textField1_Name" />
                                         <Field autocomplete="off" id="inputAdditionalField" name="textField2_Name" />
                                         <Field autocomplete="off" id="inputAdditionalField" name="textField3_Name" />
                                     </Grid>
-                                    <Grid item container direction="column" alignItems="center" xs={12} sm={6} md={3}>
+                                    <Grid item xs={12} sm={6} md={3} container direction="column" alignItems="center">
                                         <FormattedMessage id="createcollection-page.additional-date" />
                                         <Field autocomplete="off" id="inputAdditionalField" name="dateField1_Name" />
                                         <Field autocomplete="off" id="inputAdditionalField" name="dateField2_Name" />
