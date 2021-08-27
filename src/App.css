@@ -91,13 +91,15 @@ hr{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 400px;
+  align-items: center;
   height: auto;
   padding: 20px;
 }
 
 .registerForm #registerFormField, .loginForm #loginFormField{
   height: 40px;
+  width: 90vw;
+  max-width: 400px;
   margin-top: 10px;
   margin-bottom: 10px;
   border: 2px solid grey;
@@ -105,28 +107,12 @@ hr{
   padding-left: 10px;
 }
 
-.registerForm button, .loginForm button{
-  border: none;
-  background-color: red;
-  color: white;
-  border-radius: 5px;
-  margin-top: 10px;
-  width: 25%;
-  margin-left: 75%;
-  height: 30px;
-}
-
-.registerForm button:hover, .loginForm button:hover{
-  cursor: pointer;
-  background-color: rgb(233, 102, 102);
-}
-
 .registerForm span, .loginForm span{
   color: red;
   font-size: 14px;
 }
 
-.createCollection, .createItem{
+.createCollection, .createItem, .loginPage, .registerPage{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -135,24 +121,12 @@ hr{
   height: auto;
 }
 
-.createCollectionMain{
+.createCollectionMain, .createItemMain{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 400px;
-  height: auto;
-  padding: 20px;
-  text-align: center;
-  margin-left: 200px;
-}
-
-.createItemMain{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 400px;
+  width: auto;
   height: auto;
   padding: 20px;
   text-align: center;
@@ -173,16 +147,29 @@ hr{
   margin: 0px 10px;
 }
 
-.additFields #inputAdditionalField{
-  margin: 5px;
+.additItemFields{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 10px 0px;
 }
 
-.inputTextCreateCollection{
-  width: 800px;
+.additItemFields #inputCreateItem{
+  width: 100%;
+  max-width: 200px;
+  height: 25px;
+  margin: 8px;
+}
+
+#inputAdditionalField{
+  margin: 4px;
+  width: 180px;
 }
 
 .createCollectionMain #inputCreateCollection, .createItemMain #inputCreateItem{
-  width: 100%;
+  width: 90vw;
+  max-width: 400px;
   height: 50px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -193,28 +180,13 @@ hr{
 
 .createItemMain #inputCreateItemTags{
   width: 100%;
+  max-width: 400px;
   height: auto;
 }
 
-.createCollection #createCollectionSubmit, .createItem #createItemSubmit{
-  border: none;
-  background-color: red;
-  color: white;
-  border-radius: 5px;
-  margin-top: 10px;
-  width: 25%;
-  margin-left: 75%;
-  height: 30px;
-}
-
-.createCollection span, .createItemMain span{
+.createCollection span, .createItem span{
   color: red;
   font-size: 14px;
-}
-
-.createCollection button:hover, .createItem button:hover{
-  cursor: pointer;
-  background-color: rgb(233, 102, 102);
 }
 
 .collection{
