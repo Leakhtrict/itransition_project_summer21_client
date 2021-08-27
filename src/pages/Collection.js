@@ -57,29 +57,6 @@ function Collection() {
         });
     };
 
-    const likeItem = (itemId) => {
-        axios.post("https://itransition-project-genis.herokuapp.com/likes", 
-        { ItemId: itemId }, 
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-        ).then((response) => {
-            if(!response.data.error){
-                setThisItems(thisItems.map((item) => {
-                    if (item.id === itemId){
-                        if (response.data.liked){
-                            return {...item, Likes: [...item.Likes, 0]};
-                        } else{
-                            const allLikes = item.Likes;
-                            allLikes.pop();
-                            return {...item, Likes: allLikes};
-                        }
-                    } else{
-                        return item;
-                    }
-                }));
-            } 
-        });
-    };
-
     return (
         <Container maxWidth="xs">
             <Grid container direction="column" justifyContent="center" spacing={1} style={{ marginLeft: "16px" }}>

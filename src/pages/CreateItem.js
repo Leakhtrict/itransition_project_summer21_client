@@ -32,7 +32,6 @@ function CreateItem() {
     const [date1, setDate1] = useState();
     const [date2, setDate2] = useState();
     const [date3, setDate3] = useState();
-    let numCheck, stringCheck, dateCheck, totalCheck = 0;
 
     useEffect(() => {
         axios.get(`https://itransition-project-genis.herokuapp.com/collections/byId/${id}`,
@@ -43,19 +42,14 @@ function CreateItem() {
             } else if (response.data.collection.UserId !== response.data.userInfo.id && !response.data.userInfo.isAdmin) {
                 history.push("/");
             }
-            const collect = response.data.collection;
-            numCheck = collect.numField1_isVisible + collect.numField2_isVisible + collect.numField3_isVisible;
-            stringCheck = collect.stringField1_isVisible + collect.stringField2_isVisible + collect.stringField3_isVisible;
-            dateCheck = collect.dateField1_isVisible + collect.dateField2_isVisible + collect.dateField3_isVisible;
-            totalCheck = numCheck + stringCheck + dateCheck;
-            console.log(numCheck, stringCheck, dateCheck, totalCheck);
-            setCurrentCollection(collect);
+            setCurrentCollection(response.data.collection);
         });
 
         axios.get("https://itransition-project-genis.herokuapp.com/tags").then((response) => {
             const getTags = response.data;
             getTags.map((value) => {
                 setListOfTags(prevState => [...prevState, { value: value.tagName, label: value.tagName }]);
+                return value;
             });
         });
     }, [id])
@@ -86,6 +80,7 @@ function CreateItem() {
         let tagsString = "";
         selectedTags.map((value) => {
             tagsString += value.label + " ";
+            return value;
         });
         data.tags = tagsString;
         data.textField1 = freeText1;
@@ -127,7 +122,7 @@ function CreateItem() {
                                 <FormattedMessage id="createitem-page.name">
                                     {(id) => 
                                         <Field
-                                        autocomplete="off"
+                                        autoComplete="off"
                                         id="inputCreateItem"
                                         name="name"
                                         placeholder={id} />
@@ -153,7 +148,7 @@ function CreateItem() {
                                             <label>{currentCollection.numField1_Name}</label>
                                             <ErrorMessage name="numField1" component="span" />
                                             <Field
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 id="inputCreateItem"
                                                 name="numField1"
                                                 placeholder="..."
@@ -165,7 +160,7 @@ function CreateItem() {
                                             <label>{currentCollection.numField2_Name}</label>
                                             <ErrorMessage name="numField2" component="span" />
                                             <Field
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 id="inputCreateItem"
                                                 name="numField2"
                                                 placeholder="..."
@@ -177,7 +172,7 @@ function CreateItem() {
                                             <label>{currentCollection.numField3_Name}</label>
                                             <ErrorMessage name="numField3" component="span" />
                                             <Field
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 id="inputCreateItem"
                                                 name="numField3"
                                                 placeholder="..."
@@ -192,7 +187,7 @@ function CreateItem() {
                                         <> 
                                             <label>{currentCollection.stringField1_Name}</label>
                                             <Field
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 id="inputCreateItem"
                                                 name="stringField1"
                                                 placeholder="..."
@@ -203,7 +198,7 @@ function CreateItem() {
                                         <> 
                                             <label>{currentCollection.stringField2_Name}</label>
                                             <Field
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 id="inputCreateItem"
                                                 name="stringField2"
                                                 placeholder="..."
@@ -214,7 +209,7 @@ function CreateItem() {
                                         <> 
                                             <label>{currentCollection.stringField3_Name}</label>
                                             <Field
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 id="inputCreateItem"
                                                 name="stringField3"
                                                 placeholder="..."

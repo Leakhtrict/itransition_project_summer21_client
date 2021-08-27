@@ -1,6 +1,6 @@
 import { TagCloud } from 'react-tagcloud';
 import { useHistory } from "react-router-dom";
-import { Grid, Container } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 
 export default function MainTagCloud({
     data
@@ -18,7 +18,7 @@ export default function MainTagCloud({
                 onClick={tag => {history.push(`/byTag/${tag.value}`)}}
                 renderer={(tag) => {
                     return (
-                        <div item key={tag.value} className="itemTag" style={{ margin: "6px", display: "inline-block" }}>{"#" + tag.value}</div>
+                        <div key={tag.value} className="itemTag" style={{ margin: "6px", display: "inline-block" }}>{"#" + tag.value}</div>
                     )
                 }}
             />

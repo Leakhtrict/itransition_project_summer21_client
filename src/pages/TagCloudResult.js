@@ -30,7 +30,7 @@ function TagCloudResult() {
                     {listOfItems.map((value, key) => {
                         const thisTags = value.tags.split(" ").slice(0, -1);
                         return (
-                            <Grid item container>
+                            <Grid key={key} item container>
                                 <Box className="item">
                                     <header onClick={() => {history.push(`/item/${value.id}`)}}>{value.name}</header>
                                     <Grid item container style={{ margin: "10px" }} justifyContent="flex-start" alignItems="flex-start">

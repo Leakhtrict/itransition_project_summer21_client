@@ -39,8 +39,9 @@ function AdminTable() {
         .then(() => {
           deleteIds.map((value) => {
             setListOfUsers(prevState => prevState.filter((user) => {
-              return user.id != value;
-            }))
+              return user.id !== value;
+            }));
+            return value;
           });
         });
       }
@@ -60,12 +61,13 @@ function AdminTable() {
         .then(() => {
           blockIds.map((value) => {
             setListOfUsers(prevState => prevState.map((user) => {
-              if(value == user.id){
+              if(value === user.id){
                 return {...user, isBlocked: true };
               } else {
                 return user;
               }
-            }))
+            }));
+            return value;
           });
         });
       }
@@ -85,12 +87,13 @@ function AdminTable() {
         .then(() => {
           unblockIds.map((value) => {
             setListOfUsers(prevState => prevState.map((user) => {
-              if(value == user.id){
+              if(value === user.id){
                 return {...user, isBlocked: false };
               } else {
                 return user;
               }
-            }))
+            }));
+            return value;
           });
         });
       }
@@ -110,12 +113,13 @@ function AdminTable() {
         .then(() => {
           adminIds.map((value) => {
             setListOfUsers(prevState => prevState.map((user) => {
-              if(value == user.id){
+              if(value === user.id){
                 return {...user, isAdmin: true };
               } else {
                 return user;
               }
-            }))
+            }));
+            return value;
           });
         });
       }

@@ -35,7 +35,6 @@ function User() {
 
     useEffect(() => {
         axios.get(`https://itransition-project-genis.herokuapp.com/collections/${userId}`).then((response) => {
-            console.log(userId, response.data, authState);
             setThisCollections(response.data);
         });
     }, [authState, userId]);

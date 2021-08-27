@@ -68,6 +68,7 @@ function EditItem() {
             const getTags = response.data;
             getTags.map((value) => {
                 setListOfTags(prevState => [...prevState, { value: value.tagName, label: value.tagName }]);
+                return value;
             });
         });
     }, [collectionId, itemId])
@@ -99,6 +100,7 @@ function EditItem() {
         let tagsString = "";
         selectedTags.map((value) => {
             tagsString += value.label + " ";
+            return value;
         });
         data.tags = tagsString;
         data.textField1 = freeText1;
@@ -144,7 +146,7 @@ function EditItem() {
                                 <FormattedMessage id="createitem-page.name">
                                     {(id) => 
                                         <Field
-                                        autocomplete="off"
+                                        autoComplete="off"
                                         id="inputCreateItem"
                                         name="name"
                                         placeholder={id} />
@@ -171,7 +173,7 @@ function EditItem() {
                                             <label>{currentCollection.numField1_Name}</label>
                                             <ErrorMessage name="numField1" component="span" />
                                             <Field
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 id="inputCreateItem"
                                                 name="numField1"
                                                 placeholder="..."
@@ -183,7 +185,7 @@ function EditItem() {
                                             <label>{currentCollection.numField2_Name}</label>
                                             <ErrorMessage name="numField2" component="span" />
                                             <Field
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 id="inputCreateItem"
                                                 name="numField2"
                                                 placeholder="..."
@@ -195,7 +197,7 @@ function EditItem() {
                                             <label>{currentCollection.numField3_Name}</label>
                                             <ErrorMessage name="numField3" component="span" />
                                             <Field
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 id="inputCreateItem"
                                                 name="numField3"
                                                 placeholder="..."
@@ -210,7 +212,7 @@ function EditItem() {
                                         <>
                                             <label>{currentCollection.stringField3_Name}</label>
                                             <Field
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 id="inputCreateItem"
                                                 name="stringField1"
                                                 placeholder="..."
@@ -221,7 +223,7 @@ function EditItem() {
                                         <>
                                             <label>{currentCollection.stringField2_Name}</label>
                                             <Field
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 id="inputCreateItem"
                                                 name="stringField2"
                                                 placeholder="..."
@@ -232,7 +234,7 @@ function EditItem() {
                                         <>
                                             <label>{currentCollection.stringField3_Name}</label>
                                             <Field
-                                                autocomplete="off"
+                                                autoComplete="off"
                                                 id="inputCreateItem"
                                                 name="stringField3"
                                                 placeholder="..."

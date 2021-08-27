@@ -89,7 +89,7 @@ function CreateCollection() {
                                 <FormattedMessage id="createcollection-page.title">
                                     {(id) => 
                                         <Field
-                                        autocomplete="off"
+                                        autoComplete="off"
                                         id="inputCreateCollection"
                                         name="title"
                                         placeholder={id} />
@@ -162,27 +162,27 @@ function CreateCollection() {
                                 <Grid item container justifyContent="center" alignItems="center" spacing={1}>
                                     <Grid item xs={12} sm={6} md={3} container direction="column" alignItems="center">
                                         <FormattedMessage id="createcollection-page.additional-number" />
-                                        <Field autocomplete="off" id="inputAdditionalField" name="numField1_Name" />
-                                        <Field autocomplete="off" id="inputAdditionalField" name="numField2_Name" />
-                                        <Field autocomplete="off" id="inputAdditionalField" name="numField3_Name" />
+                                        <Field autoComplete="off" id="inputAdditionalField" name="numField1_Name" />
+                                        <Field autoComplete="off" id="inputAdditionalField" name="numField2_Name" />
+                                        <Field autoComplete="off" id="inputAdditionalField" name="numField3_Name" />
                                     </Grid>
                                     <Grid item xs={12} sm={6} md={3} container direction="column" alignItems="center">
                                         <FormattedMessage id="createcollection-page.additional-string" />
-                                        <Field autocomplete="off" id="inputAdditionalField" name="stringField1_Name" />
-                                        <Field autocomplete="off" id="inputAdditionalField" name="stringField2_Name" />
-                                        <Field autocomplete="off" id="inputAdditionalField" name="stringField3_Name" />
+                                        <Field autoComplete="off" id="inputAdditionalField" name="stringField1_Name" />
+                                        <Field autoComplete="off" id="inputAdditionalField" name="stringField2_Name" />
+                                        <Field autoComplete="off" id="inputAdditionalField" name="stringField3_Name" />
                                     </Grid>
                                     <Grid item xs={12} sm={6} md={3} container direction="column" alignItems="center">
                                         <FormattedMessage id="createcollection-page.additional-text" />
-                                        <Field autocomplete="off" id="inputAdditionalField" name="textField1_Name" />
-                                        <Field autocomplete="off" id="inputAdditionalField" name="textField2_Name" />
-                                        <Field autocomplete="off" id="inputAdditionalField" name="textField3_Name" />
+                                        <Field autoComplete="off" id="inputAdditionalField" name="textField1_Name" />
+                                        <Field autoComplete="off" id="inputAdditionalField" name="textField2_Name" />
+                                        <Field autoComplete="off" id="inputAdditionalField" name="textField3_Name" />
                                     </Grid>
                                     <Grid item xs={12} sm={6} md={3} container direction="column" alignItems="center">
                                         <FormattedMessage id="createcollection-page.additional-date" />
-                                        <Field autocomplete="off" id="inputAdditionalField" name="dateField1_Name" />
-                                        <Field autocomplete="off" id="inputAdditionalField" name="dateField2_Name" />
-                                        <Field autocomplete="off" id="inputAdditionalField" name="dateField3_Name" />
+                                        <Field autoComplete="off" id="inputAdditionalField" name="dateField1_Name" />
+                                        <Field autoComplete="off" id="inputAdditionalField" name="dateField2_Name" />
+                                        <Field autoComplete="off" id="inputAdditionalField" name="dateField3_Name" />
                                     </Grid>
                                 </Grid>
                                 <Button type="submit">

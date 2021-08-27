@@ -27,8 +27,9 @@ function Home() {
         });
 
         axios.get("https://itransition-project-genis.herokuapp.com/tags").then((response) => {
-            response.data.map((value, key) => {
+            response.data.map((value) => {
                 setListOfTags(prevState => [...prevState, { value: value.tagName, count: 0 }]);
+                return value;
             });
             
         });
@@ -80,7 +81,7 @@ function Home() {
                         {listOfItems.map((value, key) => {
                             const thisTags = value.tags.split(" ").slice(0, -1);
                             return (
-                                <Grid item container>
+                                <Grid item key={key} container>
                                     <Box className="item">
                                         <header onClick={() => {history.push(`/item/${value.id}`)}}>{value.name}</header>
                                         <Grid item container style={{ margin: "10px" }} justifyContent="flex-start" alignItems="flex-start">

@@ -7,7 +7,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SendIcon from '@material-ui/icons/Send';
-import { IconButton, Button, Grid, Box, Container, Paper, OutlinedInput, InputAdornment } from "@material-ui/core";
+import { IconButton, Grid, Container, Paper, OutlinedInput, InputAdornment } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 import io from "socket.io-client";
 import AdditionalFields from "../components/AdditionalFields";
@@ -64,6 +64,7 @@ function Item() {
                 if(value.UserId === authState.id){
                     setIsliked(true);
                 }
+                return value;
             })
             axios.get(`https://itransition-project-genis.herokuapp.com/collections/byIdNoAuth/${response.data.CollectionId}`)
             .then((response2) => {

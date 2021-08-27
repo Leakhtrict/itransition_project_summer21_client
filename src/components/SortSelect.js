@@ -33,6 +33,8 @@ export default function SortSelect({
                     return (b.Likes.length - a.Likes.length);
                 }));
                 break;
+            default:
+                break;
         }
     };
 

@@ -67,7 +67,7 @@ function SearchBar({ data }) {
             <div className="dataResult">
             {filteredData.slice(0, 10).map((value, key) => {
               return (
-                <div className="dataItem" onClick={() => {
+                <div key={key} className="dataItem" onClick={() => {
                     history.push(`/item/${value.id}`);
                     clearInput();
                   }} >
