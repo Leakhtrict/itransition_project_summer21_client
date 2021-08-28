@@ -4,6 +4,7 @@ import axios from "axios";
 import { Grid, Box, Container } from "@material-ui/core";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { FormattedMessage } from "react-intl";
+import SortSelect from "../components/SortSelect";
 
 function TagCloudResult() {
     let { tag } = useParams();
@@ -21,11 +22,14 @@ function TagCloudResult() {
     return (
         <div className="tagCloudResult">
             {listOfItems.length ?
-                <FormattedMessage id="tagresult-page.result">
-                    {(id) =>
-                        <div style={{ fontSize: 18 }}>{id + " \"#" + tag + "\""}</div>
-                    }
-                </FormattedMessage> :
+                <>
+                    <FormattedMessage id="tagresult-page.result">
+                        {(id) =>
+                            <div style={{ fontSize: 18, marginBottom: 8 }}>{id + " \"#" + tag + "\""}</div>
+                        }
+                    </FormattedMessage>
+                    <SortSelect thisItems={listOfItems} setThisItems={setListOfItems} />
+                </> :
                 <FormattedMessage id="tagresult-page.result.notfound">
                     {(id) =>
                         <div style={{ fontSize: 18 }}>{id + " \"#" + tag + "\""}</div>
