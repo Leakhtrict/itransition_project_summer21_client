@@ -72,7 +72,7 @@ function Collection() {
                 </Grid>
             </Grid>
             <Container maxWidth="xs" style={{ marginTop: "8px" }}>
-                <Grid container direction="column" justifyContent="center" spacing={1}>
+                <Grid container direction="column" justifyContent="center">
                     {thisItems.map((value, key) => {
                         const thisTags = value.tags.split(" ").slice(0, -1);
                         return (

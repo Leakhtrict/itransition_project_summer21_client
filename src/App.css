@@ -209,6 +209,7 @@ hr{
 }
 
 .collection{
+  word-break: break-all;
   width: 100%;
   height: auto;
   margin-bottom: 8px;
@@ -226,7 +227,7 @@ hr{
   align-items: center;
   color: white;
   background-color: red;
-  padding: 5px 0px;
+  padding: 5px;
 }
 
 .collection header:hover, .item header:hover{
@@ -235,7 +236,6 @@ hr{
 }
 
 .collection p{
-  word-break: break-all;
   width: 100%;
 }
 
@@ -249,8 +249,9 @@ hr{
 }
 
 .collTitle, .item header{
-  padding: 5px 0px;
+  padding: 5px;
   font-weight: bold;
+  text-align: center;
 }
 
 .collDate{
@@ -258,6 +259,7 @@ hr{
 }
 
 .item{
+  word-break: break-all;
   width: 100%;
   height: auto;
   margin-bottom: 8px;
