@@ -60,7 +60,9 @@
     "sortselect.createdAt": "Дате создания",
     "sortselect.likes": "Кол-ву лайков",
     "searchresult-page.result": "Результат поиска",
+    "searchresult-page.result.notfound": "Ничего не найдено по запросу",
     "tagresult-page.result": "Результат поиска по тегу",
+    "tagresult-page.result.notfound": "Ничего не найдено по тегу",
     "error-page.error": "Неправильный адрес",
     "error-page.redirect": "Попробуйте этот"
 }

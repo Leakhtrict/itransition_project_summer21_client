@@ -21,11 +21,18 @@ function SearchResult() {
 
     return (
         <div className="tagCloudResult">
-            <FormattedMessage id="searchresult-page.result">
-                {(id) =>
-                    <div style={{ fontSize: 18 }}>{id + " \"" + word + "\""}</div>
-                }
-            </FormattedMessage>
+            {listOfItems.length ?
+                <FormattedMessage id="searchresult-page.result">
+                    {(id) =>
+                        <div style={{ fontSize: 18 }}>{id + " \"" + word + "\""}</div>
+                    }
+                </FormattedMessage> : 
+                <FormattedMessage id="searchresult-page.result.notfound">
+                    {(id) =>
+                        <div style={{ fontSize: 18 }}>{id + " \"" + word + "\""}</div>
+                    }
+                </FormattedMessage>
+            }
             <Container maxWidth="xs" style={{ marginTop: "8px" }}>
                 <Grid item container direction="column" justifyContent="center" spacing={1}>
                     {listOfItems.map((value, key) => {

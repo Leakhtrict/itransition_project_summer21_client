@@ -60,7 +60,9 @@
     "sortselect.createdAt": "Date of creation",
     "sortselect.likes": "Number of likes",
     "searchresult-page.result": "Search result for",
+    "searchresult-page.result.notfound": "Nothing found for ",
     "tagresult-page.result": "Search result for tag",
+    "tagresult-page.result.notfound": "Nothing found for tag",
     "error-page.error": "Wrong URL",
     "error-page.redirect": "Try this"
 }

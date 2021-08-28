@@ -20,11 +20,18 @@ function TagCloudResult() {
 
     return (
         <div className="tagCloudResult">
-            <FormattedMessage id="tagresult-page.result">
-                {(id) =>
-                    <div style={{ fontSize: 18 }}>{id + " \"#" + tag + "\""}</div>
-                }
-            </FormattedMessage>
+            {listOfItems.length ?
+                <FormattedMessage id="tagresult-page.result">
+                    {(id) =>
+                        <div style={{ fontSize: 18 }}>{id + " \"#" + tag + "\""}</div>
+                    }
+                </FormattedMessage> :
+                <FormattedMessage id="tagresult-page.result.notfound">
+                    {(id) =>
+                        <div style={{ fontSize: 18 }}>{id + " \"#" + tag + "\""}</div>
+                    }
+                </FormattedMessage>
+            }
             <Container maxWidth="xs" style={{ marginTop: "8px" }}>
                 <Grid item container direction="column" justifyContent="center" spacing={1}>
                     {listOfItems.map((value, key) => {
