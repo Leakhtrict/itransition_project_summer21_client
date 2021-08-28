@@ -157,7 +157,7 @@ function CreateCollection() {
                             </Button>
                         }
                         <Grid item style={{ marginBottom: 8 }}>
-                            <Button id="submitButton" onClick={() => setShowAdditFields(!showAdditFields)}>
+                            <Button id="submitButton" onClick={() => setShowAdditFields(!showAdditFields)} style={{ marginLeft: 24 }}>
                                 {showAdditFields ?
                                     <FormattedMessage id="createcollection-page.hide-additional-fields" /> :
                                     <FormattedMessage id="createcollection-page.show-additional-fields" />
@@ -166,7 +166,7 @@ function CreateCollection() {
                             <FormattedMessage id="createcollection-page.additional-fields-tooltip">
                                 {(id) =>
                                     <Tooltip title={id} interactive>
-                                        <IconButton style={{ width: 8, height: 8, color: "red" }}>
+                                        <IconButton style={{ maxWidth: 20, maxHeight: 20, color: "red" }}>
                                             <HelpIcon fontSize="small"/>
                                         </IconButton>
                                     </Tooltip>
