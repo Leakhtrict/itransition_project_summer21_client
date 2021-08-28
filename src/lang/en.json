@@ -58,6 +58,7 @@
     "searchbar.placeholder": "Search...",
     "sortselect.sortBy": "Sort by ",
     "sortselect.name": "Name",
+    "sortselect.updatedAt": "Last update",
     "sortselect.createdAt": "Date of creation",
     "sortselect.likes": "Number of likes",
     "searchresult-page.result": "Search result for",

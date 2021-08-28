@@ -58,6 +58,7 @@
     "searchbar.placeholder": "Поиск",
     "sortselect.sortBy": "Сортировать по ",
     "sortselect.name": "Имени",
+    "sortselect.updatedAt": "Дате обновления",
     "sortselect.createdAt": "Дате создания",
     "sortselect.likes": "Кол-ву лайков",
     "searchresult-page.result": "Результат поиска",

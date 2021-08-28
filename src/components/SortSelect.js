@@ -25,6 +25,11 @@ export default function SortSelect({
                     return (a.id - b.id);
                 }));
                 break;
+            case "updatedAt":
+                setThisItems(prevState => [...prevState].sort((a, b) => {
+                    return b.updatedAt.localeCompare(a.updatedAt);
+                }));
+                break;
             case "name":
                 setThisItems(prevState => [...prevState].sort((a, b) => a.name.localeCompare(b.name)));
                 break;
@@ -62,6 +67,9 @@ export default function SortSelect({
                 >
                     <MenuItem value="id">
                         <FormattedMessage id="sortselect.createdAt" />
+                    </MenuItem>
+                    <MenuItem value="updatedAt">
+                        <FormattedMessage id="sortselect.updatedAt" />
                     </MenuItem>
                     <MenuItem value="name">
                         <FormattedMessage id="sortselect.name" />
