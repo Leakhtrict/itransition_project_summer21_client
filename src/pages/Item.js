@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
     },
     otherFields: {
-        marginLeft: "4px",
+        margin: "0px 4px 8px",
     },
     commentSection: {
         borderTop: "solid 1px",
@@ -147,9 +147,9 @@ function Item() {
     };
 
     return (
-        <div>
+        <div style={{ wordBreak: "break-word" }}>
             <Container maxWidth="xs">
-                <Grid container direction="column" justifyContent="center" alignItems="center" spacing={1}>
+                <Grid container direction="column" justifyContent="center" alignItems="center">
                     <Grid item className={classes.title}>{itemBody.name}</Grid>
                     <Grid item className={classes.updatedAt}>
                         <FormattedMessage id="item-page.updatedAt" />

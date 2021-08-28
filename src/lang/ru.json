@@ -49,6 +49,8 @@
     "createitem-page.name": "Название",
     "createitem-page.tags": "Добавьте теги(свои или существующие)",
     "createitem-page.submit": "Добавить",
+    "createitem-page.name.error": "Название обязательно",
+    "createitem-page.numField.error": "Это числовое поле",
     "edititem-page.submit": "Подтвердить",
     "item-page.add-comment": "Комментировать",
     "item-page.updatedAt": "Обновлено",

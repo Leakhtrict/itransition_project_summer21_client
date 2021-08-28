@@ -176,7 +176,7 @@ hr{
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin: 10px 0px;
+  margin: 10px;
 }
 
 .additItemFields #inputCreateItem{
@@ -184,6 +184,7 @@ hr{
   max-width: 200px;
   height: 25px;
   margin: 8px;
+  margin-left: 0px;
 }
 
 #inputAdditionalField{
@@ -209,7 +210,7 @@ hr{
 }
 
 .collection{
-  word-break: break-all;
+  word-break: break-word;
   width: 100%;
   height: auto;
   margin-bottom: 8px;
@@ -259,7 +260,7 @@ hr{
 }
 
 .item{
-  word-break: break-all;
+  word-break: break-word;
   width: 100%;
   height: auto;
   margin-bottom: 8px;

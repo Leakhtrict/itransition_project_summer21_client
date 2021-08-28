@@ -49,6 +49,8 @@
     "createitem-page.name": "Name",
     "createitem-page.tags": "Create New or Select Existing tags",
     "createitem-page.submit": "Add",
+    "createitem-page.name.error": "Name is required.",
+    "createitem-page.numField.error": "Input must be a number",
     "edititem-page.submit": "Submit",
     "item-page.add-comment": "Add comment",
     "item-page.updatedAt": "Last update",

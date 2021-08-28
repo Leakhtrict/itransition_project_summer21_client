@@ -7,8 +7,8 @@ export default function AdditionalFields({
     classes
 }) {
     return(
-        <Grid container direction="column" justifyContent="flex-start" alignItems="flex-start" spacing={2}>
-            <Grid item container direction="column" spacing={1} className={classes.otherFields}>
+        <Grid container direction="column" justifyContent="flex-start" alignItems="flex-start" style={{ marginTop: 16 }}>
+            <Grid item container direction="column" className={classes.otherFields} spacing={1}>
                 {fromCollection.numField1_isVisible &&
                     <Grid item>
                         {fromCollection.numField1_Name + ": " + itemBody.numField1}
@@ -24,8 +24,6 @@ export default function AdditionalFields({
                         {fromCollection.numField3_Name + ": " + itemBody.numField3}
                     </Grid>
                 }
-            </Grid>
-            <Grid item container direction="column" spacing={1} className={classes.otherFields}>
                 {fromCollection.stringField1_isVisible &&
                     <Grid item>
                         {fromCollection.stringField1_Name + ": " + itemBody.stringField1}
@@ -41,8 +39,6 @@ export default function AdditionalFields({
                         {fromCollection.stringField3_Name + ": " + itemBody.stringField3}
                     </Grid>
                 }
-            </Grid>
-            <Grid item container direction="column" spacing={1} className={classes.otherFields}>
                 {fromCollection.dateField1_isVisible &&
                     <Grid item>
                         {fromCollection.dateField1_Name + ": " + new Date(itemBody.dateField1).toLocaleString().split(",")[0]}

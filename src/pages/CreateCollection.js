@@ -152,7 +152,7 @@ function CreateCollection() {
                                 <FormattedMessage id="createcollection-page.submit" />
                             </Button>
                         }
-                        <Grid item>
+                        <Grid item style={{ marginBottom: 8 }}>
                             <Button id="submitButton" onClick={() => setShowAdditFields(!showAdditFields)}>
                                 {showAdditFields ?
                                     <FormattedMessage id="createcollection-page.hide-additional-fields" /> :
@@ -198,7 +198,7 @@ function CreateCollection() {
                                         <Field autoComplete="off" id="inputAdditionalField" name="dateField3_Name" />
                                     </Grid>
                                 </Grid>
-                                <Button id="submitButton" type="submit">
+                                <Button id="submitButton" type="submit" style={{ marginBottom: 12 }}>
                                     <FormattedMessage id="createcollection-page.submit" />
                                 </Button>
                             </> 

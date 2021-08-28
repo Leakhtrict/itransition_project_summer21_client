@@ -95,7 +95,7 @@ function CreateItem() {
     };
 
     const validationSchema = Yup.object().shape({
-        name: Yup.string().required("Name is required."),
+        name: Yup.string().required(),
         numField1: Yup.number(),
         numField2: Yup.number(),
         numField3: Yup.number(),
@@ -118,7 +118,11 @@ function CreateItem() {
                     <Grid container direction="column" alignItems="center" spacing={1}>
                         <Grid item>
                             <div className="createItemMain">
-                                <ErrorMessage name="name" component="span" />
+                                <ErrorMessage name="name" render={msg =>
+                                    <span id="formError">
+                                        <FormattedMessage id="createitem-page.name.error"/>
+                                    </span>
+                                }/>
                                 <FormattedMessage id="createitem-page.name">
                                     {(id) => 
                                         <Field
@@ -140,124 +144,130 @@ function CreateItem() {
                                 </FormattedMessage>
                             </div>
                         </Grid>
-                        <Grid item container justifyContent="center" alignItems="center" spacing={1}>
-                            <Grid item xs={12} sm={6} md={4} container justifyContent="center" alignItems="center">
-                                <div className="additItemFields">
-                                    {currentCollection.numField1_isVisible &&
-                                        <>
-                                            <label>{currentCollection.numField1_Name}</label>
-                                            <ErrorMessage name="numField1" component="span" />
-                                            <Field
-                                                autoComplete="off"
-                                                id="inputCreateItem"
-                                                name="numField1"
-                                                placeholder="..."
-                                            />
-                                        </>
-                                    }
-                                    {currentCollection.numField2_isVisible &&
-                                        <>
-                                            <label>{currentCollection.numField2_Name}</label>
-                                            <ErrorMessage name="numField2" component="span" />
-                                            <Field
-                                                autoComplete="off"
-                                                id="inputCreateItem"
-                                                name="numField2"
-                                                placeholder="..."
-                                            />
-                                        </>
-                                    }
-                                    {currentCollection.numField3_isVisible &&
-                                        <>
-                                            <label>{currentCollection.numField3_Name}</label>
-                                            <ErrorMessage name="numField3" component="span" />
-                                            <Field
-                                                autoComplete="off"
-                                                id="inputCreateItem"
-                                                name="numField3"
-                                                placeholder="..."
-                                            />
-                                        </>
-                                    }
-                                </div>
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={4} container justifyContent="center" alignItems="center">
-                                <div className="additItemFields">
-                                    {currentCollection.stringField1_isVisible &&
-                                        <> 
-                                            <label>{currentCollection.stringField1_Name}</label>
-                                            <Field
-                                                autoComplete="off"
-                                                id="inputCreateItem"
-                                                name="stringField1"
-                                                placeholder="..."
-                                            />
-                                        </>
-                                    }
-                                    {currentCollection.stringField2_isVisible &&
-                                        <> 
-                                            <label>{currentCollection.stringField2_Name}</label>
-                                            <Field
-                                                autoComplete="off"
-                                                id="inputCreateItem"
-                                                name="stringField2"
-                                                placeholder="..."
-                                            />
-                                        </>
-                                    }
-                                    {currentCollection.stringField3_isVisible &&
-                                        <> 
-                                            <label>{currentCollection.stringField3_Name}</label>
-                                            <Field
-                                                autoComplete="off"
-                                                id="inputCreateItem"
-                                                name="stringField3"
-                                                placeholder="..."
-                                            />
-                                        </>
-                                    }
-                                </div>
-                            </Grid>
-                            <Grid item xs={12} sm={6} md={4} container justifyContent="center" alignItems="center">
-                                <div className="additItemFields">
-                                    {currentCollection.dateField1_isVisible &&
-                                        <>
-                                            <label>{currentCollection.dateField1_Name}</label>
-                                            <Field as="input"
-                                                type="date"
-                                                id="inputCreateItem"
-                                                name="dateField1"
-                                                value={date1}
-                                                onChange={(event) => {setDate1(event.target.value)}}
-                                            />
-                                        </>
-                                    }
-                                    {currentCollection.dateField2_isVisible &&
-                                        <>
-                                            <label>{currentCollection.dateField2_Name}</label>
-                                            <Field as="input"
-                                                type="date"
-                                                id="inputCreateItem"
-                                                name="dateField2"
-                                                value={date2}
-                                                onChange={(event) => {setDate2(event.target.value)}}
-                                            />
-                                        </>
-                                    }
-                                    {currentCollection.dateField3_isVisible &&
-                                        <>
-                                            <label>{currentCollection.dateField3_Name}</label>
-                                            <Field as="input"
-                                                type="date"
-                                                id="inputCreateItem"
-                                                name="dateField3"
-                                                value={date3}
-                                                onChange={(event) => {setDate3(event.target.value)}}
-                                            />
-                                        </>
-                                    }
-                                </div>
-                            </Grid>
+                        <Grid item container justifyContent="center" alignItems="center">
+                            <div className="additItemFields">
+                                {currentCollection.numField1_isVisible &&
+                                    <>
+                                        <label>{currentCollection.numField1_Name}</label>
+                                        <ErrorMessage name="numField1" render={msg =>
+                                            <span id="formError">
+                                                <FormattedMessage id="createitem-page.numField.error"/>
+                                            </span>
+                                        }/>
+                                        <Field
+                                            autoComplete="off"
+                                            id="inputCreateItem"
+                                            name="numField1"
+                                            placeholder="..."
+                                        />
+                                    </>
+                                }
+                                {currentCollection.numField2_isVisible &&
+                                    <>
+                                        <label>{currentCollection.numField2_Name}</label>
+                                        <ErrorMessage name="numField2" render={msg =>
+                                            <span id="formError">
+                                                <FormattedMessage id="createitem-page.numField.error"/>
+                                            </span>
+                                        }/>
+                                        <Field
+                                            autoComplete="off"
+                                            id="inputCreateItem"
+                                            name="numField2"
+                                            placeholder="..."
+                                        />
+                                    </>
+                                }
+                                {currentCollection.numField3_isVisible &&
+                                    <>
+                                        <label>{currentCollection.numField3_Name}</label>
+                                        <ErrorMessage name="numField3" render={msg =>
+                                            <span id="formError">
+                                                <FormattedMessage id="createitem-page.numField.error"/>
+                                            </span>
+                                        }/>
+                                        <Field
+                                            autoComplete="off"
+                                            id="inputCreateItem"
+                                            name="numField3"
+                                            placeholder="..."
+                                        />
+                                    </>
+                                }
+                            </div>
+                            <div className="additItemFields">
+                                {currentCollection.stringField1_isVisible &&
+                                    <> 
+                                        <label>{currentCollection.stringField1_Name}</label>
+                                        <Field
+                                            autoComplete="off"
+                                            id="inputCreateItem"
+                                            name="stringField1"
+                                            placeholder="..."
+                                        />
+                                    </>
+                                }
+                                {currentCollection.stringField2_isVisible &&
+                                    <> 
+                                        <label>{currentCollection.stringField2_Name}</label>
+                                        <Field
+                                            autoComplete="off"
+                                            id="inputCreateItem"
+                                            name="stringField2"
+                                            placeholder="..."
+                                        />
+                                    </>
+                                }
+                                {currentCollection.stringField3_isVisible &&
+                                    <> 
+                                        <label>{currentCollection.stringField3_Name}</label>
+                                        <Field
+                                            autoComplete="off"
+                                            id="inputCreateItem"
+                                            name="stringField3"
+                                            placeholder="..."
+                                        />
+                                    </>
+                                }
+                            </div>
+                            <div className="additItemFields">
+                                {currentCollection.dateField1_isVisible &&
+                                    <>
+                                        <label>{currentCollection.dateField1_Name}</label>
+                                        <Field as="input"
+                                            type="date"
+                                            id="inputCreateItem"
+                                            name="dateField1"
+                                            value={date1}
+                                            onChange={(event) => {setDate1(event.target.value)}}
+                                        />
+                                    </>
+                                }
+                                {currentCollection.dateField2_isVisible &&
+                                    <>
+                                        <label>{currentCollection.dateField2_Name}</label>
+                                        <Field as="input"
+                                            type="date"
+                                            id="inputCreateItem"
+                                            name="dateField2"
+                                            value={date2}
+                                            onChange={(event) => {setDate2(event.target.value)}}
+                                        />
+                                    </>
+                                }
+                                {currentCollection.dateField3_isVisible &&
+                                    <>
+                                        <label>{currentCollection.dateField3_Name}</label>
+                                        <Field as="input"
+                                            type="date"
+                                            id="inputCreateItem"
+                                            name="dateField3"
+                                            value={date3}
+                                            onChange={(event) => {setDate3(event.target.value)}}
+                                        />
+                                    </>
+                                }
+                            </div>
                         </Grid>
                         <Grid item>
                             {currentCollection.textField1_isVisible &&
@@ -318,7 +328,7 @@ function CreateItem() {
                                 </div>
                             }
                         </Grid>
-                        <Button type="submit">
+                        <Button id="submitButton" type="submit" style={{ marginBottom: 12 }}>
                             <FormattedMessage id="createitem-page.submit" />
                         </Button>
                     </Grid>
