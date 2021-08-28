@@ -58,9 +58,11 @@ function Item() {
         socket = io("https://itransition-project-genis.herokuapp.com");
 
         socket.on("emitSendComment", (data) => {
-            setThisComments(prevState => [...prevState, data]);
+            if(data.ItemId === itemId){
+                setThisComments(prevState => [...prevState, data]);
+            }
         });
-    }, [itemId]);
+    }, []);
 
     useEffect(() => {
         axios.get(`https://itransition-project-genis.herokuapp.com/items/byId/${itemId}`)
