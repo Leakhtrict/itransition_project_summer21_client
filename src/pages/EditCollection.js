@@ -103,23 +103,23 @@ function EditCollection() {
                                     </span>
                                 }/>
                                 <Field as="select" id="inputCreateCollection" name="theme">
-                                    <FormattedMessage id="collection-theme.default">
+                                <FormattedMessage id="collection-theme.default">
                                         {(id) => <option value="" selected="selected" hidden >{id}</option>}
                                     </FormattedMessage>
                                     <FormattedMessage id="collection-theme.alcohol">
-                                        {(id) => <option value={id}>{id}</option>}
+                                        {(id) => <option value="collection-theme.alcohol">{id}</option>}
                                     </FormattedMessage>
                                     <FormattedMessage id="collection-theme.boardgames">
-                                        {(id) => <option value={id}>{id}</option>}
+                                        {(id) => <option value="collection-theme.boardgames">{id}</option>}
                                     </FormattedMessage>
                                     <FormattedMessage id="collection-theme.books">
-                                        {(id) => <option value={id}>{id}</option>}
+                                        {(id) => <option value="collection-theme.books">{id}</option>}
                                     </FormattedMessage>
                                     <FormattedMessage id="collection-theme.cars">
-                                        {(id) => <option value={id}>{id}</option>}
+                                        {(id) => <option value="collection-theme.cars">{id}</option>}
                                     </FormattedMessage>
                                     <FormattedMessage id="collection-theme.videogames">
-                                        {(id) => <option value={id}>{id}</option>}
+                                        {(id) => <option value="collection-theme.videogames">{id}</option>}
                                     </FormattedMessage>
                                 </Field>
                                 {(freeText.length > 240) &&

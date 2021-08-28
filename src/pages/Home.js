@@ -50,7 +50,7 @@ function Home() {
                                             </div>
                                             <hr />
                                             <div>
-                                                {value.theme}
+                                                <FormattedMessage id={value.theme} />
                                             </div>
                                         </header>
                                         <Container>
