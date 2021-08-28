@@ -68,8 +68,9 @@ function App() {
       <AuthContext.Provider value={{ authState, setAuthState }}>
         <IntlProvider locale={currentLang} messages={langSet[currentLang]}>
           <Router>
-            <AppBar position="static" style={{ backgroundColor: "red", height: "50px", justifyContent: "center", marginBottom: "8px" }}>
-              <Toolbar className="navBar" style={{ marginLeft: "-10px" }}>
+            <AppBar
+              style={{ backgroundColor: "red", height: "50px", justifyContent: "center", marginBottom: "8px", position: "fixed" }}>
+              <Toolbar className="navBar" style={{ margin: "0px -10px" }}>
                 <NavigationMenu authState={authState} />
                 {!authState.status ? (
                   <div style={{ margin: "0px auto 0px 0px" }}>
@@ -87,8 +88,8 @@ function App() {
                 </Toolbar>
             </AppBar>
             
-            
-            <Switch>
+            <div style={{ marginTop: 58 }} />
+            <Switch className="shownPage">
               <Route path="/" exact component={Home} />
               <Route path="/login" exact component={Login} />
               <Route path="/register" exact component={Register} />
