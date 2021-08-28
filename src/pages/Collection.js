@@ -35,6 +35,7 @@ function Collection() {
     let history = useHistory();
     const [collectionObj, setCollectionObj] = useState({});
     const [thisItems, setThisItems] = useState([]);
+    const [thisAllItems, setThisAllItems] = useState([]);
 
     useEffect(() => {
         axios.get(`https://itransition-project-genis.herokuapp.com/collections/byIdNoAuth/${id}`).then((response) => {
@@ -42,7 +43,9 @@ function Collection() {
         });
 
         axios.get(`https://itransition-project-genis.herokuapp.com/items/${id}`).then((response) => {
-            setThisItems(response.data);
+            const sortedItems = response.data.reverse();
+            setThisAllItems(sortedItems);
+            setThisItems(sortedItems.slice(0, 4));
         });
     }, [id]);
 
@@ -58,8 +61,16 @@ function Collection() {
         });
     };
 
+    const itemsShowMore = () => {
+        if(thisItems.length + 5 >= thisAllItems.length){
+            setThisItems(thisAllItems);
+        } else{
+            setThisItems(thisAllItems.slice(0, thisItems.length + 5))
+        }
+    };
+
     return (
-        <Container maxWidth="xs">
+        <Container maxWidth="xs" className="collectionPage">
             <Grid container direction="column" justifyContent="center" alignItems="center" >
                 <Grid item>
                     {(authState.id === collectionObj.UserId || authState.isAdmin) && 
@@ -109,6 +120,11 @@ function Collection() {
                             </div>
                         );
                     })}
+                    {!(thisItems.length >= thisAllItems.length) &&
+                        <Button onClick={itemsShowMore} id="submitButton" style={{ marginBottom: 8 }}>
+                            <FormattedMessage id="home-page.show-more" />
+                        </Button>
+                    }
                 </Grid>
             </Container>
         </Container>

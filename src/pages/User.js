@@ -41,6 +41,7 @@ function User() {
     const { authState } = useContext(AuthContext);
     let { userId } = useParams();
     const [thisCollections, setThisCollections] = useState([]);
+    const [thisAllCollections, setThisAllCollections] = useState([]);
     const [thisUser, setThisUser] = useState({});
     let history = useHistory();
 
@@ -55,7 +56,9 @@ function User() {
         });
         axios.get(`https://itransition-project-genis.herokuapp.com/collections/${userId}`)
         .then((response) => {
-            setThisCollections(response.data);
+            const sortedCollections = response.data.reverse();
+            setThisAllCollections(sortedCollections);
+            setThisCollections(sortedCollections.slice(0, 2));
         });
     }, [authState, userId]);
 
@@ -71,8 +74,16 @@ function User() {
         });
     };
 
+    const collectionsShowMore = () => {
+        if(thisCollections.length + 4 >= thisAllCollections.length){
+            setThisCollections(thisAllCollections);
+        } else{
+            setThisCollections(thisAllCollections.slice(0, thisCollections.length + 4))
+        }
+    };
+
     return(
-        <Container maxWidth="xs">
+        <Container maxWidth="xs" className="userPage">
             <div className={classes.usernameInfo}>
                 <AccountBoxIcon fontSize="large" style={{ color: "red" }}/>
                 <strong>{thisUser.username}</strong>
@@ -89,7 +100,7 @@ function User() {
                     </Button>
                 }
             </div>
-            <Grid container direction="column" justifyContent="center" spacing={1}>
+            <Grid container direction="column" justifyContent="center">
                 {thisCollections.map((value, key) => {
                     return (
                         <div key={key}>
@@ -132,6 +143,11 @@ function User() {
                         </div>
                     );
                 })}
+                {!(thisCollections.length >= thisAllCollections.length) &&
+                    <Button onClick={collectionsShowMore} id="submitButton" style={{ marginBottom: 8 }}>
+                        <FormattedMessage id="home-page.show-more" />
+                    </Button>
+                }
             </Grid> 
         </Container>
     )

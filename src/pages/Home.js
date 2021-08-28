@@ -5,25 +5,43 @@ import { useHistory } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import MainTagCloud from "../components/MainTagCloud";
 import { FormattedMessage } from "react-intl";
-import { Grid, Box, Container } from "@material-ui/core";
+import { Button, Grid, Box, Container } from "@material-ui/core";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+
+function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+}
 
 function Home() {
     const [listOfCollections, setListOfCollections] = useState([]);
+    const [listOfAllCollections, setListOfAllCollections] = useState([]);
     const [listOfItems, setListOfItems] = useState([]);
+    const [listOfAllItems, setListOfAllItems] = useState([]);
     const [listOfTags, setListOfTags] = useState([]);
 
     let history = useHistory();
 
     useEffect(() => {
         axios.get("https://itransition-project-genis.herokuapp.com/collections").then((response) => {
-            setListOfCollections(response.data.sort((a, b) => {
+            const collectionsSorted = response.data.sort((a, b) => {
                 return (b.numberOfItems - a.numberOfItems);
-            }).slice(0, 10));
+            });
+            setListOfAllCollections(collectionsSorted);
+            setListOfCollections(collectionsSorted.slice(0, 4));
         });
 
         axios.get("https://itransition-project-genis.herokuapp.com/items").then((response) => {
-            setListOfItems(response.data.reverse().slice(0, 15));
+            const allItems = response.data.reverse();
+            setListOfAllItems(allItems);
+            setListOfItems(allItems.slice(0, 4));
         });
 
         axios.get("https://itransition-project-genis.herokuapp.com/tags").then((response) => {
@@ -31,14 +49,30 @@ function Home() {
                 setListOfTags(prevState => [...prevState, { value: value.tagName, count: 0 }]);
                 return value;
             });
-            
+            setListOfTags(prevState => shuffle(prevState));
         });
     }, []);
   
+    const collectionsShowMore = () => {
+        if(listOfCollections.length + 5 >= listOfAllCollections.length){
+            setListOfCollections(listOfAllCollections);
+        } else{
+            setListOfCollections(listOfAllCollections.slice(0, listOfCollections.length + 5))
+        }
+    };
+
+    const itemsShowMore = () => {
+        if(listOfItems.length + 5 >= listOfAllItems.length){
+            setListOfItems(listOfAllItems);
+        } else{
+            setListOfItems(listOfAllItems.slice(0, listOfItems.length + 5))
+        }
+    };
+
     return (
         <div className="homePage">
             <Grid container direction="row" justifyContent="center">
-                <Container maxWidth="xs">
+                <Container maxWidth="xs" style={{ marginTop: 8 }}>
                     <Grid item xs={12} container direction="column" justifyContent="center">
                         {listOfCollections.map((value, key) => {
                             return (
@@ -70,6 +104,11 @@ function Home() {
                                 </Grid>
                             );
                         })}
+                        {!(listOfCollections.length >= listOfAllCollections.length) &&
+                            <Button onClick={collectionsShowMore} id="submitButton" style={{ marginBottom: 8 }}>
+                                <FormattedMessage id="home-page.show-more" />
+                            </Button>
+                        }
                     </Grid>
                 </Container>
                 <Container maxWidth="xs">
@@ -100,6 +139,11 @@ function Home() {
                                 </Grid>
                             );
                         })}
+                        {!(listOfItems.length >= listOfAllItems.length) &&
+                            <Button onClick={itemsShowMore} id="submitButton" style={{ marginBottom: 8 }}>
+                                <FormattedMessage id="home-page.show-more" />
+                            </Button>
+                        }
                     </Grid>
                 </Container>
             </Grid>

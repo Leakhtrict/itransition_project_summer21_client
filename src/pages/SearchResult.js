@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
-import { Grid, Box, Container } from "@material-ui/core";
+import { Grid, Box, Container, Button } from "@material-ui/core";
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { FormattedMessage } from "react-intl";
 import SortSelect from "../components/SortSelect";
@@ -10,15 +10,26 @@ function SearchResult() {
     let { word } = useParams();
     let history = useHistory();
     const [listOfItems, setListOfItems] = useState([]);
+    const [listOfAllItems, setListOfAllItems] = useState([]);
 
     useEffect(() => {
         axios.get("https://itransition-project-genis.herokuapp.com/items").then((response) => {
-            setListOfItems(response.data.filter((value) => {
+            const filteredItems = response.data.filter((value) => {
                 return value.name.toLowerCase().includes(word.toLowerCase())
                 || value.tags.toLowerCase().includes(word.toLowerCase());
-            }));
+            }).reverse();
+            setListOfAllItems(filteredItems);
+            setListOfItems(filteredItems.slice(0, 5));
         });
     }, [word]);
+
+    const itemsShowMore = () => {
+        if(listOfItems.length + 5 >= listOfAllItems.length){
+            setListOfItems(listOfAllItems);
+        } else{
+            setListOfItems(listOfAllItems.slice(0, listOfItems.length + 5))
+        }
+    };
 
     return (
         <div className="tagCloudResult">
@@ -62,6 +73,11 @@ function SearchResult() {
                             </Grid>
                         );
                     })}
+                    {!(listOfItems.length >= listOfAllItems.length) &&
+                        <Button onClick={itemsShowMore} id="submitButton" style={{ marginBottom: 8 }}>
+                            <FormattedMessage id="home-page.show-more" />
+                        </Button>
+                    }
                 </Grid>
             </Container> 
         </div>

@@ -39,6 +39,7 @@ hr{
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 
@@ -123,7 +124,11 @@ hr{
 .registerForm #submitButton,
 .loginForm #submitButton,
 .createCollection #submitButton,
-.createItem #submitButton{
+.createItem #submitButton,
+.homePage #submitButton,
+.tagCloudResult #submitButton,
+.userPage #submitButton,
+.collectionPage #submitButton{
   color: white;
   background-color: red;
 }
@@ -131,7 +136,11 @@ hr{
 .registerForm #submitButton:hover,
 .loginForm #submitButton:hover,
 .createCollection #submitButton:hover,
-.createItem #submitButton:hover{
+.createItem #submitButton:hover,
+.homePage #submitButton:hover,
+.tagCloudResult #submitButton:hover,
+.userPage #submitButton:hover,
+.collectionPage #submitButton:hover{
   color: red;
   background-color: white;
 }

@@ -8,11 +8,11 @@ export default function MainTagCloud({
     let history = useHistory();
 
     return (
-        <Container maxWidth="xs" style={{ marginBottom: "8px", borderTop: "solid 1px black", borderBottom: "solid 1px black" }}>
+        <Container maxWidth="xs" style={{ margin: "8px 0px", borderTop: "solid 1px black", borderBottom: "solid 1px black" }}>
             <TagCloud
                 minSize={18}
                 maxSize={18}
-                tags={data}
+                tags={data.slice(0, 12)}
                 disableRandomColor={true}
                 randomNumberGenerator={() => {return 0}}
                 onClick={tag => {history.push(`/byTag/${tag.value}`)}}
