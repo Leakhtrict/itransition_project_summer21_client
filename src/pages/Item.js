@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     title: {
         fontSize: 32,
         fontWeight: "bold",
+        textAlign: "center",
     },
     updatedAt: {
         fontSize: 12,
@@ -59,7 +60,7 @@ function Item() {
         socket.on("emitSendComment", (data) => {
             setThisComments(prevState => [...prevState, data]);
         });
-    }, []);
+    }, [itemId]);
 
     useEffect(() => {
         axios.get(`https://itransition-project-genis.herokuapp.com/items/byId/${itemId}`)
@@ -147,7 +148,7 @@ function Item() {
     };
 
     return (
-        <div style={{ wordBreak: "break-word" }}>
+        <div style={{ wordBreak: "break-word", maxWidth: "95vw" }}>
             <Container maxWidth="xs">
                 <Grid container direction="column" justifyContent="center" alignItems="center">
                     <Grid item className={classes.title}>{itemBody.name}</Grid>
