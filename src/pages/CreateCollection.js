@@ -40,7 +40,11 @@ function CreateCollection() {
 
         axios.get(`https://itransition-project-genis.herokuapp.com/users/byId/${id}`)
         .then((response) => {
-            setCurrentUser(response.data);
+            if(response.data){
+                setCurrentUser(response.data);
+            } else{
+                history.push("/");
+            }
         });
     }, [id, authState]);
 

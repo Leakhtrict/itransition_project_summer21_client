@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import { makeStyles } from '@material-ui/core/styles';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import { IconButton, Button, Grid, Box, Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
         margin: "5px",
         padding: "6px 9px",
         '&:hover': {
-            backgroundColor: "rgb(233, 102, 102)",
+            color: "red",
+            backgroundColor: "white",
         },
     },
     collectionButtons: {
@@ -24,6 +26,14 @@ const useStyles = makeStyles((theme) => ({
         padding: "6px",
         color: "black",
     },
+    usernameInfo: {
+        margin: "8px 0px",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        fontSize: 20,
+    }
 }));
 
 function User() {
@@ -31,10 +41,20 @@ function User() {
     const { authState } = useContext(AuthContext);
     let { userId } = useParams();
     const [thisCollections, setThisCollections] = useState([]);
+    const [thisUser, setThisUser] = useState({});
     let history = useHistory();
 
     useEffect(() => {
-        axios.get(`https://itransition-project-genis.herokuapp.com/collections/${userId}`).then((response) => {
+        axios.get(`https://itransition-project-genis.herokuapp.com/users/byId/${userId}`)
+        .then((response) => {
+            if(response.data){
+                setThisUser(response.data);
+            } else{
+                history.push("/");
+            }
+        });
+        axios.get(`https://itransition-project-genis.herokuapp.com/collections/${userId}`)
+        .then((response) => {
             setThisCollections(response.data);
         });
     }, [authState, userId]);
@@ -53,6 +73,10 @@ function User() {
 
     return(
         <Container maxWidth="xs">
+            <div className={classes.usernameInfo}>
+                <AccountBoxIcon fontSize="large" style={{ color: "red" }}/>
+                <strong>{thisUser.username}</strong>
+            </div>
             <div className="buttonBar">
                 {authState.isAdmin && 
                     <Button onClick={() => {history.push("/adminpanel")}} className={classes.buttonBar}>

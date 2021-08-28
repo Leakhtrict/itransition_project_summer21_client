@@ -17,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
         margin: "5px 5px 10px 5px",
         padding: "6px 9px",
         '&:hover': {
-            backgroundColor: "rgb(233, 102, 102)",
+            color: "red",
+            backgroundColor: "white",
         },
     },
     itemButtons: {

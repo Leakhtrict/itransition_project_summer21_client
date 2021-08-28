@@ -31,6 +31,7 @@
     "profile-page.createcollection": "Создать коллекцию",
     "profile-page.adminpanel": "Админ. панель",
     "profile-page.updatedAt": "Обновлено",
+    "profile-page.info.username": "Имя пользователя:",
     "collection-page.createitem": "Добавить элемент",
     "createcollection-page.submit": "Создать коллекцию",
     "createcollection-page.title": "Название",

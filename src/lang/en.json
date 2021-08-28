@@ -31,6 +31,7 @@
     "profile-page.createcollection": "Create collection",
     "profile-page.adminpanel": "Administer panel",
     "profile-page.updatedAt": "Last update",
+    "profile-page.info.username": "Username:",
     "collection-page.createitem": "Add element",
     "createcollection-page.submit": "Create collection",
     "createcollection-page.title": "Title",
