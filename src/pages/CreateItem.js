@@ -138,6 +138,9 @@ function CreateItem() {
                                         isMulti
                                         id="inputCreateItemTags"
                                         onChange={onTagsChange}
+                                        onInputChange={(e) => {
+                                            return e.replace(" ", '');
+                                        }}
                                         options={listOfTags}
                                         placeholder={id} />
                                     }

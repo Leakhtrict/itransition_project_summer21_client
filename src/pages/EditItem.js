@@ -115,7 +115,7 @@ function EditItem() {
     };
 
     const validationSchema = Yup.object().shape({
-        name: Yup.string().required("Name is required."),
+        name: Yup.string().required(),
         numField1: Yup.number(),
         numField2: Yup.number(),
         numField3: Yup.number(),
@@ -128,6 +128,8 @@ function EditItem() {
     });
 
     const onTagsChange = (newValue) => {
+        newValue[newValue.length-1].value = newValue[newValue.length-1].value.replace(/\s/g, '_');
+        newValue[newValue.length-1].label = newValue[newValue.length-1].label.replace(/\s/g, '_');
         setSelectedTags(newValue);
     };
 
@@ -162,6 +164,9 @@ function EditItem() {
                                         isMulti
                                         id="inputCreateItemTags"
                                         onChange={onTagsChange}
+                                        onInputChange={(e) => {
+                                            return e.replace(" ", '');
+                                        }}
                                         defaultValue={alreadySelectedTags}
                                         options={listOfTags}
                                         placeholder={id} />
