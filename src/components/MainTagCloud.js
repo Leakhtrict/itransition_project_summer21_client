@@ -8,7 +8,7 @@ export default function MainTagCloud({
     let history = useHistory();
 
     return (
-        <Container maxWidth="xs" style={{ marginBottom: "8px" }}>
+        <Container maxWidth="xs" style={{ marginBottom: "8px", borderTop: "solid 1px black", borderBottom: "solid 1px black" }}>
             <TagCloud
                 minSize={18}
                 maxSize={18}

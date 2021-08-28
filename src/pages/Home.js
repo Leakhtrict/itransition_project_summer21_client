@@ -76,7 +76,6 @@ function Home() {
                     {listOfTags && 
                         <MainTagCloud data={listOfTags} />
                     }
-                    <hr />
                     <Grid item xs={12} container direction="column" justifyContent="center">
                         {listOfItems.map((value, key) => {
                             const thisTags = value.tags.split(" ").slice(0, -1);
