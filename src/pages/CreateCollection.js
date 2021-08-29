@@ -136,6 +136,24 @@ function CreateCollection() {
                                     <FormattedMessage id="collection-theme.cars">
                                         {(id) => <option value="collection-theme.cars">{id}</option>}
                                     </FormattedMessage>
+                                    <FormattedMessage id="collection-theme.cities">
+                                        {(id) => <option value="collection-theme.cities">{id}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id="collection-theme.films">
+                                        {(id) => <option value="collection-theme.films">{id}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id="collection-theme.food">
+                                        {(id) => <option value="collection-theme.food">{id}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id="collection-theme.music">
+                                        {(id) => <option value="collection-theme.music">{id}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id="collection-theme.serials">
+                                        {(id) => <option value="collection-theme.serials">{id}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id="collection-theme.sport">
+                                        {(id) => <option value="collection-theme.sport">{id}</option>}
+                                    </FormattedMessage>
                                     <FormattedMessage id="collection-theme.videogames">
                                         {(id) => <option value="collection-theme.videogames">{id}</option>}
                                     </FormattedMessage>
