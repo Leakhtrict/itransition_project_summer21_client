@@ -25,8 +25,10 @@ const useStyles = makeStyles((theme) => ({
         color: "grey",
     },
     textField: {
+        backgroundColor: "rgba(255,255,255,0.5)",
         margin: "8px",
         border: "solid 1px red",
+        boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
         width: "100%",
     },
     otherFields: {
