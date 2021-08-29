@@ -37,8 +37,8 @@ function EditItem() {
 
     useLayoutEffect(() => {
         axios.get(`https://itransition-project-genis.herokuapp.com/collections/byId/${collectionId}`,
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-        ).then((response) => {
+        { headers: { accessToken: localStorage.getItem("accessToken") } })
+        .then((response) => {
             if (response.data.error) {
                 history.push("/login");
             } else if (response.data.collection.UserId !== response.data.userInfo.id && !response.data.userInfo.isAdmin) {
@@ -47,7 +47,8 @@ function EditItem() {
             setCurrentCollection(response.data.collection);
         });
 
-        axios.get(`https://itransition-project-genis.herokuapp.com/items/byId/${itemId}`).then((response) => {
+        axios.get(`https://itransition-project-genis.herokuapp.com/items/byId/${itemId}`)
+        .then((response) => {
             setCurrentItem(response.data);
             setFreeText1(response.data.textField1);
             setFreeText2(response.data.textField2);
@@ -64,7 +65,8 @@ function EditItem() {
             setSelectedTags(alreadySelectedTags);
         });
 
-        axios.get("https://itransition-project-genis.herokuapp.com/tags").then((response) => {
+        axios.get("https://itransition-project-genis.herokuapp.com/tags")
+        .then((response) => {
             const getTags = response.data;
             getTags.map((value) => {
                 setListOfTags(prevState => [...prevState, { value: value.tagName, label: value.tagName }]);
@@ -230,7 +232,7 @@ function EditItem() {
                             <div className="additItemFields">
                                 {currentCollection.stringField1_isVisible &&
                                     <>
-                                        <label>{currentCollection.stringField3_Name}</label>
+                                        <label>{currentCollection.stringField1_Name}</label>
                                         <Field
                                             autoComplete="off"
                                             id="inputCreateItem"
