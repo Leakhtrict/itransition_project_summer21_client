@@ -92,7 +92,8 @@ function EditItem() {
     };
 
     const onSubmit = (data) => {
-        axios.post("https://itransition-project-genis.herokuapp.com/tags/addTags", selectedTags).then((response) => {
+        axios.post("https://itransition-project-genis.herokuapp.com/tags/addTags", selectedTags)
+        .then((response) => {
             if (response.data.error){
                 alert(response.data.error);
             }
@@ -109,7 +110,8 @@ function EditItem() {
         data.dateField1 = date1;
         data.dateField2 = date2;
         data.dateField3 = date3;
-        axios.post(`https://itransition-project-genis.herokuapp.com/items/editItem/${itemId}`, data).then(() => {
+        axios.post(`https://itransition-project-genis.herokuapp.com/items/editItem/${itemId}`, data)
+        .then(() => {
             history.push(`/collection/${collectionId}`);
         });
     };

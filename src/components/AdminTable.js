@@ -30,8 +30,9 @@ function AdminTable() {
   const [listOfIds, setListOfIds] = useState([]);
 
   useEffect(() => {
-      axios.get("https://itransition-project-genis.herokuapp.com/users").then((response) => {
-          setListOfUsers(response.data);
+      axios.get("https://itransition-project-genis.herokuapp.com/users")
+      .then((response) => {
+        setListOfUsers(response.data);
       });
   }, []);
 

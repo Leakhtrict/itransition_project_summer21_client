@@ -12,7 +12,7 @@ export default function MainTagCloud({
             <TagCloud
                 minSize={18}
                 maxSize={18}
-                tags={data.slice(0, 12)}
+                tags={data.slice(0, 15)}
                 disableRandomColor={true}
                 randomNumberGenerator={() => {return 0}}
                 onClick={tag => {history.push(`/byTag/${tag.value}`)}}

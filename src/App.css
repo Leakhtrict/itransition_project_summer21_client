@@ -22,7 +22,6 @@ hr{
 
 .langChanger{
   width: 100%;
-  border-top: solid 1px black;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -119,36 +118,19 @@ hr{
   padding-left: 10px;
 }
 
-.registerForm #formError,
-.loginForm #formError,
-.createCollection #formError,
-.createItem #formError{
+#formError{
   color: red;
   font-size: 14px;
 }
 
-.registerForm #submitButton,
-.loginForm #submitButton,
-.createCollection #submitButton,
-.createItem #submitButton,
-.homePage #submitButton,
-.tagCloudResult #submitButton,
-.userPage #submitButton,
-.collectionPage #submitButton{
+#submitButton{
   color: white;
   background-color: red;
 }
 
-.registerForm #submitButton:hover,
-.loginForm #submitButton:hover,
-.createCollection #submitButton:hover,
-.createItem #submitButton:hover,
-.homePage #submitButton:hover,
-.tagCloudResult #submitButton:hover,
-.userPage #submitButton:hover,
-.collectionPage #submitButton:hover{
+#submitButton:hover{
   color: red;
-  background-color: white;
+  background-color: transparent;
 }
 
 .createCollection, .createItem, .loginPage, .registerPage{
@@ -319,7 +301,7 @@ hr{
 .itemTag:hover{
   cursor: pointer;
   color: red;
-  background-color: white;
+  background-color: transparent;
 }
 
 .item footer{

@@ -30,8 +30,8 @@ function EditCollection() {
 
     useLayoutEffect(() => {
         axios.get(`https://itransition-project-genis.herokuapp.com/collections/byId/${id}`, 
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-        ).then((response) => {
+        { headers: { accessToken: localStorage.getItem("accessToken") } })
+        .then((response) => {
             if (response.data.error) {
                 history.push("/login");
             } else if (response.data.collection.UserId !== response.data.userInfo.id && !response.data.userInfo.isAdmin) {
@@ -75,7 +75,8 @@ function EditCollection() {
             data.imageURL = currCollection.imageURL;
         }
         data.description = freeText;
-        axios.post(`https://itransition-project-genis.herokuapp.com/collections/${id}/editCollection`, data).then(() => {
+        axios.post(`https://itransition-project-genis.herokuapp.com/collections/${id}/editCollection`, data)
+        .then(() => {
             history.push(`/user/${currCollection.UserId}`);
         });
     };

@@ -58,7 +58,8 @@ function App() {
         }
     });
 
-    axios.get("https://itransition-project-genis.herokuapp.com/items").then((response) => {
+    axios.get("https://itransition-project-genis.herokuapp.com/items")
+    .then((response) => {
       setListOfItems(response.data);
     });
   }, []);

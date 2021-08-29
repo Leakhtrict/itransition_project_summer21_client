@@ -195,7 +195,6 @@ function CreateCollection() {
                                     </Tooltip>
                                 }
                             </FormattedMessage>
-                            
                         </Grid>
                         {showAdditFields &&
                             <>

@@ -35,8 +35,8 @@ function CreateItem() {
 
     useEffect(() => {
         axios.get(`https://itransition-project-genis.herokuapp.com/collections/byId/${id}`,
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-        ).then((response) => {
+        { headers: { accessToken: localStorage.getItem("accessToken") } })
+        .then((response) => {
             if (response.data.error) {
                 history.push("/login");
             } else if (response.data.collection.UserId !== response.data.userInfo.id && !response.data.userInfo.isAdmin) {
@@ -45,7 +45,8 @@ function CreateItem() {
             setCurrentCollection(response.data.collection);
         });
 
-        axios.get("https://itransition-project-genis.herokuapp.com/tags").then((response) => {
+        axios.get("https://itransition-project-genis.herokuapp.com/tags")
+        .then((response) => {
             const getTags = response.data;
             getTags.map((value) => {
                 setListOfTags(prevState => [...prevState, { value: value.tagName, label: value.tagName }]);
@@ -72,7 +73,8 @@ function CreateItem() {
     };
 
     const onSubmit = (data) => {
-        axios.post("https://itransition-project-genis.herokuapp.com/tags/addTags", selectedTags).then((response) => {
+        axios.post("https://itransition-project-genis.herokuapp.com/tags/addTags", selectedTags)
+        .then((response) => {
             if (response.data.error){
                 alert(response.data.error);
             }
@@ -89,7 +91,8 @@ function CreateItem() {
         data.dateField1 = date1;
         data.dateField2 = date2;
         data.dateField3 = date3;
-        axios.post(`https://itransition-project-genis.herokuapp.com/items/createItem/${id}`, data).then(() => {
+        axios.post(`https://itransition-project-genis.herokuapp.com/items/createItem/${id}`, data)
+        .then(() => {
             history.push(`/collection/${id}`);
         });
     };

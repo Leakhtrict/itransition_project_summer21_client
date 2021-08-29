@@ -13,7 +13,8 @@ function TagCloudResult() {
     const [listOfAllItems, setListOfAllItems] = useState([]);
 
     useEffect(() => {
-        axios.get("https://itransition-project-genis.herokuapp.com/items").then((response) => {
+        axios.get("https://itransition-project-genis.herokuapp.com/items")
+        .then((response) => {
             const filteredItems = response.data.filter((value) => {
                 return value.tags.includes(tag + " ");
             }).sort((a, b) => {

@@ -22,7 +22,8 @@ function Register() {
     });
 
     const onSubmit = (data) => {
-        axios.post("https://itransition-project-genis.herokuapp.com/users/register", data).then(() => {
+        axios.post("https://itransition-project-genis.herokuapp.com/users/register", data)
+        .then(() => {
             history.push("/login");
         });
     };

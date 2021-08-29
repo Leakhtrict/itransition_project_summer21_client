@@ -95,7 +95,8 @@ function Item() {
             });
         });
 
-        axios.get(`https://itransition-project-genis.herokuapp.com/comments/${itemId}`).then((response) => {
+        axios.get(`https://itransition-project-genis.herokuapp.com/comments/${itemId}`)
+        .then((response) => {
             setThisComments(response.data);
         });
     }, [authState, itemId]);
@@ -108,8 +109,8 @@ function Item() {
                 ItemId: itemId,
                 UserId: authState.id,
             },
-            { headers: {accessToken: localStorage.getItem("accessToken") } }
-            ).then( async (response) => {
+            { headers: {accessToken: localStorage.getItem("accessToken") } })
+            .then( async (response) => {
                 if (response.data.error) {
                     history.push("/");
                 } else {
@@ -122,10 +123,9 @@ function Item() {
     };
 
     const deleteComment = (id) => {
-        console.log(id);
         axios.delete(`https://itransition-project-genis.herokuapp.com/comments/${id}`,
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-        ).then(() => {
+        { headers: { accessToken: localStorage.getItem("accessToken") } })
+        .then(() => {
             setThisComments(
                 thisComments.filter((val) => {
                   return val.id !== id;
@@ -137,8 +137,8 @@ function Item() {
     const likeItem = (itemId) => {
         axios.post("https://itransition-project-genis.herokuapp.com/likes", 
         { ItemId: itemId }, 
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-        ).then((response) => {
+        { headers: { accessToken: localStorage.getItem("accessToken") } })
+        .then((response) => {
             if (!response.data.error){
                 setItemBody(() => {
                     if (response.data.liked){
