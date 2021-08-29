@@ -103,6 +103,11 @@ hr{
   padding: 20px;
 }
 
+.collectionPage, .userPage{
+  width: 90vw;
+  max-width: 600px;
+}
+
 .registerForm #registerFormField, .loginForm #loginFormField{
   height: 40px;
   width: 90vw;

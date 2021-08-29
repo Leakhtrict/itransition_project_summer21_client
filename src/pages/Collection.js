@@ -38,11 +38,13 @@ function Collection() {
     const [thisAllItems, setThisAllItems] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://itransition-project-genis.herokuapp.com/collections/byIdNoAuth/${id}`).then((response) => {
+        axios.get(`https://itransition-project-genis.herokuapp.com/collections/byIdNoAuth/${id}`)
+        .then((response) => {
             setCollectionObj(response.data);
         });
 
-        axios.get(`https://itransition-project-genis.herokuapp.com/items/${id}`).then((response) => {
+        axios.get(`https://itransition-project-genis.herokuapp.com/items/${id}`)
+        .then((response) => {
             const sortedItems = response.data.sort((a, b) => {
                 return (b.id - a.id);
             });
@@ -53,8 +55,8 @@ function Collection() {
 
     const deleteItem = (id) => {
         axios.delete(`https://itransition-project-genis.herokuapp.com/items/${id}`, 
-        { headers: { accessToken: localStorage.getItem("accessToken") } }
-        ).then(() => {
+        { headers: { accessToken: localStorage.getItem("accessToken") } })
+        .then(() => {
             setThisItems(
                 thisItems.filter((val) => {
                     return val.id !== id;
@@ -77,7 +79,7 @@ function Collection() {
     };
 
     return (
-        <Container maxWidth="xs" className="collectionPage">
+        <div className="collectionPage">
             <Grid container direction="column" justifyContent="center" alignItems="center" >
                 <Grid item>
                     {(authState.id === collectionObj.UserId || authState.isAdmin) && 
@@ -95,7 +97,7 @@ function Collection() {
                     {thisItems.map((value, key) => {
                         const thisTags = value.tags.split(" ").slice(0, -1);
                         return (
-                            <div key={key}>
+                            <Grid item key={key} container>
                                 {(authState.id === collectionObj.UserId || authState.isAdmin) && 
                                     <>
                                         <IconButton onClick={() => {history.push(`/collection/${id}/item/${value.id}/edit`)}} className={classes.itemButtons}>
@@ -106,25 +108,23 @@ function Collection() {
                                         </IconButton>
                                     </>
                                 }
-                                <Grid item container >
-                                    <Box className="item">
-                                        <header onClick={() => {history.push(`/item/${value.id}`)}}>{value.name}</header>
-                                        <Grid item container style={{ margin: "10px" }} justifyContent="flex-start" alignItems="flex-start">
-                                            {thisTags.map((value, key) => {
-                                                return(
-                                                    <Grid item key={key} onClick={() => {history.push(`/byTag/${value}`)}} className="itemTag" style={{ margin: "6px" }}>
-                                                        {"#" + value}
-                                                    </Grid>
-                                                )
-                                            })}
-                                        </Grid>
-                                        <footer>
-                                            <FavoriteBorderIcon style={{ color: "red" }} />
-                                            {value.Likes.length}
-                                        </footer>
-                                    </Box>
-                                </Grid>
-                            </div>
+                                <Box className="item">
+                                    <header onClick={() => {history.push(`/item/${value.id}`)}}>{value.name}</header>
+                                    <Grid item container style={{ margin: "10px" }} justifyContent="flex-start" alignItems="flex-start">
+                                        {thisTags.map((value, key) => {
+                                            return(
+                                                <Grid item key={key} onClick={() => {history.push(`/byTag/${value}`)}} className="itemTag" style={{ margin: "6px" }}>
+                                                    {"#" + value}
+                                                </Grid>
+                                            )
+                                        })}
+                                    </Grid>
+                                    <footer>
+                                        <FavoriteBorderIcon style={{ color: "red" }} />
+                                        {value.Likes.length}
+                                    </footer>
+                                </Box>
+                            </Grid>
                         );
                     })}
                     {!(thisItems.length >= thisAllItems.length) &&
@@ -134,7 +134,8 @@ function Collection() {
                     }
                 </Grid>
             </Container>
-        </Container>
+        </div>
+        
     );
 }
 

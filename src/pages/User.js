@@ -110,7 +110,7 @@ function User() {
             <Grid container direction="column" justifyContent="center">
                 {thisCollections.map((value, key) => {
                     return (
-                        <div key={key}>
+                        <Grid item key={key} container>
                             {((authState.id.toString() === userId) || authState.isAdmin) && 
                                 <>
                                     <IconButton onClick={() => {history.push(`/collection/${value.id}/edit`)}} className={classes.collectionButtons}>
@@ -121,33 +121,31 @@ function User() {
                                     </IconButton>
                                 </>
                             }
-                            <Grid item>
-                                <Box className="collection" >
-                                    <header onClick={() => {history.push(`/collection/${value.id}`)}}>
-                                        <div className="collTitle">
-                                            {value.title}
-                                        </div>
-                                        <hr />
-                                        <div>
-                                            <FormattedMessage id={value.theme} />
-                                        </div>
-                                    </header>
-                                    <Container id="collectionBody" style={{ minHeight: 140, backgroundImage: `url(${value.imageURL})` }}>
-                                        <ReactMarkdown>{value.description}</ReactMarkdown>
-                                    </Container>
-                                    <footer>
-                                        <div className="collDate">
-                                            <FormattedMessage id="profile-page.updatedAt" />
-                                            {" " + new Date(value.updatedAt).toLocaleString()}
-                                        </div>
-                                        <hr />
-                                        <div>
-                                            {value.ownerUser}
-                                        </div>
-                                    </footer>
-                                </Box>
-                            </Grid>
-                        </div>
+                            <Box className="collection" >
+                                <header onClick={() => {history.push(`/collection/${value.id}`)}}>
+                                    <div className="collTitle">
+                                        {value.title}
+                                    </div>
+                                    <hr />
+                                    <div>
+                                        <FormattedMessage id={value.theme} />
+                                    </div>
+                                </header>
+                                <Container id="collectionBody" style={{ minHeight: 140, backgroundImage: `url(${value.imageURL})` }}>
+                                    <ReactMarkdown>{value.description}</ReactMarkdown>
+                                </Container>
+                                <footer>
+                                    <div className="collDate">
+                                        <FormattedMessage id="profile-page.updatedAt" />
+                                        {" " + new Date(value.updatedAt).toLocaleString()}
+                                    </div>
+                                    <hr />
+                                    <div>
+                                        {value.ownerUser}
+                                    </div>
+                                </footer>
+                            </Box>
+                        </Grid>
                     );
                 })}
                 {!(thisCollections.length >= thisAllCollections.length) &&

@@ -12,9 +12,9 @@ function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
   
     while (currentIndex !== 0) {
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
     }
   
     return array;
@@ -30,7 +30,8 @@ function Home() {
     let history = useHistory();
 
     useEffect(() => {
-        axios.get("https://itransition-project-genis.herokuapp.com/collections").then((response) => {
+        axios.get("https://itransition-project-genis.herokuapp.com/collections")
+        .then((response) => {
             const collectionsSorted = response.data.sort((a, b) => {
                 return (b.numberOfItems - a.numberOfItems);
             });
@@ -38,7 +39,8 @@ function Home() {
             setListOfCollections(collectionsSorted.slice(0, 3));
         });
 
-        axios.get("https://itransition-project-genis.herokuapp.com/items").then((response) => {
+        axios.get("https://itransition-project-genis.herokuapp.com/items")
+        .then((response) => {
             const allItems = response.data.sort((a, b) => {
                 return b.updatedAt.localeCompare(a.updatedAt);
             });
@@ -46,7 +48,8 @@ function Home() {
             setListOfItems(allItems.slice(0, 4));
         });
 
-        axios.get("https://itransition-project-genis.herokuapp.com/tags").then((response) => {
+        axios.get("https://itransition-project-genis.herokuapp.com/tags")
+        .then((response) => {
             response.data.map((value) => {
                 setListOfTags(prevState => [...prevState, { value: value.tagName, count: 0 }]);
                 return value;
