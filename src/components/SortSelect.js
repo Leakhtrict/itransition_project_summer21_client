@@ -12,10 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SortSelect({
-    thisItems,
-    setThisItems
-}){
+export default function SortSelect({ setThisItems }){
     const classes = useStyles();
     const [sortFilter, setSortFilter] = useState("id");
     const sortByValue = (value) => {

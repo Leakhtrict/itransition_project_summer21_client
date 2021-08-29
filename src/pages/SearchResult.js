@@ -42,7 +42,7 @@ function SearchResult() {
                             <div style={{ fontSize: 18, marginBottom: 8 }}>{id + " \"" + word + "\""}</div>
                         }
                     </FormattedMessage>
-                    <SortSelect thisItems={listOfItems} setThisItems={setListOfItems} />
+                    <SortSelect setThisItems={setListOfAllItems} />
                 </> : 
                 <FormattedMessage id="searchresult-page.result.notfound">
                     {(id) =>

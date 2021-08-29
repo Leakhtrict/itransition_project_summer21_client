@@ -42,7 +42,7 @@ function TagCloudResult() {
                             <div style={{ fontSize: 18, marginBottom: 8 }}>{id + " \"#" + tag + "\""}</div>
                         }
                     </FormattedMessage>
-                    <SortSelect thisItems={listOfItems} setThisItems={setListOfItems} />
+                    <SortSelect setThisItems={setListOfAllItems} />
                 </> :
                 <FormattedMessage id="tagresult-page.result.notfound">
                     {(id) =>
