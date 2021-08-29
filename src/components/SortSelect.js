@@ -12,28 +12,44 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SortSelect({ setThisItems }){
+export default function SortSelect({ setThisItems, setThisAllItems }){
     const classes = useStyles();
     const [sortFilter, setSortFilter] = useState("id");
     const sortByValue = (value) => {
         switch(value){
             case "id":
-                setThisItems(prevState => [...prevState].sort((a, b) => {
-                    return (b.id - a.id);
-                }));
+                setThisAllItems(prevAllState => {
+                    const sortedList = [...prevAllState].sort((a, b) => {
+                        return (b.id - a.id);
+                    });
+                    setThisItems(prevState => sortedList.slice(0, prevState.length));
+                    return sortedList;
+                });
                 break;
             case "updatedAt":
-                setThisItems(prevState => [...prevState].sort((a, b) => {
-                    return b.updatedAt.localeCompare(a.updatedAt);
-                }));
+                setThisAllItems(prevState => {
+                    const sortedList = [...prevState].sort((a, b) => {
+                        return b.updatedAt.localeCompare(a.updatedAt);
+                    });
+                    setThisItems(prevState => sortedList.slice(0, prevState.length));
+                    return sortedList;
+                });
                 break;
             case "name":
-                setThisItems(prevState => [...prevState].sort((a, b) => a.name.localeCompare(b.name)));
+                setThisAllItems(prevState => {
+                    const sortedList = [...prevState].sort((a, b) => a.name.localeCompare(b.name));
+                    setThisItems(prevState => sortedList.slice(0, prevState.length));
+                    return sortedList;
+                });
                 break;
             case "likes":
-                setThisItems(prevState => [...prevState].sort((a, b) => {
-                    return (b.Likes.length - a.Likes.length);
-                }));
+                setThisAllItems(prevState => {
+                    const sortedList = [...prevState].sort((a, b) => {
+                        return (b.Likes.length - a.Likes.length);
+                    });
+                    setThisItems(prevState => sortedList.slice(0, prevState.length));
+                    return sortedList;
+                });
                 break;
             default:
                 break;
@@ -46,7 +62,11 @@ export default function SortSelect({ setThisItems }){
     }
 
     const reverseItems = () => {
-        setThisItems(prevState => [...prevState].reverse());
+        setThisAllItems(prevAllState => {
+            const sortedList = [...prevAllState].reverse();
+            setThisItems(prevState => sortedList.slice(0, prevState.length));
+            return sortedList;
+        });
     };
 
     return(

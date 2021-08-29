@@ -89,7 +89,7 @@ function Collection() {
                     }
                 </Grid>
                 <Grid item>
-                    <SortSelect setThisItems={setThisAllItems} />
+                    <SortSelect setThisItems={setThisItems} setThisAllItems={setThisAllItems} />
                 </Grid>
             </Grid>
             <Container maxWidth="xs" style={{ marginTop: "8px" }}>
