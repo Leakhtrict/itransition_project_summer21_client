@@ -58,6 +58,7 @@
     "createitem-page.numField.error": "Input must be a number",
     "edititem-page.submit": "Submit",
     "item-page.add-comment": "Add comment",
+    "item-page.noComments": "No comments here",
     "item-page.updatedAt": "Last update",
     "searchbar.placeholder": "Search...",
     "sortselect.sortBy": "Sort by ",

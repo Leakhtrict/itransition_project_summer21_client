@@ -32,14 +32,27 @@ const useStyles = makeStyles((theme) => ({
     otherFields: {
         margin: "0px 4px 8px",
     },
-    commentSection: {
-        borderTop: "solid 1px",
+    commentItem: {
+        borderBottom: "solid 1px black",
         paddingTop: 8,
         marginBottom: 8,
     },
+    commentSection: {
+        backgroundColor: "rgba(255,255,255,0.3)",
+        border: "1px solid lightgray",
+        boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
+        padding: 8,
+    },
     commentInput: {
         width: "100%",
-    }
+    },
+    noComments: {
+        fontSize: 12,
+        color: "rgb(110, 110, 110)",
+        width: "100%",
+        marginBottom: 8,
+        textAlign: "center",
+    },
 }));
 
 function Item() {
@@ -150,7 +163,7 @@ function Item() {
     };
 
     return (
-        <div style={{ wordBreak: "break-word", maxWidth: "95vw" }}>
+        <div style={{ wordBreak: "break-word", maxWidth: "calc(min(95vw, 600px))" }}>
             <Container maxWidth="xs">
                 <Grid container direction="column" justifyContent="center" alignItems="center">
                     <Grid item className={classes.title}>{itemBody.name}</Grid>
@@ -177,35 +190,38 @@ function Item() {
                 }
                 {itemBody.Likes.length}
             </IconButton>
-            <Grid container direction="column" justifyContent="flex-start" alignItems="flex-start">
-                {thisComments.map((value, key) => {
-                    return(
-                        <Grid 
-                            item
-                            key={key}
-                            container
-                            direction="column"
-                            justifyContent="flex-start"
-                            alignItems="flex-start"
-                            spacing={1}
-                            className={classes.commentSection}
-                        >
-                            {(authState.username === value.username || authState.isAdmin) && 
-                                <IconButton onClick={() => deleteComment(value.id)} style={{ color: "black", height: "10px", width: "10px" }}>
-                                    <DeleteIcon />
-                                </IconButton>
-                            }
-                            <Grid item>
-                                <strong>{value.username}</strong>
-                                <div style={{ margin: "6px" }}>{value.commentBody}</div>
-                                <div style={{ fontSize: 12 }}>{new Date(value.createdAt).toLocaleString()}</div>
+            <Grid container direction="column" justifyContent="flex-start" alignItems="flex-start" className={classes.commentSection}>
+                {thisComments.length ? 
+                    thisComments.map((value, key) => {
+                        return(
+                            <Grid 
+                                item
+                                key={key}
+                                container
+                                direction="column"
+                                justifyContent="flex-start"
+                                alignItems="flex-start"
+                                spacing={1}
+                                className={classes.commentItem}
+                            >
+                                {(authState.username === value.username || authState.isAdmin) && 
+                                    <IconButton onClick={() => deleteComment(value.id)} style={{ color: "black", height: "10px", width: "10px" }}>
+                                        <DeleteIcon />
+                                    </IconButton>
+                                }
+                                <Grid item>
+                                    <strong>{value.username}</strong>
+                                    <div style={{ margin: "6px" }}>{value.commentBody}</div>
+                                    <div style={{ fontSize: 12 }}>{new Date(value.createdAt).toLocaleString()}</div>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    )
-                })}
+                        )
+                    }) : 
+                    <div className={classes.noComments}><FormattedMessage id="item-page.noComments" /></div>
+                }
                 <Grid item className={classes.commentInput}>
                     {authState.status && 
-                        <div className={classes.commentSection}>
+                        <div>
                             <Paper>
                                 <OutlinedInput
                                     type="text"
@@ -214,7 +230,7 @@ function Item() {
                                     onKeyDown={handleKeyDown}
                                     endAdornment={
                                         <InputAdornment position="end">
-                                            <IconButton onClick={addComment} style={{ color: "red" }}>
+                                            <IconButton onClick={addComment} style={{ color: "red", margin: "0px -5px" }}>
                                                 <SendIcon />
                                             </IconButton>
                                         </InputAdornment>
