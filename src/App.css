@@ -301,6 +301,7 @@ hr{
   flex-direction: column;
   border: 1px solid lightgray;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: white;
 }
 
 .itemTag{
@@ -321,7 +322,6 @@ hr{
   flex-direction: row;
   align-items: center;
   font-size: 20px;
-  background-color: white;
 }
 
 .likeButton{
