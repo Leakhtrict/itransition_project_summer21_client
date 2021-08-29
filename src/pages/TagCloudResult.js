@@ -16,7 +16,9 @@ function TagCloudResult() {
         axios.get("https://itransition-project-genis.herokuapp.com/items").then((response) => {
             const filteredItems = response.data.filter((value) => {
                 return value.tags.includes(tag + " ");
-            }).reverse();
+            }).sort((a, b) => {
+                return (b.id - a.id);
+            });
             setListOfAllItems(filteredItems);
             setListOfItems(filteredItems.slice(0, 5));
         });

@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     buttons: {
-        margin: "5px",
+        margin: "5px -5px",
         padding: "6px",
         color: "black",
     },
@@ -22,7 +22,7 @@ export default function SortSelect({
         switch(value){
             case "id":
                 setThisItems(prevState => [...prevState].sort((a, b) => {
-                    return (a.id - b.id);
+                    return (b.id - a.id);
                 }));
                 break;
             case "updatedAt":
@@ -53,7 +53,7 @@ export default function SortSelect({
     };
 
     return(
-        <div style={{ border: "solid 2px red", borderRadius: 8, padding: 8 }}>
+        <div style={{ border: "solid 2px red", borderRadius: 8, padding: 8, backgroundColor: "white" }}>
             <FormControl className="sortSelect">
                 <FormattedMessage id="sortselect.sortBy">
                     {(id) => 

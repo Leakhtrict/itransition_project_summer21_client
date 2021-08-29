@@ -39,7 +39,9 @@ function Home() {
         });
 
         axios.get("https://itransition-project-genis.herokuapp.com/items").then((response) => {
-            const allItems = response.data.reverse();
+            const allItems = response.data.sort((a, b) => {
+                return b.updatedAt.localeCompare(a.updatedAt);
+            });
             setListOfAllItems(allItems);
             setListOfItems(allItems.slice(0, 4));
         });

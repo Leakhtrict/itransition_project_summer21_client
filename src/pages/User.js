@@ -56,7 +56,9 @@ function User() {
         });
         axios.get(`https://itransition-project-genis.herokuapp.com/collections/${userId}`)
         .then((response) => {
-            const sortedCollections = response.data.reverse();
+            const sortedCollections = response.data.sort((a, b) => {
+                return (b.id - a.id);
+            });
             setThisAllCollections(sortedCollections);
             setThisCollections(sortedCollections.slice(0, 2));
         });

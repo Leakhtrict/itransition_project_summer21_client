@@ -17,7 +17,9 @@ function SearchResult() {
             const filteredItems = response.data.filter((value) => {
                 return value.name.toLowerCase().includes(word.toLowerCase())
                 || value.tags.toLowerCase().includes(word.toLowerCase());
-            }).reverse();
+            }).sort((a, b) => {
+                return (b.id - a.id);
+            });
             setListOfAllItems(filteredItems);
             setListOfItems(filteredItems.slice(0, 5));
         });
