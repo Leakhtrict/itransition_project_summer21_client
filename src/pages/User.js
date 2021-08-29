@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         padding: "6px 9px",
         '&:hover': {
             color: "red",
-            backgroundColor: "white",
+            backgroundColor: "transparent",
         },
     },
     collectionButtons: {
