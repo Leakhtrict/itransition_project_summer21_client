@@ -71,6 +71,11 @@ function User() {
                     return val.id !== id;
                 })
             );
+            setThisAllCollections(
+                thisAllCollections.filter((val) => {
+                    return val.id !== id;
+                })
+            );
         });
     };
 
@@ -125,7 +130,7 @@ function User() {
                                             <FormattedMessage id={value.theme} />
                                         </div>
                                     </header>
-                                    <Container>
+                                    <Container id="collectionBody" style={{ minHeight: 140, backgroundImage: `url(${value.imageURL})` }}>
                                         <ReactMarkdown>{value.description}</ReactMarkdown>
                                     </Container>
                                     <footer>

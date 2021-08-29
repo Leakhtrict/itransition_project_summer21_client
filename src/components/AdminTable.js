@@ -14,6 +14,12 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   buttonBar: {
     color: "black",
+  },
+  mainTable: {
+    height: 630,
+    width: "100vw",
+    maxWidth: 972,
+    backgroundColor: "white",
   }
 }));
 
@@ -145,7 +151,7 @@ function AdminTable() {
           <DeleteForeverIcon />
         </IconButton>
       </div>
-      <div style={{ height: 630, width: "100vw", maxWidth: 972 }} >
+      <div className={classes.mainTable} >
         <DataGrid
           rows={listOfUsers}
           columns={[...COLUMNS,

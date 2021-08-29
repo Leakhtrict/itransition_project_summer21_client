@@ -35,7 +35,7 @@ function Home() {
                 return (b.numberOfItems - a.numberOfItems);
             });
             setListOfAllCollections(collectionsSorted);
-            setListOfCollections(collectionsSorted.slice(0, 4));
+            setListOfCollections(collectionsSorted.slice(0, 3));
         });
 
         axios.get("https://itransition-project-genis.herokuapp.com/items").then((response) => {
@@ -77,7 +77,7 @@ function Home() {
                         {listOfCollections.map((value, key) => {
                             return (
                                 <Grid item key={key}>
-                                    <Box className="collection" >
+                                    <Box className="collection" style={{ backgroundImage: `url(${value.imageURL})` }}>
                                         <header onClick={() => {history.push(`/collection/${value.id}`)}}>
                                             <div className="collTitle">
                                                 {value.title}
@@ -87,7 +87,7 @@ function Home() {
                                                 <FormattedMessage id={value.theme} />
                                             </div>
                                         </header>
-                                        <Container>
+                                        <Container id="collectionBody" style={{ minHeight: 140, backgroundImage: `url(${value.imageURL})` }}>
                                             <ReactMarkdown>{value.description}</ReactMarkdown>
                                         </Container>
                                         <footer>

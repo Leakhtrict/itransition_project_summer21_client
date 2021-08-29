@@ -10,6 +10,7 @@ import * as Showdown from "showdown";
 import "react-mde/lib/styles/css/react-mde-all.css";
 import { IconButton, Button, Grid, Tooltip } from "@material-ui/core";
 import HelpIcon from '@material-ui/icons/Help';
+import ImageDropzone from "../components/ImageDropzone";
 
 const converter = new Showdown.Converter({
     tables: true,
@@ -25,6 +26,7 @@ function CreateCollection() {
     const [selectedTab, setSelectedTab] = useState("write");
     const [currentUser, setCurrentUser] = useState({});
     const [showAdditFields, setShowAdditFields] = useState(false);
+    const [imageToUpload, setImageToUpload] = useState({});
     let history = useHistory();
 
     useLayoutEffect(() => {
@@ -52,6 +54,7 @@ function CreateCollection() {
         title: "",
         description: "",
         theme: "",
+        imageURL: "",
         ownerUser: "",
         numField1_Name: "",
         numField2_Name: "",
@@ -68,10 +71,19 @@ function CreateCollection() {
         UserId: id,
     };
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
+        if(imageToUpload.name && !imageToUpload.error){
+            const uploadData = new FormData();
+            uploadData.append("file", imageToUpload, "file");
+            await axios.post("https://itransition-project-genis.herokuapp.com/cloudinaryUpload", uploadData)
+            .then((response) => {
+                data.imageURL = response.data.secure_url;
+            });
+        }
         data.ownerUser = currentUser.username;
         data.description = freeText;
-        axios.post("https://itransition-project-genis.herokuapp.com/collections/createCollection", data).then(() => {
+        axios.post("https://itransition-project-genis.herokuapp.com/collections/createCollection", data)
+        .then(() => {
             history.push(`/user/${id}`);
         });
     };
@@ -128,6 +140,17 @@ function CreateCollection() {
                                         {(id) => <option value="collection-theme.videogames">{id}</option>}
                                     </FormattedMessage>
                                 </Field>
+                                {(imageToUpload.error === "tooManyFiles") &&
+                                    <span id="formError" style={{ marginBottom: -10 }}>
+                                        <FormattedMessage id="createcollection-page.dropzone.error.tooManyFiles"/>
+                                    </span>
+                                }
+                                {(imageToUpload.error === "wrongInput") && 
+                                    <span id="formError" style={{ marginBottom: -10 }}>
+                                        <FormattedMessage id="createcollection-page.dropzone.error.wrongInput"/>
+                                    </span>
+                                }
+                                <ImageDropzone setImageToUpload={setImageToUpload} />
                                 {(freeText.length > 240) &&
                                     <span id="formError" style={{ marginBottom: 10 }}>
                                         <FormattedMessage id="createcollection-page.description.error"/>

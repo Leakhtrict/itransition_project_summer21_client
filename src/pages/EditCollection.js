@@ -9,6 +9,8 @@ import * as Showdown from "showdown";
 import "react-mde/lib/styles/css/react-mde-all.css";
 import { IconButton, Button, Grid, Tooltip } from "@material-ui/core";
 import HelpIcon from '@material-ui/icons/Help';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ImageDropzone from "../components/ImageDropzone";
 
 const converter = new Showdown.Converter({
     tables: true,
@@ -23,6 +25,7 @@ function EditCollection() {
     const [selectedTab, setSelectedTab] = useState("write");
     const [currCollection, setCurrCollection] = useState({});
     const [showAdditFields, setShowAdditFields] = useState(false);
+    const [imageToUpload, setImageToUpload] = useState({});
     let history = useHistory();
 
     useLayoutEffect(() => {
@@ -43,6 +46,7 @@ function EditCollection() {
         title: currCollection.title,
         description: currCollection.description,
         theme: currCollection.theme,
+        imageURL: currCollection.imageURL,
         ownerUser: currCollection.ownerUser,
         numField1_Name: currCollection.numField1_Name,
         numField2_Name: currCollection.numField2_Name,
@@ -59,7 +63,17 @@ function EditCollection() {
         UserId: currCollection.UserId,
     };
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
+        if(imageToUpload.name && !imageToUpload.error){
+            const uploadData = new FormData();
+            uploadData.append("file", imageToUpload, "file");
+            await axios.post("https://itransition-project-genis.herokuapp.com/cloudinaryUpload", uploadData)
+            .then((response) => {
+                data.imageURL = response.data.secure_url;
+            });
+        } else{
+            data.imageURL = currCollection.imageURL;
+        }
         data.description = freeText;
         axios.post(`https://itransition-project-genis.herokuapp.com/collections/${id}/editCollection`, data).then(() => {
             history.push(`/user/${currCollection.UserId}`);
@@ -71,6 +85,10 @@ function EditCollection() {
         description: Yup.string().max(240),
         theme: Yup.string().required(),
     });
+
+    const deleteImage = () => {
+        setCurrCollection({...currCollection, imageURL: "" });
+    };
 
     return (
         <div className="createCollection">
@@ -122,6 +140,25 @@ function EditCollection() {
                                         {(id) => <option value="collection-theme.videogames">{id}</option>}
                                     </FormattedMessage>
                                 </Field>
+                                {(imageToUpload.error === "tooManyFiles") &&
+                                    <span id="formError" style={{ marginBottom: -10 }}>
+                                        <FormattedMessage id="createcollection-page.dropzone.error.tooManyFiles"/>
+                                    </span>
+                                }
+                                {(imageToUpload.error === "wrongInput") && 
+                                    <span id="formError" style={{ marginBottom: -10 }}>
+                                        <FormattedMessage id="createcollection-page.dropzone.error.wrongInput"/>
+                                    </span>
+                                }
+                                {(currCollection.imageURL !== "") ?
+                                    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                                        <IconButton onClick={deleteImage} style={{ color: "black", width: 32, height: 32 }}>
+                                            <DeleteIcon />
+                                        </IconButton>
+                                        <img src={currCollection.imageURL} style={{ maxWidth: 200, maxHeight: 200, marginBottom: 8 }}/>
+                                    </div> :
+                                    <ImageDropzone setImageToUpload={setImageToUpload} />
+                                }
                                 {(freeText.length > 240) &&
                                     <span id="formError" style={{ marginBottom: 10 }}>
                                         <FormattedMessage id="createcollection-page.description.error"/>
