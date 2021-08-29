@@ -67,9 +67,9 @@ function CreateItem() {
         textField1: "",
         textField2: "",
         textField3: "",
-        dateField1: null,
-        dateField2: null,
-        dateField3: null,
+        dateField1: undefined,
+        dateField2: undefined,
+        dateField3: undefined,
     };
 
     const onSubmit = (data) => {

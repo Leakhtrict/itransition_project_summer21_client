@@ -87,9 +87,9 @@ function EditItem() {
         textField1: currentItem.textField1,
         textField2: currentItem.textField2,
         textField3: currentItem.textField3,
-        dateField1: currentItem.dateField1 ? currentItem.dateField1 : null,
-        dateField2: currentItem.dateField2 ? currentItem.dateField2 : null,
-        dateField3: currentItem.dateField3 ? currentItem.dateField3 : null,
+        dateField1: currentItem.dateField1 ? currentItem.dateField1 : undefined,
+        dateField2: currentItem.dateField2 ? currentItem.dateField2 : undefined,
+        dateField3: currentItem.dateField3 ? currentItem.dateField3 : undefined,
         CollectionId: currentItem.CollectionId,
     };
 
