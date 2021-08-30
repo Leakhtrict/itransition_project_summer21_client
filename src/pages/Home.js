@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../helpers/AuthContext";
 import { useHistory } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import MainTagCloud from "../components/MainTagCloud";
@@ -21,6 +22,7 @@ function shuffle(array) {
 }
 
 function Home() {
+    const { authState, setAuthState } = useContext(AuthContext);
     const [listOfCollections, setListOfCollections] = useState([]);
     const [listOfAllCollections, setListOfAllCollections] = useState([]);
     const [listOfItems, setListOfItems] = useState([]);
@@ -30,6 +32,23 @@ function Home() {
     let history = useHistory();
 
     useEffect(() => {
+        axios.get("https://itransition-project-genis.herokuapp.com/users/auth",
+        { headers: { accessToken: localStorage.getItem("accessToken") } })
+        .then((response) => {
+            if (response.data.error) {
+                localStorage.removeItem("accessToken");
+                setAuthState({...authState, status: false});
+            } else {
+                setAuthState({
+                  username: response.data.username,
+                  id: response.data.id,
+                  isAdmin: response.data.isAdmin,
+                  status: true,
+                });
+            }
+        });
+
+
         axios.get("https://itransition-project-genis.herokuapp.com/collections")
         .then((response) => {
             const collectionsSorted = response.data.sort((a, b) => {
