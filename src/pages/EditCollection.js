@@ -123,7 +123,7 @@ function EditCollection() {
                                     </span>
                                 }/>
                                 <Field as="select" id="inputCreateCollection" name="theme">
-                                <FormattedMessage id="collection-theme.default">
+                                    <FormattedMessage id="collection-theme.default">
                                         {(id) => <option value="" selected="selected" hidden >{id}</option>}
                                     </FormattedMessage>
                                     <FormattedMessage id="collection-theme.alcohol">
@@ -137,6 +137,24 @@ function EditCollection() {
                                     </FormattedMessage>
                                     <FormattedMessage id="collection-theme.cars">
                                         {(id) => <option value="collection-theme.cars">{id}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id="collection-theme.cities">
+                                        {(id) => <option value="collection-theme.cities">{id}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id="collection-theme.films">
+                                        {(id) => <option value="collection-theme.films">{id}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id="collection-theme.food">
+                                        {(id) => <option value="collection-theme.food">{id}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id="collection-theme.music">
+                                        {(id) => <option value="collection-theme.music">{id}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id="collection-theme.serials">
+                                        {(id) => <option value="collection-theme.serials">{id}</option>}
+                                    </FormattedMessage>
+                                    <FormattedMessage id="collection-theme.sport">
+                                        {(id) => <option value="collection-theme.sport">{id}</option>}
                                     </FormattedMessage>
                                     <FormattedMessage id="collection-theme.videogames">
                                         {(id) => <option value="collection-theme.videogames">{id}</option>}
