@@ -67,17 +67,22 @@ function User() {
     const deleteCollection = (id) => {
         axios.delete(`https://itransition-project-genis.herokuapp.com/collections/${id}`,
         { headers: { accessToken: localStorage.getItem("accessToken") } })
-        .then(() => {
-            setThisCollections(
-                thisCollections.filter((val) => {
-                    return val.id !== id;
-                })
-            );
-            setThisAllCollections(
-                thisAllCollections.filter((val) => {
-                    return val.id !== id;
-                })
-            );
+        .then((response) => {
+            if (response.data.error){
+                localStorage.removeItem("accessToken");
+                history.push("/login");
+            } else{
+                setThisCollections(
+                    thisCollections.filter((val) => {
+                        return val.id !== id;
+                    })
+                );
+                setThisAllCollections(
+                    thisAllCollections.filter((val) => {
+                        return val.id !== id;
+                    })
+                );
+            }
         });
     };
 

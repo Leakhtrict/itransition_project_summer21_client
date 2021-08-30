@@ -34,6 +34,7 @@ function CreateCollection() {
         { headers: { accessToken: localStorage.getItem("accessToken") } })
         .then((response) => {
             if (response.data.error) {
+                localStorage.removeItem("accessToken");
                 history.push("/login");
             } else if (authState.id.toString() !== id && !response.data.isAdmin) {
                 history.push("/");

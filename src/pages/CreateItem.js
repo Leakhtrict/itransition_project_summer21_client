@@ -38,6 +38,7 @@ function CreateItem() {
         { headers: { accessToken: localStorage.getItem("accessToken") } })
         .then((response) => {
             if (response.data.error) {
+                localStorage.removeItem("accessToken");
                 history.push("/login");
             } else if (response.data.collection.UserId !== response.data.userInfo.id && !response.data.userInfo.isAdmin) {
                 history.push("/");

@@ -114,6 +114,7 @@ function Item() {
             { headers: {accessToken: localStorage.getItem("accessToken") } })
             .then( async (response) => {
                 if (response.data.error) {
+                    localStorage.removeItem("accessToken");
                     history.push("/");
                 } else {
                     await socket.emit("sendComment", response.data);
@@ -127,12 +128,17 @@ function Item() {
     const deleteComment = (id) => {
         axios.delete(`https://itransition-project-genis.herokuapp.com/comments/${id}`,
         { headers: { accessToken: localStorage.getItem("accessToken") } })
-        .then(() => {
-            setThisComments(
-                thisComments.filter((val) => {
-                  return val.id !== id;
-                })
-            );
+        .then((response) => {
+            if (response.data.error){
+                localStorage.removeItem("accessToken");
+                history.push("/");
+            } else{
+                setThisComments(
+                    thisComments.filter((val) => {
+                      return val.id !== id;
+                    })
+                );
+            }
         });
     };
 
@@ -154,6 +160,9 @@ function Item() {
                     }
                 });
                 setIsliked(!isLiked);
+            } else{
+                localStorage.removeItem("accessToken");
+                history.push("/");
             }
         });
     };

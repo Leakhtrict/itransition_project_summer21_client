@@ -47,6 +47,7 @@ function App() {
     { headers: { accessToken: localStorage.getItem("accessToken") } })
     .then((response) => {
         if (response.data.error) {
+          localStorage.removeItem("accessToken");
           setAuthState({...authState, status: false});
         } else {
           setAuthState({
