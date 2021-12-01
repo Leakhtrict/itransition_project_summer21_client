@@ -13,7 +13,7 @@
 }
 
 body{
-  margin: 0px;
+  margin: 0;
 }
 
 hr{
@@ -69,13 +69,21 @@ hr{
   left: 10px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 599px) {
   .navMenuList{
     position: absolute;
-    top: 52px;
+    top: 49px;
     left: 10px;
   }
 }
+
+@media screen and (max-width: 579px) {
+    .navMenuList{
+      position: absolute;
+      top: 52px;
+      left: 10px;
+    }
+  }
 
 .profileLink{
   display: flex;
@@ -182,7 +190,7 @@ hr{
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin: 0px 10px;
+  margin: 0 10px;
 }
 
 .additItemFields{
@@ -197,8 +205,7 @@ hr{
   width: 100%;
   max-width: 200px;
   height: 25px;
-  margin: 8px;
-  margin-left: 0px;
+  margin: 8px 8px 8px 0;
 }
 
 #inputAdditionalField{
@@ -232,7 +239,7 @@ hr{
   display: flex;
   flex-direction: column;
   border: 1px solid lightgray;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
 }
 
 .collection #collectionBody{
@@ -242,7 +249,7 @@ hr{
 
 .collection header, .collection footer, .item header{
   display: flex;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 0 0;
   flex-direction: column;
   align-items: center;
   color: white;
@@ -260,12 +267,12 @@ hr{
 }
 
 .collection footer{
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 0 0 10px 10px;
 }
 
 .collection hr{
   width: 90%;
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .collTitle, .item header{
@@ -275,7 +282,7 @@ hr{
 }
 
 .collDate{
-  padding: 5px 0px;
+  padding: 5px 0;
 }
 
 .item{
@@ -287,7 +294,7 @@ hr{
   display: flex;
   flex-direction: column;
   border: 1px solid lightgray;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
   background-color: white;
 }
 

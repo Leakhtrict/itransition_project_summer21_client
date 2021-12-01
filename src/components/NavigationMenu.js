@@ -50,7 +50,7 @@ export default function NavigationMenu({ authState }) {
                             </>
                         }
                     </div>
-                </OutsideClickHandler> 
+                </OutsideClickHandler>
             }
         </>
     )
