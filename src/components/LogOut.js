@@ -1,10 +1,9 @@
-import { FormattedMessage } from "react-intl";
-import { useHistory } from "react-router-dom";
-import { Button } from "@material-ui/core";
+import React from 'react';
+import { Button } from '@material-ui/core';
+import { FormattedMessage } from 'react-intl';
+import { useHistory } from 'react-router-dom';
 
-export default function LogOut({
-    setAuthState
-}) {
+export const LogOut = ({ setAuthState }) => {
     let history = useHistory();
 
     const logOut = () => {

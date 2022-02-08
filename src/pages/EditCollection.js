@@ -1,16 +1,17 @@
-import React, { useLayoutEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
-import { useHistory, useParams } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
-import ReactMde from "react-mde";
-import * as Showdown from "showdown";
-import "react-mde/lib/styles/css/react-mde-all.css";
-import { IconButton, Button, Grid, Tooltip } from "@material-ui/core";
-import HelpIcon from '@material-ui/icons/Help';
-import DeleteIcon from '@material-ui/icons/Delete';
-import ImageDropzone from "../components/ImageDropzone";
+import React, { useLayoutEffect, useState } from 'react';
+import axios from 'axios';
+import * as Yup from 'yup';
+import ReactMde from 'react-mde';
+import * as Showdown from 'showdown';
+import { FormattedMessage } from 'react-intl';
+import { Help, Delete } from '@material-ui/icons';
+import { useHistory, useParams } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { IconButton, Button, Grid, Tooltip } from '@material-ui/core';
+
+import { ImageDropzone } from 'components';
+
+import 'react-mde/lib/styles/css/react-mde-all.css';
 
 const converter = new Showdown.Converter({
     tables: true,
@@ -19,7 +20,7 @@ const converter = new Showdown.Converter({
     tasklists: true
 });
 
-function EditCollection() {
+export const EditCollection = () => {
     let { id } = useParams();
     const [freeText, setFreeText] = useState("");
     const [selectedTab, setSelectedTab] = useState("write");
@@ -103,21 +104,18 @@ function EditCollection() {
                     <Grid container direction="column" alignItems="center" spacing={1}>
                         <Grid item>
                             <div className="createCollectionMain">
-                                <ErrorMessage name="title" render={msg => 
+                                <ErrorMessage name="title" render={() =>
                                     <span id="formError">
                                         <FormattedMessage id="createcollection-page.title.error"/>
                                     </span>
                                 }/>
-                                <FormattedMessage id="createcollection-page.title">
-                                    {(id) => 
-                                        <Field
-                                        autoComplete="off"
-                                        id="inputCreateCollection"
-                                        name="title"
-                                        placeholder={currCollection.title} />
-                                    }
-                                </FormattedMessage>
-                                <ErrorMessage name="theme" render={msg => 
+                                <Field
+                                    autoComplete="off"
+                                    id="inputCreateCollection"
+                                    name="title"
+                                    placeholder={currCollection.title}
+                                />
+                                <ErrorMessage name="theme" render={() =>
                                     <span id="formError">
                                         <FormattedMessage id="createcollection-page.theme.error"/>
                                     </span>
@@ -173,9 +171,9 @@ function EditCollection() {
                                 {(currCollection.imageURL !== "") ?
                                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                                         <IconButton onClick={deleteImage} style={{ color: "black", width: 32, height: 32 }}>
-                                            <DeleteIcon />
+                                            <Delete />
                                         </IconButton>
-                                        <img src={currCollection.imageURL} style={{ maxWidth: 200, maxHeight: 200, marginBottom: 8 }}/>
+                                        <img alt="" src={currCollection.imageURL} style={{ maxWidth: 200, maxHeight: 200, marginBottom: 8 }}/>
                                     </div> :
                                     <ImageDropzone setImageToUpload={setImageToUpload} />
                                 }
@@ -219,7 +217,7 @@ function EditCollection() {
                                 {(id) =>
                                     <Tooltip title={id} interactive>
                                         <IconButton style={{ maxWidth: 20, maxHeight: 20, color: "red" }}>
-                                            <HelpIcon fontSize="small"/>
+                                            <Help fontSize="small"/>
                                         </IconButton>
                                     </Tooltip>
                                 }
@@ -265,5 +263,3 @@ function EditCollection() {
         </div>
     );
 }
-
-export default EditCollection;

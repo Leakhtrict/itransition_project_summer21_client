@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import SearchIcon from "@material-ui/icons/Search";
-import CloseIcon from "@material-ui/icons/Close";
-import { FormattedMessage } from "react-intl";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
+import { useHistory } from 'react-router-dom';
+import { Container } from '@material-ui/core';
+import { Search, Close } from '@material-ui/icons';
 import OutsideClickHandler from 'react-outside-click-handler';
-import { Container } from "@material-ui/core";
-import "./SearchBar.css";
 
-function SearchBar({ data }) {
+import './SearchBar.css';
+
+export const SearchBar = ({ data }) => {
     let history = useHistory();
     const [filteredData, setFilteredData] = useState([]);
     const [wordEntered, setWordEntered] = useState("");
@@ -56,9 +56,9 @@ function SearchBar({ data }) {
           
           <div className="searchIcon">
             {wordEntered.length === 0 ? (
-              <SearchIcon />
+              <Search />
             ) : (
-              <CloseIcon id="clearBtn" onClick={clearInput} />
+              <Close id="clearBtn" onClick={clearInput} />
             )}
           </div>
         </div>
@@ -80,6 +80,4 @@ function SearchBar({ data }) {
         )}
       </Container>
     );
-  }
-  
-  export default SearchBar;
+}

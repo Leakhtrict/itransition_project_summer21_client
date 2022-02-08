@@ -16,8 +16,8 @@
     background-color: white;
     border: 0;
     border-radius: 10px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
     font-size: 16px;
     height: 40px;
     width: auto;
@@ -63,7 +63,7 @@ input:focus {
     max-width: 220px;
     max-height: 200px;
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
     overflow: hidden;
     overflow-y: auto;
     z-index:1;

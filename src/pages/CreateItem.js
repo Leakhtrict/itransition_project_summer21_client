@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
-import { useHistory, useParams } from "react-router-dom";
-import CreatableSelect from "react-select/creatable";
-import { FormattedMessage } from "react-intl";
-import ReactMde from "react-mde";
-import * as Showdown from "showdown";
-import { Button, Grid } from "@material-ui/core";
-import "react-mde/lib/styles/css/react-mde-all.css";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import * as Yup from 'yup';
+import ReactMde from 'react-mde';
+import * as Showdown from 'showdown';
+import { FormattedMessage } from 'react-intl';
+import { Button, Grid } from '@material-ui/core';
+import CreatableSelect from 'react-select/creatable';
+import { useHistory, useParams } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+
+import 'react-mde/lib/styles/css/react-mde-all.css';
 
 const converter = new Showdown.Converter({
     tables: true,
@@ -17,7 +18,7 @@ const converter = new Showdown.Converter({
     tasklists: true
 });
 
-function CreateItem() {
+export const CreateItem = () => {
     let { id } = useParams();
     let history = useHistory();
     const [currentCollection, setCurrentCollection] = useState({});
@@ -122,7 +123,7 @@ function CreateItem() {
                     <Grid container direction="column" alignItems="center" spacing={1}>
                         <Grid item>
                             <div className="createItemMain">
-                                <ErrorMessage name="name" render={msg =>
+                                <ErrorMessage name="name" render={() =>
                                     <span id="formError">
                                         <FormattedMessage id="createitem-page.name.error"/>
                                     </span>
@@ -156,7 +157,7 @@ function CreateItem() {
                                 {currentCollection.numField1_isVisible &&
                                     <>
                                         <label>{currentCollection.numField1_Name}</label>
-                                        <ErrorMessage name="numField1" render={msg =>
+                                        <ErrorMessage name="numField1" render={() =>
                                             <span id="formError">
                                                 <FormattedMessage id="createitem-page.numField.error"/>
                                             </span>
@@ -172,7 +173,7 @@ function CreateItem() {
                                 {currentCollection.numField2_isVisible &&
                                     <>
                                         <label>{currentCollection.numField2_Name}</label>
-                                        <ErrorMessage name="numField2" render={msg =>
+                                        <ErrorMessage name="numField2" render={() =>
                                             <span id="formError">
                                                 <FormattedMessage id="createitem-page.numField.error"/>
                                             </span>
@@ -188,7 +189,7 @@ function CreateItem() {
                                 {currentCollection.numField3_isVisible &&
                                     <>
                                         <label>{currentCollection.numField3_Name}</label>
-                                        <ErrorMessage name="numField3" render={msg =>
+                                        <ErrorMessage name="numField3" render={() =>
                                             <span id="formError">
                                                 <FormattedMessage id="createitem-page.numField.error"/>
                                             </span>
@@ -344,5 +345,3 @@ function CreateItem() {
         </div>
     );
 }
-
-export default CreateItem;

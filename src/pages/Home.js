@@ -1,15 +1,15 @@
-import React from "react";
-import axios from "axios";
-import { useEffect, useState, useContext } from "react";
-import { AuthContext } from "../helpers/AuthContext";
-import { useHistory } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
-import MainTagCloud from "../components/MainTagCloud";
-import { FormattedMessage } from "react-intl";
-import { Button, Grid, Box, Container } from "@material-ui/core";
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
+import { useHistory } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
+import { FavoriteBorder } from '@material-ui/icons';
+import { Button, Grid, Box, Container } from '@material-ui/core';
 
-function shuffle(array) {
+import { AuthContext } from 'helpers';
+import { MainTagCloud } from 'components';
+
+const shuffle = (array) => {
     let currentIndex = array.length,  randomIndex;
   
     while (currentIndex !== 0) {
@@ -21,7 +21,7 @@ function shuffle(array) {
     return array;
 }
 
-function Home() {
+export const Home = () => {
     const { authState, setAuthState } = useContext(AuthContext);
     const [listOfCollections, setListOfCollections] = useState([]);
     const [listOfAllCollections, setListOfAllCollections] = useState([]);
@@ -156,7 +156,7 @@ function Home() {
                                             })}
                                         </Grid>
                                         <footer>
-                                            <FavoriteBorderIcon style={{ color: "red" }} />
+                                            <FavoriteBorder style={{ color: "red" }} />
                                             {value.Likes.length}
                                         </footer>
                                     </Box>
@@ -174,5 +174,3 @@ function Home() {
         </div>
     );
 }
-
-export default Home;

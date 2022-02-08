@@ -1,10 +1,9 @@
+import React from 'react';
 import { TagCloud } from 'react-tagcloud';
-import { useHistory } from "react-router-dom";
-import { Container } from "@material-ui/core";
+import { useHistory } from 'react-router-dom';
+import { Container } from '@material-ui/core';
 
-export default function MainTagCloud({
-    data
-}) {
+export const MainTagCloud = ({ data }) => {
     let history = useHistory();
 
     return (

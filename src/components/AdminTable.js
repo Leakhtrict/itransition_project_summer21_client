@@ -1,29 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
-import { COLUMNS } from "../helpers/columns";
-import LockIcon from '@material-ui/icons/Lock';
-import LockOpenIcon from '@material-ui/icons/LockOpen';
-import SecurityIcon from '@material-ui/icons/Security';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
-import PersonIcon from '@material-ui/icons/Person';
-import { DataGrid } from "@material-ui/data-grid";
-import { IconButton } from "@material-ui/core";
+import { useHistory } from 'react-router-dom';
+import { IconButton } from '@material-ui/core';
+import { DataGrid } from '@material-ui/data-grid';
 import { makeStyles } from '@material-ui/core/styles';
+import { Lock, LockOpen, Security, DeleteForever, Person } from '@material-ui/icons';
 
-const useStyles = makeStyles((theme) => ({
+import { COLUMNS } from 'helpers';
+
+const useStyles = makeStyles(() => ({
   buttonBar: {
-    color: "black",
+    color: 'black',
   },
   mainTable: {
     height: 630,
-    width: "100vw",
+    width: '100vw',
     maxWidth: 972,
-    backgroundColor: "white",
+    backgroundColor: 'white',
   }
 }));
 
-function AdminTable() {
+export const AdminTable = () => {
   const classes = useStyles();
   let history = useHistory();
   const [listOfUsers, setListOfUsers] = useState([]);
@@ -140,16 +137,16 @@ function AdminTable() {
     <>
       <div>
         <IconButton onClick={blockUser} title="Block" className={classes.buttonBar}>
-          <LockIcon />
+          <Lock />
         </IconButton>
         <IconButton onClick={unblockUser} title="Unblock" className={classes.buttonBar}>
-          <LockOpenIcon />
+          <LockOpen />
         </IconButton>
         <IconButton onClick={adminUser} title="Set admin" className={classes.buttonBar}>
-          <SecurityIcon />
+          <Security />
         </IconButton>
         <IconButton onClick={deleteData} title="Delete" className={classes.buttonBar}>
-          <DeleteForeverIcon />
+          <DeleteForever />
         </IconButton>
       </div>
       <div className={classes.mainTable} >
@@ -162,7 +159,7 @@ function AdminTable() {
               sortable: false,
               width: 100,
               renderCell: (params) => {
-                return (<PersonIcon onClick={() => { history.push(`/user/${params.getValue(params.id, 'id')}`) }} />)
+                return (<Person onClick={() => { history.push(`/user/${params.getValue(params.id, 'id')}`) }} />)
               }
             }]
           }
@@ -176,5 +173,3 @@ function AdminTable() {
     </>
   );
 };
-
-export default AdminTable;

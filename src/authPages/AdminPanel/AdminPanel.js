@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import AdminTable from 'components/AdminTable';
-import { AuthContext } from 'helpers/AuthContext';
+import { AuthContext } from 'helpers';
+import { AdminTable } from 'components';
 
 export const AdminPanel = () => {
     const { authState } = useContext(AuthContext);

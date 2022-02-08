@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
+import { useHistory } from 'react-router-dom';
+import { Menu, Close } from '@material-ui/icons';
 import { Button, IconButton } from '@material-ui/core';
-import { FormattedMessage } from "react-intl";
-import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from "@material-ui/icons/Close";
-import { useHistory } from "react-router-dom";
 import OutsideClickHandler from 'react-outside-click-handler';
 
-export default function NavigationMenu({ authState }) {
+export const NavigationMenu = ({ authState }) => {
     let history = useHistory();
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -29,8 +28,8 @@ export default function NavigationMenu({ authState }) {
         <>
             <IconButton onClick={() => setMenuOpen(!menuOpen)} style={{ color: "white" }}>
                 {menuOpen ?
-                    <CloseIcon /> :
-                    <MenuIcon />
+                    <Close /> :
+                    <Menu />
                 }
             </IconButton>
             {menuOpen &&

@@ -1,14 +1,13 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import axios from "axios";
-import { AuthContext } from "../helpers/AuthContext";
-import { FormattedMessage } from "react-intl";
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import SortSelect from "../components/SortSelect";
+import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
+import { FormattedMessage } from 'react-intl';
 import { makeStyles } from '@material-ui/core/styles';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import { IconButton, Button, Grid, Box, Container } from "@material-ui/core";
+import { useParams, useHistory } from 'react-router-dom';
+import { FavoriteBorder, Edit, Delete } from '@material-ui/icons';
+import { IconButton, Button, Grid, Box, Container } from '@material-ui/core';
+
+import { AuthContext } from 'helpers';
+import { SortSelect } from 'components';
 
 const useStyles = makeStyles(() => ({
     buttonBar: {
@@ -28,7 +27,7 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-function Collection() {
+export const Collection = () => {
     const classes = useStyles();
     const { authState } = useContext(AuthContext);
     let { id } = useParams();
@@ -106,10 +105,10 @@ function Collection() {
                                 {(authState.id === collectionObj.UserId || authState.isAdmin) &&
                                     <>
                                         <IconButton onClick={() => { history.push(`/collection/${id}/item/${value.id}/edit`) }} className={classes.itemButtons}>
-                                            <EditIcon />
+                                            <Edit />
                                         </IconButton>
                                         <IconButton onClick={() => deleteItem(value.id)} className={classes.itemButtons}>
-                                            <DeleteIcon />
+                                            <Delete />
                                         </IconButton>
                                     </>
                                 }
@@ -125,7 +124,7 @@ function Collection() {
                                         })}
                                     </Grid>
                                     <footer>
-                                        <FavoriteBorderIcon style={{ color: "red" }} />
+                                        <FavoriteBorder style={{ color: "red" }} />
                                         {value.Likes.length}
                                     </footer>
                                 </Box>
@@ -143,5 +142,3 @@ function Collection() {
 
     );
 }
-
-export default Collection;

@@ -1,10 +1,10 @@
-import { IconButton } from '@material-ui/core';
 import React, { useState } from 'react';
+import { Delete } from '@material-ui/icons';
 import { useDropzone } from 'react-dropzone';
 import { FormattedMessage } from 'react-intl';
-import DeleteIcon from '@material-ui/icons/Delete';
+import { IconButton } from '@material-ui/core';
 
-export default function ImageDropzone({setImageToUpload}) {
+export const ImageDropzone = ({setImageToUpload}) => {
     const [currFile, setCurrFile] = useState({ isEmpty: true });
     const { getRootProps, getInputProps } = useDropzone({
         maxFiles: 1,
@@ -38,9 +38,9 @@ export default function ImageDropzone({setImageToUpload}) {
                 </div> : 
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                     <IconButton onClick={cancelImage} style={{ color: "black", width: 32, height: 32 }}>
-                        <DeleteIcon />
+                        <Delete />
                     </IconButton>
-                    <img src={currFile.preview} style={{ maxWidth: 200, maxHeight: 200, marginBottom: 8 }}/>
+                    <img alt="" src={currFile.preview} style={{ maxWidth: 200, maxHeight: 200, marginBottom: 8 }}/>
                 </div>
             }
         </div>

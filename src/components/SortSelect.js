@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { FormattedMessage } from "react-intl";
-import ImportExportIcon from '@material-ui/icons/ImportExport';
-import { Select, MenuItem, InputLabel, FormControl, IconButton } from '@material-ui/core';
+import React, { useState } from 'react';
+import { FormattedMessage } from 'react-intl';
+import { ImportExport } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
+import { Select, MenuItem, InputLabel, FormControl, IconButton } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     buttons: {
         margin: "5px -5px",
         padding: "6px",
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SortSelect({ setThisItems, setThisAllItems }){
+export const SortSelect = ({ setThisItems, setThisAllItems }) => {
     const classes = useStyles();
     const [sortFilter, setSortFilter] = useState("id");
     const sortByValue = (value) => {
@@ -97,7 +97,7 @@ export default function SortSelect({ setThisItems, setThisAllItems }){
                 </Select>
             </FormControl>
             <IconButton onClick={() => reverseItems()} className={classes.buttons}>
-                <ImportExportIcon />
+                <ImportExport />
             </IconButton>
         </div>
     );

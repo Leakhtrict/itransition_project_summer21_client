@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import axios from "axios";
-import { Grid, Box, Container, Button } from "@material-ui/core";
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import { FormattedMessage } from "react-intl";
-import SortSelect from "../components/SortSelect";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { FormattedMessage } from 'react-intl';
+import { FavoriteBorder } from '@material-ui/icons';
+import { useHistory, useParams } from 'react-router-dom';
+import { Grid, Box, Container, Button } from '@material-ui/core';
 
-function TagCloudResult() {
+import { SortSelect } from 'components';
+
+export const TagCloudResult = () => {
     let { tag } = useParams();
     let history = useHistory();
     const [listOfItems, setListOfItems] = useState([]);
@@ -68,7 +69,7 @@ function TagCloudResult() {
                                         })}
                                     </Grid>
                                     <footer>
-                                        <FavoriteBorderIcon style={{ color: "red" }} />
+                                        <FavoriteBorder style={{ color: "red" }} />
                                         {value.Likes.length}
                                     </footer>
                                 </Box>
@@ -85,5 +86,3 @@ function TagCloudResult() {
         </div>
     )
 }
-
-export default TagCloudResult;

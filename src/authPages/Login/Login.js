@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-import { AuthContext } from 'helpers/AuthContext';
+import { AuthContext } from 'helpers';
 
 import './Login.css';
 

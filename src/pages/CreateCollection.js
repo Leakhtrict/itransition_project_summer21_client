@@ -1,16 +1,18 @@
-import React, { useContext, useLayoutEffect, useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
-import { useHistory, useParams } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
-import { AuthContext } from "../helpers/AuthContext";
-import ReactMde from "react-mde";
-import * as Showdown from "showdown";
-import "react-mde/lib/styles/css/react-mde-all.css";
-import { IconButton, Button, Grid, Tooltip } from "@material-ui/core";
-import HelpIcon from '@material-ui/icons/Help';
-import ImageDropzone from "../components/ImageDropzone";
+import React, { useContext, useLayoutEffect, useState } from 'react';
+import axios from 'axios';
+import * as Yup from 'yup';
+import ReactMde from 'react-mde';
+import * as Showdown from 'showdown';
+import { Help } from '@material-ui/icons';
+import { FormattedMessage } from 'react-intl';
+import { useHistory, useParams } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { IconButton, Button, Grid, Tooltip } from '@material-ui/core';
+
+import { AuthContext } from 'helpers';
+import { ImageDropzone } from 'components';
+
+import 'react-mde/lib/styles/css/react-mde-all.css';
 
 const converter = new Showdown.Converter({
     tables: true,
@@ -19,7 +21,7 @@ const converter = new Showdown.Converter({
     tasklists: true
 });
 
-function CreateCollection() {
+export const CreateCollection = () => {
     const { id } = useParams();
     const { authState } = useContext(AuthContext);
     const [freeText, setFreeText] = useState("");
@@ -102,7 +104,7 @@ function CreateCollection() {
                     <Grid container direction="column" alignItems="center" spacing={1}>
                         <Grid item>
                             <div className="createCollectionMain">
-                                <ErrorMessage name="title" render={msg => 
+                                <ErrorMessage name="title" render={() =>
                                     <span id="formError">
                                         <FormattedMessage id="createcollection-page.title.error"/>
                                     </span>
@@ -116,7 +118,7 @@ function CreateCollection() {
                                         placeholder={id} />
                                     }
                                 </FormattedMessage>
-                                <ErrorMessage name="theme" render={msg => 
+                                <ErrorMessage name="theme" render={() =>
                                     <span id="formError">
                                         <FormattedMessage id="createcollection-page.theme.error"/>
                                     </span>
@@ -209,7 +211,7 @@ function CreateCollection() {
                                 {(id) =>
                                     <Tooltip title={id} interactive>
                                         <IconButton style={{ maxWidth: 20, maxHeight: 20, color: "red" }}>
-                                            <HelpIcon fontSize="small"/>
+                                            <Help fontSize="small"/>
                                         </IconButton>
                                     </Tooltip>
                                 }
@@ -254,5 +256,3 @@ function CreateCollection() {
         </div>
     );
 }
-
-export default CreateCollection;

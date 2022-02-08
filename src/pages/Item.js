@@ -1,20 +1,18 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import axios from "axios";
-import { AuthContext } from "../helpers/AuthContext";
-import { FormattedMessage } from "react-intl";
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import DeleteIcon from '@material-ui/icons/Delete';
-import SendIcon from '@material-ui/icons/Send';
-import { IconButton, Grid, Container, Paper, OutlinedInput, InputAdornment } from "@material-ui/core";
+import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
+import io from 'socket.io-client';
+import { FormattedMessage } from 'react-intl';
 import { makeStyles } from '@material-ui/core/styles';
-import io from "socket.io-client";
-import AdditionalFields from "../components/AdditionalFields";
+import { useParams, useHistory } from 'react-router-dom';
+import { FavoriteBorder, Favorite, Delete, Send } from '@material-ui/icons';
+import { IconButton, Grid, Container, Paper, OutlinedInput, InputAdornment } from '@material-ui/core';
+
+import { AuthContext } from 'helpers';
+import { AdditionalFields } from 'components';
 
 let socket;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     title: {
         fontSize: 32,
         fontWeight: "bold",
@@ -57,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Item() {
+export const Item = () => {
     const classes = useStyles();
     const { authState } = useContext(AuthContext);
     let { itemId } = useParams();
@@ -196,8 +194,8 @@ function Item() {
             <AdditionalFields fromCollection={fromCollection} itemBody={itemBody} classes={classes}/>
             <IconButton onClick={() => {likeItem(itemId)}} style={{ color: "red" }}>
                 {isLiked ?
-                    <FavoriteIcon /> :
-                    <FavoriteBorderIcon />
+                    <Favorite /> :
+                    <FavoriteBorder />
                 }
                 {itemBody.Likes.length}
             </IconButton>
@@ -217,7 +215,7 @@ function Item() {
                             >
                                 {(authState.username === value.username || authState.isAdmin) && 
                                     <IconButton onClick={() => deleteComment(value.id)} style={{ color: "black", height: "10px", width: "10px" }}>
-                                        <DeleteIcon />
+                                        <Delete />
                                     </IconButton>
                                 }
                                 <Grid item>
@@ -242,7 +240,7 @@ function Item() {
                                     endAdornment={
                                         <InputAdornment position="end">
                                             <IconButton onClick={addComment} style={{ color: "red", margin: "0px -5px" }}>
-                                                <SendIcon />
+                                                <Send />
                                             </IconButton>
                                         </InputAdornment>
                                     }
@@ -255,6 +253,3 @@ function Item() {
         </div>
     );
 }
-
-
-export default Item;

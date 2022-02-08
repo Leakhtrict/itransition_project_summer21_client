@@ -1,16 +1,15 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { AuthContext } from "../helpers/AuthContext";
-import axios from "axios";
-import { FormattedMessage } from "react-intl";
-import ReactMarkdown from "react-markdown";
+import React, { useEffect, useState, useContext } from 'react';
+import axios from 'axios';
+import ReactMarkdown from 'react-markdown';
+import { FormattedMessage } from 'react-intl';
 import { makeStyles } from '@material-ui/core/styles';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import { IconButton, Button, Grid, Box, Container } from "@material-ui/core";
+import { useHistory, useParams } from 'react-router-dom';
+import { Edit, Delete, AccountBox } from '@material-ui/icons';
+import { IconButton, Button, Grid, Box, Container } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+import { AuthContext } from 'helpers';
+
+const useStyles = makeStyles(() => ({
     buttonBar: {
         color: "white",
         backgroundColor: "red",
@@ -36,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function User() {
+export const User = () => {
     const classes = useStyles();
     const { authState } = useContext(AuthContext);
     let { userId } = useParams();
@@ -97,7 +96,7 @@ function User() {
     return(
         <Container maxWidth="xs" className="userPage">
             <div className={classes.usernameInfo}>
-                <AccountBoxIcon fontSize="large" style={{ color: "red" }}/>
+                <AccountBox fontSize="large" style={{ color: "red" }}/>
                 <strong>{thisUser.username}</strong>
             </div>
             <div className="buttonBar">
@@ -119,10 +118,10 @@ function User() {
                             {((authState.id.toString() === userId) || authState.isAdmin) && 
                                 <>
                                     <IconButton onClick={() => {history.push(`/collection/${value.id}/edit`)}} className={classes.collectionButtons}>
-                                        <EditIcon />
+                                        <Edit />
                                     </IconButton>
                                     <IconButton onClick={() => deleteCollection(value.id)} className={classes.collectionButtons}>
-                                        <DeleteIcon />
+                                        <Delete />
                                     </IconButton>
                                 </>
                             }
@@ -162,5 +161,3 @@ function User() {
         </Container>
     )
 }
-
-export default User;
