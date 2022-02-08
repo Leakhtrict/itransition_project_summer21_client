@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from 'yup';
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
-import { AuthContext } from "../helpers/AuthContext";
-import { FormattedMessage } from "react-intl";
-import { Button } from "@material-ui/core";
+import * as Yup from 'yup';
+import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-function Login() {
+import { AuthContext } from 'helpers/AuthContext';
+
+import './Login.css';
+
+export const Login = () => {
     let history = useHistory();
     const { setAuthState } = useContext(AuthContext);
 
@@ -48,7 +51,7 @@ function Login() {
                 validationSchema={validationSchema}
             >
                 <Form className="loginForm">
-                    <ErrorMessage name="nameOrEmail" render={msg => <span id="formError"><FormattedMessage id="login-page.nameOrEmail.error"/></span>} />
+                    <ErrorMessage name="nameOrEmail" render={() => <span id="formError"><FormattedMessage id="login-page.nameOrEmail.error"/></span>} />
                     <FormattedMessage id="login-page.nameOrEmail">
                         {(id) => 
                             <Field 
@@ -58,7 +61,7 @@ function Login() {
                             placeholder={id} />
                         }
                     </FormattedMessage>
-                    <ErrorMessage name="password" render={msg => <span id="formError"><FormattedMessage id="login-page.password.error"/></span>} />
+                    <ErrorMessage name="password" render={() => <span id="formError"><FormattedMessage id="login-page.password.error"/></span>} />
                     <FormattedMessage id="login-page.password">
                         {(id) => 
                             <Field 
@@ -77,5 +80,3 @@ function Login() {
         </div>
     )
 }
-
-export default Login;

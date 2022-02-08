@@ -1,0 +1,28 @@
+.loginPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: auto;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 20px;
+}
+
+.loginForm #loginFormField{
+    height: 40px;
+    width: 90vw;
+    max-width: 400px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 2px solid grey;
+    border-radius: 5px;
+    padding-left: 10px;
+}

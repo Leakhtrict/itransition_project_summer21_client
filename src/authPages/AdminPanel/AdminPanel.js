@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../helpers/AuthContext";
-import { FormattedMessage } from "react-intl";
-import AdminTable from "../components/AdminTable";
+import React, { useContext } from 'react';
+import { FormattedMessage } from 'react-intl';
 
-function AdminPanel() {
+import AdminTable from 'components/AdminTable';
+import { AuthContext } from 'helpers/AuthContext';
+
+export const AdminPanel = () => {
     const { authState } = useContext(AuthContext);
 
     return(
@@ -17,5 +18,3 @@ function AdminPanel() {
         )
     )
 }
-
-export default AdminPanel;

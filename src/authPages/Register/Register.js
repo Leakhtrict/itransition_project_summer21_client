@@ -1,12 +1,14 @@
 import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from 'yup';
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
-import { Button } from "@material-ui/core";
+import * as Yup from 'yup';
+import { Button } from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
-function Register() {
+import './Register.css';
+
+export const Register = () => {
     let history = useHistory();
 
     const initialValues = {
@@ -69,7 +71,7 @@ function Register() {
                             placeholder={id} />
                         }
                     </FormattedMessage>
-                    <ErrorMessage name="password" render={msg => <span id="formError"><FormattedMessage id="register-page.password.error"/></span>} />
+                    <ErrorMessage name="password" render={() => <span id="formError"><FormattedMessage id="register-page.password.error"/></span>} />
                     <FormattedMessage id="register-page.password">
                         {(id) => 
                             <Field 
@@ -89,5 +91,3 @@ function Register() {
         </div>
     )
 }
-
-export default Register;

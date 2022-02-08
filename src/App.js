@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
@@ -16,9 +15,7 @@ import User from './pages/User';
 import LangChanger from "./components/LangChanger";
 import LogOut from "./components/LogOut";
 import ProfileLink from './components/ProfileLink';
-import Login from './authPages/Login';
-import Register from "./authPages/Register";
-import AdminPanel from './authPages/AdminPanel';
+import { Login, Register, AdminPanel } from 'authPages';
 import { AuthContext } from "./helpers/AuthContext";
 import SearchBar from './components/SearchBar';
 import TagCloudResult from "./pages/TagCloudResult";
@@ -26,6 +23,8 @@ import SearchResult from './pages/SearchResult';
 import WrongPath from './pages/WrongPath';
 import NavigationMenu from './components/NavigationMenu';
 import { Toolbar, AppBar } from '@material-ui/core';
+
+import './App.css';
 
 const langSet = {
   "en": enMessages,

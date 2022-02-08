@@ -101,29 +101,9 @@ hr{
   background-color: rgb(233, 102, 102);
 }
 
-.registerForm, .loginForm{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: auto;
-  padding: 20px;
-}
-
 .collectionPage, .userPage{
   width: 90vw;
   max-width: 600px;
-}
-
-.registerForm #registerFormField, .loginForm #loginFormField{
-  height: 40px;
-  width: 90vw;
-  max-width: 400px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 2px solid grey;
-  border-radius: 5px;
-  padding-left: 10px;
 }
 
 #formError{
@@ -141,7 +121,7 @@ hr{
   background-color: transparent;
 }
 
-.createCollection, .createItem, .loginPage, .registerPage{
+.createCollection, .createItem {
   display: flex;
   flex-direction: column;
   justify-content: center;
